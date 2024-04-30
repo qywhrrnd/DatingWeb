@@ -36,43 +36,7 @@ https://templatemo.com/tm-573-eduwell
 </head>
 
 <body>
-
-
-	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="main-nav">
-						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo"> <label>데마</label>
-						</a>
-						<!-- ***** Logo End ***** -->
-						<!-- ***** Menu Start ***** -->
-						<ul class="nav">
-							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-							<li class="scroll-to-section"><a href="#services">Services</a></li>
-							<li class="scroll-to-section"><a href="#courses">Courses</a></li>
-							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
-								<ul class="sub-menu">
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="our-services.html">Our Services</a></li>
-									<li><a href="contact-us.html">Contact Us</a></li>
-								</ul></li>
-							<li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-							<li class="scroll-to-section"><a href="#contact-section">Contact
-									Us</a></li>
-						</ul>
-						<a class='menu-trigger'> <span>Menu</span>
-						</a>
-						<!-- ***** Menu End ***** -->
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!-- ***** Header Area End ***** -->
-
+  <%@ include file="../main/header.jsp"%>
 	<!-- ***** Main Banner Area Start ***** -->
 	<section class="main-banner" id="top">
 		<div class="container">
@@ -105,9 +69,9 @@ https://templatemo.com/tm-573-eduwell
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h6>Our Services</h6>
+						<h6>SUCCESS</h6>
 						<h4>
-							Provided <em>Services</em>
+							성공 <em>사례</em>
 						</h4>
 					</div>
 				</div>
@@ -398,12 +362,11 @@ https://templatemo.com/tm-573-eduwell
 					</div>
 				</div>
 				<div class="col-lg-5 align-self-center">
-					<h6>Get the sale right now!</h6>
-					<h4>Up to 50% OFF For 1+ courses</h4>
-					<p>Kogi VHS freegan bicycle rights try-hard green juice
-						probably haven't heard of them cliche la croix af chillwave.</p>
+					<h6>할인 이벤트</h6>
+					<h4>지금 결제하면!</h4>
+					<h5>포인트 10% 추가 증정</h5>
 					<div class="white-button">
-						<a href="contact-us.html">View Courses</a>
+						<a href="contact-us.html">지금 충전하기</a>
 					</div>
 				</div>
 			</div>
