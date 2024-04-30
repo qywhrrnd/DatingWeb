@@ -250,19 +250,69 @@ input[type=checkbox] {
 		});
 	});
 </script>
+<script>
+	function check() {
+		let form1 = $("#form1");
+		let email = $("#email").val();
+		let passwd1 = $("#passwd1").val();
+		let passwd2 = $("#passwd2").val();
+		if (email == "") {
+			alert("이메일을 입력하세요.");
+			$("#email").focus();
+			return;
+		}
+
+		if (passwd1 == "") {
+			alert("비밀번호를 입력하세요.");
+			$("#passwd1").focus();
+			return;
+		}
+		if (passwd2 == "") {
+			alert("비밀번호 확인란을 입력하세요.");
+			$("#passwd2").focus();
+			return;
+		}
+		$.ajax({
+			url : "/member/emailcheck.do",
+			type : "POST",
+			data : {
+				email : email
+			},
+			success : function(response) {
+				console.log(response);
+			}
+		});
+	}
+
+	function checkpwd() {
+		let password1 = document.getElementById("passwd1").value;
+		let password2 = document.getElementById("passwd2").value;
+		let passwordresult = document.getElementById("passwordresult");
+		if (password1 != password2) {
+			passwordresult.innerHTML = "비밀번호가 일치하지 않습니다";
+		} else {
+			passwordresult.innerHTML = "비밀번호가 일치합니다.";
+		}
+	}
+</script>
+
+
 </head>
 <body>
 	<div class="container">
 		<div class="welcome">
 			<div class="pinkbox">
 				<div class="signup nodisplay">
+
 					<h1>register</h1>
-					<form autocomplete="off">
-						<input type="text" placeholder="username"> <input
-							type="email" placeholder="email"> <input type="password"
-							placeholder="password"> <input type="password"
-							placeholder="confirm password">
-						<button class="button submit">create account</button>
+					<form autocomplete="off" name="form1" id="form1" method="post">
+						<input type="email" id="email" name="email"
+							placeholder="아이디(email형식)"> <input type="password"
+							id="passwd1" name="passwd1" placeholder="password"> <input
+							type="password" id="passwd2" name="passwd2"
+							placeholder="confirm password" oninput="checkpwd()">
+						<div id="passwordresult"></div>
+						<input type="button" onclick="check()" value="인증 번호 전송">
 					</form>
 				</div>
 				<div class="signin">
