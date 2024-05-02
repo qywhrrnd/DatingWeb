@@ -145,44 +145,43 @@ public class MemberController {
 		printWriter.flush();
 	}
 
-	public static List<String> executePythonScript(String scriptPath) throws IOException, InterruptedException {
-		List<String> output = new ArrayList<>();
-		// Python 스크립트 실행 명령어
-		String[] cmd = { "python", scriptPath };
-		// 프로세스 실행
-		Process process = Runtime.getRuntime().exec(cmd);
-		// 프로세스 출력을 읽어옴
-		InputStream stdout = process.getInputStream();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
-		String line;
-		// 출력을 리스트에 저장
-		while ((line = reader.readLine()) != null) {
-			output.add(line);
-		}
-		// 프로세스가 완료될 때까지 대기
-		process.waitFor();
-
-		return output;
-	}
+	   public static List<String> executePythonScript(String scriptPath, String imagePath) throws IOException, InterruptedException {
+	        List<String> output = new ArrayList<>();
+	        // Python 스크립트 실행 명령어
+	        String[] cmd = {"python", scriptPath, imagePath};
+	        // 프로세스 실행
+	        Process process = Runtime.getRuntime().exec(cmd);
+	        // 프로세스 출력을 읽어옴
+	        InputStream stdout = process.getInputStream();
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
+	        String line;
+	        // 출력을 리스트에 저장
+	        while ((line = reader.readLine()) != null) {
+	            output.add(line);
+	        }
+	        // 프로세스가 완료될 때까지 대기
+	        process.waitFor();
+	        return output;
+	    }
 
 	@RequestMapping("member/facescore.do")
 	public ResponseEntity<Map<String, String>> facescore(@RequestParam(name = "file") String file) {
 		String prediction = "";
-		String pythonScriptPath = "C:/work/product/main.py";
-		try {
-			// Python 스크립트 실행
-			List<String> scriptOutput = executePythonScript(pythonScriptPath);
-			// 출력 내용 표시
-			for (String line : scriptOutput) {
-				// 예측 값(Prediction)만 따로 추출하여 출력
-				if (line.startsWith("Prediction:")) {
-					prediction = line.substring("Prediction:".length()).trim();
-					System.out.println("점수는: " + prediction + "점");
-				}
-			}
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
+		 String pythonScriptPath = "C:/work/product/main3.py";
+	        // 이미지 파일 경로
+	        try {
+	            // Python 스크립트 실행
+	            List<String> scriptOutput = executePythonScript(pythonScriptPath, file);
+	            // 출력 내용 표시
+	            for (String line : scriptOutput) {
+	                System.out.println(line);
+	            }
+	        } catch (IOException | InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	    
+	
+
 		Map<String, String> response = new HashMap<>();
 		response.put("prediction", prediction);
 		return ResponseEntity.ok(response);
