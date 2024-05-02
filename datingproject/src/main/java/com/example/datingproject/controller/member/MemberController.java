@@ -193,7 +193,7 @@ public class MemberController {
     public ResponseEntity<String> moveFile(@RequestParam("file") MultipartFile file) {
         try {
             // 파일을 저장할 경로 설정
-            String uploadPath = "C:/Users/user/git/repository5/datingproject/src/main/webapp/resources/faceimg/";
+            String uploadPath = "C:/dating/img/";
             // 파일 이름 추출
             String fileName = file.getOriginalFilename();
             // 지정된 경로에 파일 저장
