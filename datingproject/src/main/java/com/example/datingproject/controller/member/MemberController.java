@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -188,34 +189,22 @@ public class MemberController {
 
 	}
 
-	@RequestMapping("member/movefile.do")
-	public void movefile(@RequestParam(name = "file") MultipartFile file,
-			HttpServletRequest request) {
-		String filename = "-";
-
-		// 파일이 비어있지 않고, 파일의 원본 이름이 null이 아닌 경우에만 처리
-		if (file != null && !file.isEmpty() && file.getOriginalFilename() != null) {
-			filename = file.getOriginalFilename(); // 파일명 설정
-
-			try {
-				ServletContext application = request.getSession().getServletContext();
-				String path = application.getRealPath("/resources/faceimg/");
-				File directory = new File(path);
-
-				if (!directory.exists()) {
-					directory.mkdirs(); // 디렉토리가 없으면 생성
-				}
-
-				// 파일 저장
-				file.transferTo(new File(directory, filename));
-			} catch (Exception e) {
-				e.printStackTrace();
-				// 파일 저장 중 오류 발생 시, 적절한 예외 처리 로직 추가 가능
-			}
-		}
-
-	
-
-	}
+	@PostMapping("/member/movefile.do")
+    public ResponseEntity<String> moveFile(@RequestParam("file") MultipartFile file) {
+        try {
+            // 파일을 저장할 경로 설정
+            String uploadPath = "C:/Users/user/git/repository5/datingproject/src/main/webapp/resources/faceimg/";
+            // 파일 이름 추출
+            String fileName = file.getOriginalFilename();
+            // 지정된 경로에 파일 저장
+            file.transferTo(new File(uploadPath + fileName));
+            // 저장된 파일 경로 반환
+            String fileUrl = uploadPath + fileName;
+            return ResponseEntity.ok().body(fileUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("파일 이동 중 오류가 발생했습니다.");
+        }
+    }
 
 }

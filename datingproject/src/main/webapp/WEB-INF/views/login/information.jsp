@@ -240,12 +240,28 @@ input[type=checkbox] {
 <script src="/resources/ckeditor/ckeditor.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-function movefile(){
-	let fileInput = document.getElementById("file");
-	var selectedFile = fileInput.files[0];
-    // 파일 이름 추출
-    var filename = selectedFile.name;
-	window.location.href = "/member/movefile.do?file="+filename;
+function movefile() {
+    let fileInput = document.getElementById("file");
+    var selectedFile = fileInput.files[0];
+    if (selectedFile) {
+        var formData = new FormData();
+        formData.append("file", selectedFile);
+        $.ajax({
+            url: "/member/movefile.do",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    } else {
+        console.error("No file selected.");
+    }
 }
 
 
@@ -447,17 +463,14 @@ function score(){
 			<tr>
 				<td>
 					<!-- <input type="file" name="file"> --> <input type="file"
-					name="file" id="file"
-					accept="image/jpg"
-					multiple="multiple" onchange="upload()"> 
-					&nbsp;
-					<img
-					src="/resources/images" class="profile-photo" width="150"
-					height="150" style="visibility: hidden;">
+					name="file" id="file" accept="image/jpg" multiple="multiple"
+					onchange="upload()"> &nbsp; <img src="/resources/images"
+					class="profile-photo" width="150" height="150"
+					style="visibility: hidden;">
 				</td>
 				<td>
-				<button type="button" onclick="movefile()">사진확정</button>
-				<button type="button" onclick="score()">점수확인</button>
+					<button type="button" onclick="movefile()">사진확정</button>
+					<button type="button" onclick="score()">점수확인</button>
 				</td>
 
 			</tr>

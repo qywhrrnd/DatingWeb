@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,18 @@
 							<li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
 							<li class="scroll-to-section"><a href="#contact-section">Contact
 									Us</a></li>
-							<li><a href="/member/pagelogin.do">Login</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.userid == null }">
+
+									<li><a href="/member/pagelogin.do">Login</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="/member/logout.do">Logout</a></li>
+
+
+								</c:otherwise>
+							</c:choose>
+
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
