@@ -145,10 +145,10 @@ public class MemberController {
 		printWriter.flush();
 	}
 
-	   public static List<String> executePythonScript(String scriptPath, String imagePath) throws IOException, InterruptedException {
+	   public static List<String> executePythonScript(String scriptPath, String file) throws IOException, InterruptedException {
 	        List<String> output = new ArrayList<>();
 	        // Python 스크립트 실행 명령어
-	        String[] cmd = {"python", scriptPath, imagePath};
+	        String[] cmd = {"python", scriptPath, file};
 	        // 프로세스 실행
 	        Process process = Runtime.getRuntime().exec(cmd);
 	        // 프로세스 출력을 읽어옴
@@ -166,6 +166,7 @@ public class MemberController {
 
 	@RequestMapping("member/facescore.do")
 	public ResponseEntity<Map<String, String>> facescore(@RequestParam(name = "file") String file) {
+	System.out.println(file);
 		String prediction = "";
 		 String pythonScriptPath = "C:/work/product/main3.py";
 	        // 이미지 파일 경로

@@ -265,20 +265,27 @@ function movefile() {
 }
 
 
-
-function score(){
-	let file = $("#file").val();
-	console.log(file);
-	$.ajax({
-		url: "/member/facescore.do",
-		type:"POST",
-		data: {
-			file : file
-		},
-		success : function(response){
-			console.log(response.score);
-		}
-	});	
+function score() {
+    let fileInput = document.getElementById("file");
+    var selectedFile = fileInput.files[0];
+    if (selectedFile) {
+        var filename = selectedFile.name;
+        $.ajax({
+            url: "/member/facescore.do",
+            type: "POST",
+            data : {
+                file : filename
+            },
+            success: function (response) {
+                console.log(response.score);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    } else {
+        console.error("No file selected.");
+    }
 }
 
 	function showPostcode() {
