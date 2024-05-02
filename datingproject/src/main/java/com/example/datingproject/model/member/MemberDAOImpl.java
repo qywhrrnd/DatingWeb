@@ -18,7 +18,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne("member.useridcheck", userid);
 	}
 
-
 	@Override
 	public void join(String userid, String passwd) {
 		Map<String, Object> map = new HashMap<>();
@@ -27,6 +26,14 @@ public class MemberDAOImpl implements MemberDAO {
 
 		session.insert("member.join", map);
 
+	}
+
+	@Override
+	public int login(String userid, String passwd) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid", userid);
+		map.put("passwd", passwd);
+		return session.selectOne("member.login", map);
 	}
 
 }

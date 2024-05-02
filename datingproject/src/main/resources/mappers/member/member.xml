@@ -10,9 +10,14 @@
 
 
 	<insert id="join">
-		insert into member (userid, passwd) values
-		(#{userid}, #{passwd})
+		insert into member (userid, passwd, info) values
+		(#{userid}, #{passwd}, 1)
 	</insert>
 
+
+	<select id="login" resultType="int">
+		select info from member
+		where (userid=#{userid}) and (passwd=#{passwd})
+	</select>
 
 </mapper>

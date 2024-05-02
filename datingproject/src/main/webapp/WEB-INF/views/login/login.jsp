@@ -272,47 +272,53 @@ input[type=checkbox] {
 			$("#passwd2").focus();
 			return;
 		}
+		$
+				.ajax({
+					url : "/member/emailcheck.do",
+					type : "POST",
+					data : {
+						email : email
+					},
+					success : function(response) {
+						alert(response.message);
+						if (response.message == "메일이 발송되었습니다.인증번호를 입력해주세요") {
+							$(
+									'<input type="text" id="verificationCode" placeholder="인증번호">')
+									.insertAfter("#passwd2");
+							$(
+									'<button class="button" onclick="verifyCode()">인증 확인</button>')
+									.insertAfter("#verificationCode");
+							$("#sendButton").hide();
+							$("#passwordresult").hide();
+						}
+					}
+				});
+	}
+
+	function verifyCode() {
+		let verificationCode = $("#verificationCode").val();
+		let email = $("#email").val();
+		let passwd1 = $("#passwd1").val();
+		// 서버로 인증번호를 전송하여 확인
 		$.ajax({
-			url : "/member/emailcheck.do",
+			url : "/member/verifyCode.do",
 			type : "POST",
 			data : {
+				code : verificationCode,
 				email : email
 			},
 			success : function(response) {
-				alert(response.message);
-				if(response.message == "메일이 발송되었습니다.인증번호를 입력해주세요"){
-					$('<input type="text" id="verificationCode" placeholder="인증번호">').insertAfter("#passwd2");
-		            $('<button class="button" onclick="verifyCode()">인증 확인</button>').insertAfter("#verificationCode");
-		            $("#sendButton").hide();
-		            $("#passwordresult").hide();
+				if (response.message == "ok") {
+					alert("인증이 완료되었습니다.");
+					window.location.href = "/member/join.do?email=" + email
+							+ "&passwd=" + passwd1;
+				} else {
+					alert("인증번호가 틀렸습니다. 처음부터 진행해주세요.");
+					window.location.href ="/member/pagelogin.do";
 				}
 			}
 		});
 	}
-	
-	
-	function verifyCode() {
-	    let verificationCode = $("#verificationCode").val();
-
-	    // 서버로 인증번호를 전송하여 확인
-	    $.ajax({
-	        url: "/member/verifyCode.do",
-	        type: "POST",
-	        data: {
-	            code: verificationCode
-	        },
-	        success: function(response) {
-	            if (response.message == "ok") {
-	                alert("인증이 완료되었습니다.");
-	                window.location.href = "/member/join.do";
-	            } else {
-	                alert("인증번호가 올바르지 않습니다.");
-	              
-	            }
-	        }
-	    });
-	}
-	
 
 	function checkpwd() {
 		let password1 = document.getElementById("passwd1").value;
@@ -324,18 +330,18 @@ input[type=checkbox] {
 			passwordresult.innerHTML = "비밀번호가 일치합니다.";
 		}
 	}
-	
+
 	$(document).ready(function() {
-	    // 비밀번호 확인란 값 입력 시 비교하여 전송 버튼 활성화 여부 결정
-	    $("#passwd2").keyup(function() {
-	        let passwd1 = $("#passwd1").val();
-	        let passwd2 = $("#passwd2").val();
-	        if (passwd1 != passwd2) {
-	            $("#sendButton").prop("disabled", true); // 비밀번호 불일치 시 버튼 비활성화
-	        } else {
-	            $("#sendButton").prop("disabled", false); // 비밀번호 일치 시 버튼 활성화
-	        }
-	    });
+		// 비밀번호 확인란 값 입력 시 비교하여 전송 버튼 활성화 여부 결정
+		$("#passwd2").keyup(function() {
+			let passwd1 = $("#passwd1").val();
+			let passwd2 = $("#passwd2").val();
+			if (passwd1 != passwd2) {
+				$("#sendButton").prop("disabled", true); // 비밀번호 불일치 시 버튼 비활성화
+			} else {
+				$("#sendButton").prop("disabled", false); // 비밀번호 일치 시 버튼 활성화
+			}
+		});
 	});
 </script>
 
@@ -355,7 +361,8 @@ input[type=checkbox] {
 							type="password" id="passwd2" name="passwd2"
 							placeholder="confirm password" oninput="checkpwd()">
 						<div id="passwordresult"></div>
-						<input type="button" id="sendButton" onclick="check()" value="인증 번호 전송">
+						<input type="button" id="sendButton" onclick="check()"
+							value="인증 번호 전송">
 					</form>
 				</div>
 				<div class="signin">
