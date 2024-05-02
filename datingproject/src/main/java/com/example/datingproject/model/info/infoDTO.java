@@ -16,8 +16,8 @@ public class infoDTO {
 	private String email;
 	private String cellphone;
 	private String address;
-	private int height;
-	private int weight;
+	private double height;
+	private double weight;
 	private String MBTI;
 	private int smoking;
 	private String hobby;
@@ -25,8 +25,8 @@ public class infoDTO {
 	private String education;
 	private String religion;
 	private String job;
-	private String photo;
-	private int AIface;
+	private String selfi;
+	private double AIface;
 	private int gender;
 	private String description;
 	
