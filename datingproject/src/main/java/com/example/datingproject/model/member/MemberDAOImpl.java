@@ -36,4 +36,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne("member.login", map);
 	}
 
+	@Override
+	public String login2(String userid, String passwd) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid", userid);
+		map.put("passwd", passwd);
+		return session.selectOne("member.login2", map);
+	}
+
 }

@@ -19,5 +19,10 @@
 		select info from member
 		where (userid=#{userid}) and (passwd=#{passwd})
 	</select>
+	
+	<select id="login2" resultType="String">
+		select userid from member
+		where (userid=#{userid}) and (passwd=#{passwd})
+	</select>
 
 </mapper>

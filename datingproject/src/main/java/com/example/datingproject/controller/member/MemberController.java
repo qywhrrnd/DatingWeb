@@ -74,22 +74,36 @@ public class MemberController {
 
 	@RequestMapping("member/login.do")
 	public ModelAndView login(@RequestParam(name = "userid") String userid,
-			@RequestParam(name = "passwd") String passwd, HttpSession session) {
-		int info = memberDao.login(userid, passwd);
+			@RequestParam(name = "password") String passwd, HttpSession session) {
+
+		String userid2 = memberDao.login2(userid, passwd);
 		String message = "";
 		String url = "";
-		if (info == 1) {
-			session.setAttribute("userid", userid);
-			message = "개인정보를 입력해주세요";
-			url = "login/information";
+		if (userid2 == null) {
+			message = "error";
+			url = "login/login";
+		} else {
+			int info = memberDao.login(userid, passwd);
+			if (info == 1) {
+				session.setAttribute("userid", userid);
+				message = "개인정보를 입력해주세요";
+				url = "login/information";
 
-		} else if (info == 2) {
-			session.setAttribute("userid", userid);
-			message = "환영합니다.";
-			url = "main/main";
+			} else if (info == 2) {
+				session.setAttribute("userid", userid);
+				message = "환영합니다.";
+				url = "main/main";
+			}
 		}
 		return new ModelAndView(url, "message", message);
 
+	}
+
+	@RequestMapping("logout.do")
+	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		mav.setViewName("login/login");
+		mav.addObject("message", "logout");
+		return mav;
 	}
 
 }
