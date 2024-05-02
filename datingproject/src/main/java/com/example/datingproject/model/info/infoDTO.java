@@ -1,5 +1,8 @@
 package com.example.datingproject.model.info;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,7 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-
+@Component
 public class infoDTO {
 
 	private String name;
@@ -25,7 +28,7 @@ public class infoDTO {
 	private String education;
 	private String religion;
 	private String job;
-	private String selfi;
+	private MultipartFile file;
 	private double AIface;
 	private int gender;
 	private String description;

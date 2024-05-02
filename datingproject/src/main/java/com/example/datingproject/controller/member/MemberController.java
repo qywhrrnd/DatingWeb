@@ -1,19 +1,35 @@
 package com.example.datingproject.controller.member;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.email.MailSendService;
 import com.example.datingproject.model.email.RedisUtil;
+import com.example.datingproject.model.info.infoDTO;
 import com.example.datingproject.model.member.MemberDAO;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -21,6 +37,9 @@ public class MemberController {
 
 	@Autowired
 	MemberDAO memberDao;
+
+	@Autowired
+	infoDTO infoDto;
 
 	@Autowired
 	MailSendService mail;
@@ -104,6 +123,99 @@ public class MemberController {
 		mav.setViewName("login/login");
 		mav.addObject("message", "logout");
 		return mav;
+	}
+
+	@PostMapping("member/imageUpload.do")
+	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(name = "upload") MultipartFile upload) throws Exception {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		OutputStream out = null;
+		PrintWriter printWriter = null;
+		String fileName = upload.getOriginalFilename();
+		byte[] bytes = upload.getBytes();
+		ServletContext application = request.getSession().getServletContext();
+		String uploadPath = application.getRealPath("/resources/images/");
+		out = new FileOutputStream(new File(uploadPath + fileName));
+		out.write(bytes);
+		printWriter = response.getWriter();
+		String fileUrl = request.getContextPath() + "/resources/images/" + fileName;
+		printWriter.println("{\"filename\"  :  \"" + fileName + "\", \"uploaded\" : 1, \"url\":\"" + fileUrl + "\"}");
+		printWriter.flush();
+	}
+
+	public static List<String> executePythonScript(String scriptPath) throws IOException, InterruptedException {
+		List<String> output = new ArrayList<>();
+		// Python 스크립트 실행 명령어
+		String[] cmd = { "python", scriptPath };
+		// 프로세스 실행
+		Process process = Runtime.getRuntime().exec(cmd);
+		// 프로세스 출력을 읽어옴
+		InputStream stdout = process.getInputStream();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
+		String line;
+		// 출력을 리스트에 저장
+		while ((line = reader.readLine()) != null) {
+			output.add(line);
+		}
+		// 프로세스가 완료될 때까지 대기
+		process.waitFor();
+
+		return output;
+	}
+
+	@RequestMapping("member/facescore.do")
+	public ResponseEntity<Map<String, String>> facescore(@RequestParam(name = "file") String file) {
+		String prediction = "";
+		String pythonScriptPath = "C:/work/product/main.py";
+		try {
+			// Python 스크립트 실행
+			List<String> scriptOutput = executePythonScript(pythonScriptPath);
+			// 출력 내용 표시
+			for (String line : scriptOutput) {
+				// 예측 값(Prediction)만 따로 추출하여 출력
+				if (line.startsWith("Prediction:")) {
+					prediction = line.substring("Prediction:".length()).trim();
+					System.out.println("점수는: " + prediction + "점");
+				}
+			}
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
+		Map<String, String> response = new HashMap<>();
+		response.put("prediction", prediction);
+		return ResponseEntity.ok(response);
+
+	}
+
+	@RequestMapping("member/movefile.do")
+	public void movefile(@RequestParam(name = "file") MultipartFile file,
+			HttpServletRequest request) {
+		String filename = "-";
+
+		// 파일이 비어있지 않고, 파일의 원본 이름이 null이 아닌 경우에만 처리
+		if (file != null && !file.isEmpty() && file.getOriginalFilename() != null) {
+			filename = file.getOriginalFilename(); // 파일명 설정
+
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/faceimg/");
+				File directory = new File(path);
+
+				if (!directory.exists()) {
+					directory.mkdirs(); // 디렉토리가 없으면 생성
+				}
+
+				// 파일 저장
+				file.transferTo(new File(directory, filename));
+			} catch (Exception e) {
+				e.printStackTrace();
+				// 파일 저장 중 오류 발생 시, 적절한 예외 처리 로직 추가 가능
+			}
+		}
+
+	
+
 	}
 
 }

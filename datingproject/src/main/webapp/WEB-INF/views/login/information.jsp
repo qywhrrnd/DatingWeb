@@ -235,10 +235,36 @@ input[type=checkbox] {
 	transition: 0.5s all ease;
 }
 </style>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/resources/ckeditor/ckeditor.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+function movefile(){
+	let fileInput = document.getElementById("file");
+	var selectedFile = fileInput.files[0];
+    // 파일 이름 추출
+    var filename = selectedFile.name;
+	window.location.href = "/member/movefile.do?file="+filename;
+}
+
+
+
+function score(){
+	let file = $("#file").val();
+	console.log(file);
+	$.ajax({
+		url: "/member/facescore.do",
+		type:"POST",
+		data: {
+			file : file
+		},
+		success : function(response){
+			console.log(response.score);
+		}
+	});	
+}
+
 	function showPostcode() {
 		new daum.Postcode(
 				{
@@ -267,6 +293,43 @@ input[type=checkbox] {
 					}
 				}).open();
 	}
+	
+	 $(function(){
+	        //처음 이미지 가져오기
+	        let photo_path = $('.profile-photo').attr('src');
+	        let my_photo; //회원이 업로드할 이미지 담을 변수
+	        $('#file').change(function(){
+	            my_photo = this.files[0];
+	            console.log(this.files[0].size);
+	            if(!my_photo){
+	                $('.profile-photo').attr('src', photo_path);
+	                return
+	            }
+	          
+	            //이미지 미리보기 처리
+	            let reader = new FileReader();
+	            reader.readAsDataURL(my_photo);
+
+	            reader.onload = function(){
+	                $('.profile-photo').attr('src', reader.result);
+	            };
+	        });
+	        });
+	    
+	    function upload() {//이미지 업로드 하면 미리보기 부분 보이게/안보이게
+	        let fileInput = document.getElementById("file");
+	        if (fileInput !=null) {
+	            $(".profile-photo").css("visibility", "visible");
+	            var selectedFile = fileInput.files[0];
+	            // 파일 이름 추출
+	            var filename = selectedFile.name;
+
+	            // 파일 이름 표시 (선택 사항)
+	            console.log("선택된 파일 이름:", filename);
+	        } else {
+	            $(".profile-photo").css("visibility", "hidden");
+	        }
+	    }
 </script>
 
 <div class="container">
@@ -379,16 +442,22 @@ input[type=checkbox] {
 				<td><input type="text" name="job" id="job" placeholder="직업"></td>
 			</tr>
 			<tr>
-				<th>상품이미지</th>
+				<th>얼굴점수평가</th>
 			</tr>
 			<tr>
 				<td>
 					<!-- <input type="file" name="file"> --> <input type="file"
 					name="file" id="file"
-					accept="image/gif, image/png, image/jpeg, image/jpg"
-					multiple="multiple" onchange="upload()"> <img
+					accept="image/jpg"
+					multiple="multiple" onchange="upload()"> 
+					&nbsp;
+					<img
 					src="/resources/images" class="profile-photo" width="150"
 					height="150" style="visibility: hidden;">
+				</td>
+				<td>
+				<button type="button" onclick="movefile()">사진확정</button>
+				<button type="button" onclick="score()">점수확인</button>
 				</td>
 
 			</tr>
@@ -400,7 +469,7 @@ input[type=checkbox] {
 				<td><textarea rows="5" cols="60" id="contents" name="contents"></textarea>
 					<script>
 						CKEDITOR.replace("contents", {
-							filebrowserUploadUrl : "/auction/imageUpload.do"
+							filebrowserUploadUrl : "/member/imageUpload.do"
 						});
 					</script></td>
 			</tr>
