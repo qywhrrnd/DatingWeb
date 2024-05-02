@@ -56,7 +56,7 @@ https://templatemo.com/tm-573-eduwell
 				</div>
 				<div class="col-lg-6">
 					<div class="right-image">
-						<img src="/resources/images/12.jpg" alt="">
+						<img src="/resources/images/승건.jpg" alt="">
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@ https://templatemo.com/tm-573-eduwell
 						<div class="item">
 							<div class="service-item">
 								<div class="icon">
-									<img src="/resources/images/service-icon-01.png" alt="">
+									<img src="/resources/images/카리나1.jpg" alt="">
 								</div>
 								<h4>Useful Tricks</h4>
 								<p>EduWell is the professional HTML5 template for your
@@ -90,7 +90,7 @@ https://templatemo.com/tm-573-eduwell
 						<div class="item">
 							<div class="service-item">
 								<div class="icon">
-									<img src="/resources/images/service-icon-02.png" alt="">
+									<img src="/resources/images/chulsoon2.png" alt="">
 								</div>
 								<h4>Creative Ideas</h4>
 								<p>You can download and use this EduWell Template for your
