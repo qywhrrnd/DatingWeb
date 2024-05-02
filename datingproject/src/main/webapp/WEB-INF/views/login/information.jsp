@@ -235,8 +235,39 @@ input[type=checkbox] {
 	transition: 0.5s all ease;
 }
 </style>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/resources/ckeditor/ckeditor.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+	function showPostcode() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						let fullAddr = "";
+						let extraAddr = "";
+						if (data.userSelectedType === "R") {
+							fullAddr = data.roadAddress;
+						} else {
+							fullAddr = data.jibunAddress;
+						}
+						if (data.userSelectedType === "R") {
+							if (data.bname !== "") {
+								extraAddr += data.bname;
+							}
+							if (data.buildingName !== "") {
+								extraAddr += (extraAddr !== "" ? ", "
+										+ data.buildingName : data.buildingName);
+							}
+							fullAddr += (extraAddr !== "" ? " (" + extraAddr
+									+ ")" : "");
+						}
+						document.getElementById("post_code").value = data.zonecode;
+						document.getElementById("address1").value = fullAddr;
+						document.getElementById("address2").focus();
+					}
+				}).open();
+	}
+</script>
 
 <div class="container">
 	<h2 align="center">정보입력</h2>
@@ -247,15 +278,13 @@ input[type=checkbox] {
 				<th>이름</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="name" id="name"
-					placeholder="이름"></td>
+				<td><input type="text" name="name" id="name" placeholder="이름"></td>
 			</tr>
 			<tr>
 				<th>나이</th>
 			</tr>
 			<tr>
-				<td><input type="number" name="age" id="age"
-					placeholder="나이"></td>
+				<td><input type="number" name="age" id="age" placeholder="나이"></td>
 			</tr>
 			<tr>
 				<th>성별</th>
@@ -271,8 +300,7 @@ input[type=checkbox] {
 				<th>키</th>
 			</tr>
 			<tr>
-				<td><input type="number" name="tall" id="tall"
-					placeholder="키"></td>
+				<td><input type="number" name="tall" id="tall" placeholder="키"></td>
 			</tr>
 			<tr>
 				<th>몸무게</th>
@@ -292,8 +320,14 @@ input[type=checkbox] {
 				<th>주소</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="address" id="address"
-					placeholder="주소"></td>
+				<td><input placeholder="우편번호" name="zipcode" id="post_code"
+					readonly>&nbsp;&nbsp;&nbsp; <input type="button"
+					onclick="showPostcode()" value="우편번호 찾기">
+			</tr>
+			<tr>
+				<td><input placeholder="주소" name="address1" id="address1"
+					size="60"> <br> <input placeholder="상세주소"
+					name="address2" id="address2"></td>
 			</tr>
 			<tr>
 				<th>MBTI</th>
@@ -316,8 +350,7 @@ input[type=checkbox] {
 				<th>취미</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="hobby" id="hobby"
-					placeholder="취미"></td>
+				<td><input type="text" name="hobby" id="hobby" placeholder="취미"></td>
 			</tr>
 			<tr>
 				<th>스타일</th>
@@ -330,8 +363,7 @@ input[type=checkbox] {
 				<th>학력</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="grade" id="grade"
-					placeholder="학력"></td>
+				<td><input type="text" name="grade" id="grade" placeholder="학력"></td>
 			</tr>
 			<tr>
 				<th>종교</th>
@@ -344,13 +376,12 @@ input[type=checkbox] {
 				<th>직업</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="job" id="job"
-					placeholder="직업"></td>
+				<td><input type="text" name="job" id="job" placeholder="직업"></td>
 			</tr>
 			<tr>
 				<th>상품이미지</th>
 			</tr>
-			<tr> 
+			<tr>
 				<td>
 					<!-- <input type="file" name="file"> --> <input type="file"
 					name="file" id="file"
