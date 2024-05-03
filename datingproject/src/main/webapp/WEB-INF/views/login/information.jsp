@@ -458,8 +458,8 @@ function score() {
 				$("#AIface").focus();
 				return;
 	    	}
-	    	
 	    	form1.attr("action", "/info/insertInfo.do");
+	    	alert("정상적으로 기입되었습니다");
 			form1.submit();
 	    } 
 	 
