@@ -247,7 +247,7 @@ function movefile() {
         var formData = new FormData();
         formData.append("file", selectedFile);
         $.ajax({
-            url: "/member/movefile.do",
+            url: "/info/movefile.do",
             type: "POST",
             data: formData,
             processData: false,
@@ -272,7 +272,7 @@ function score() {
     if (selectedFile) {
         var filename = selectedFile.name;
         $.ajax({
-            url: "/member/facescore.do",
+            url: "/info/facescore.do",
             type: "POST",
             data : {
                 file : filename
@@ -494,7 +494,7 @@ function score() {
 				<td><textarea rows="5" cols="60" id="contents" name="contents"></textarea>
 					<script>
 						CKEDITOR.replace("contents", {
-							filebrowserUploadUrl : "/member/imageUpload.do"
+							filebrowserUploadUrl : "/info/imageUpload.do"
 						});
 					</script></td>
 			</tr>
