@@ -16,7 +16,12 @@
 <link rel="stylesheet" href="/resources/css/owl.css">
 <link rel="stylesheet" href="/resources/css/lightbox.css">
 
-
+<script>
+	function showAlert() {
+		alert("로그인이 필요합니다.");
+		window.location.href = '/member/pagelogin.do';
+	}
+</script>
 
 </head>
 <body>
@@ -40,12 +45,27 @@
 									<li><a href="our-services.html">Our Services</a></li>
 									<li><a href="contact-us.html">Contact Us</a></li>
 								</ul></li>
-								<li class="scroll-to-section"><a href="#simple-cta">이벤트</a></li>
+							<li class="scroll-to-section"><a href="#simple-cta">이벤트</a></li>
 							<li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-							<li class="scroll-to-section"><a href="#contact-section">Contact Us</a></li>
-									
+							<li class="scroll-to-section"><a href="#contact-section">Contact
+									Us</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.userid != null}">
 									<li><a href="/mypage/mypage.do">마이페이지</a></li>
-									
+								</c:when>
+								<c:otherwise>
+									<li><a href="#" onclick="showAlert()">마이페이지</a></li>
+								</c:otherwise>
+							</c:choose>
+
+
+
+
+
+
+
+
+
 							<c:choose>
 								<c:when test="${sessionScope.userid == null }">
 

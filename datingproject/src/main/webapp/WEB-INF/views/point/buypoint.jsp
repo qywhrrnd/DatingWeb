@@ -11,7 +11,7 @@
 
 <script>
 	function buy() {
-		const amount = document.querySelector("input[name='cp_item']:checked").value;
+		const amount = document.querySelector("input[name='point']:checked").value;
 		IMP.init('imp10032786'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
 		let userid = '${sessionScope.userid}';
 		IMP.request_pay({
@@ -25,7 +25,7 @@
 			if (rsp.success) {
 				var msg = '결제가 완료되었습니다.';
 				alert(msg);
-				window.location.href = "main/main";
+				savePayment();
 
 			} else {
 				var msg = '결제에 실패하였습니다.';
@@ -33,6 +33,11 @@
 				alert(msg);
 			}
 		});
+	}
+
+	function savePayment(amount) {
+		document.form1.action = "/point/point.do";
+		document.form1.submit();
 	}
 </script>
 
@@ -42,30 +47,37 @@
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
-	<br><br><br><br><br><hr>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<form name="form1" method="post">
+		<div align="center">
+			<h2>포인트 충전</h2>
+			<div class="card-body bg-white mt-0 shadow">
+				<p style="font-weight: bold">카카오페이 충전</p>
 
-	<div align="center">
-		<h2>포인트 충전</h2>
-		<div class="card-body bg-white mt-0 shadow">
-			<p style="font-weight: bold">카카오페이 충전</p>
+				<label class="box-radio-input"><input type="radio"
+					name="point" value="10000"><span>10,000원(11,000P)</span></label><br>
+				<label class="box-radio-input"><input type="radio"
+					name="point" value="20000"><span>20,000원(22,000P)</span></label>
+				<br> <label class="box-radio-input"><input type="radio"
+					name="point" value="30000"><span>30,000원(33,000P)</span></label>
+				<br> <label class="box-radio-input"><input type="radio"
+					name="point" value="40000"><span>40,000원(44,000P)</span></label><br>
+				<label class="box-radio-input"><input type="radio"
+					name="point" value="50000"><span>50,000원(55,000P)</span></label>
 
-			<label class="box-radio-input"><input type="radio"
-				name="cp_item" value="10000"><span>10,000원(11,000P)</span></label><br>
-			<label class="box-radio-input"><input type="radio"
-				name="cp_item" value="20000"><span>20,000원(22,000P)</span></label> <br>
-			<label class="box-radio-input"><input type="radio"
-				name="cp_item" value="30000"><span>30,000원(33,000P)</span></label> <br>
-			<label class="box-radio-input"><input type="radio"
-				name="cp_item" value="40000"><span>40,000원(44,000P)</span></label><br>
-			<label class="box-radio-input"><input type="radio"
-				name="cp_item" value="50000"><span>50,000원(55,000P)</span></label>
-
-			<p style="color: #ac2925; margin-top: 30px">현재 서비스 점검 중으로 카카오페이
-				결제만 가능합니다.</p>
-			<button type="button" class="btn btn-lg btn-block  btn-custom"
-				id="charge_kakao" onclick="buy()">충 전 하 기</button>
-
+				<p style="color: #ac2925; margin-top: 30px">현재 서비스 점검 중으로 카카오페이
+					결제만 가능합니다.</p>
+				<button type="button" class="btn btn-lg btn-block  btn-custom"
+					id="charge_kakao" onclick="buy()">충 전 하 기</button>
+				<input type="hidden" name="userid" value="${sessionScope.userid }">
+			</div>
 		</div>
-	</div>
+	</form>
+
 </body>
 </html>

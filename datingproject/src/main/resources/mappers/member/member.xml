@@ -10,8 +10,8 @@
 
 
 	<insert id="join">
-		insert into member (userid, passwd, info) values
-		(#{userid}, #{passwd}, 1)
+		insert into member (userid, passwd, info, point) values
+		(#{userid}, #{passwd}, 1, 0)
 	</insert>
 
 
@@ -31,5 +31,12 @@
 	<update id="infoupdate">
 		update member set info = 2 where userid = #{userid}
 	</update>
+	
+	<update id="point">
+		update member set point = point + #{point} where userid = #{userid}
+	</update>
+	
+	
+	
 
 </mapper>
