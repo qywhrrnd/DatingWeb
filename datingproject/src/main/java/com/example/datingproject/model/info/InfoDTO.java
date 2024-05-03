@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 
 @Component
-public class infoDTO {
+public class InfoDTO {
 
 	private String name;
 	private int age;

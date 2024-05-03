@@ -266,6 +266,7 @@ function movefile() {
 
 
 function score() {
+	$("#facescore").remove();
     let fileInput = document.getElementById("file");
     var selectedFile = fileInput.files[0];
     if (selectedFile) {
@@ -277,7 +278,11 @@ function score() {
                 file : filename
             },
             success: function (response) {
-                console.log(response.score);
+                console.log(response.prediction);
+                $(
+				'<label id="facescore">'+ response.prediction + '점</label>')
+				.insertAfter("#scorebt");
+                
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -477,7 +482,7 @@ function score() {
 				</td>
 				<td>
 					<button type="button" onclick="movefile()">사진확정</button>
-					<button type="button" onclick="score()">점수확인</button>
+					<button type="button" id="scorebt" onclick="score()">점수확인</button>
 				</td>
 
 			</tr>

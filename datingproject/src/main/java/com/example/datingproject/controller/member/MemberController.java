@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.email.MailSendService;
 import com.example.datingproject.model.email.RedisUtil;
-import com.example.datingproject.model.info.infoDTO;
+import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
 
 import jakarta.servlet.ServletContext;
@@ -40,7 +40,7 @@ public class MemberController {
 	MemberDAO memberDao;
 
 	@Autowired
-	infoDTO infoDto;
+	InfoDTO infoDto;
 
 	@Autowired
 	MailSendService mail;
@@ -175,7 +175,10 @@ public class MemberController {
 	            List<String> scriptOutput = executePythonScript(pythonScriptPath, file);
 	            // 출력 내용 표시
 	            for (String line : scriptOutput) {
-	                System.out.println(line);
+	                if (line.startsWith("Prediction:")) {
+	                    prediction = line.substring("Prediction:".length()).trim();
+	                    System.out.println(prediction);
+	                }
 	            }
 	        } catch (IOException | InterruptedException e) {
 	            e.printStackTrace();
