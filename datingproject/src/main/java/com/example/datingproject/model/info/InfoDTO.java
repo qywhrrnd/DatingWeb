@@ -16,7 +16,7 @@ public class InfoDTO {
 
 	private String name;
 	private int age;
-	private String email;
+	private String userid;
 	private String cellphone;
 	private String address;
 	private double height;
@@ -28,7 +28,7 @@ public class InfoDTO {
 	private String education;
 	private String religion;
 	private String job;
-	private MultipartFile file;
+	private String filename;
 	private double AIface;
 	private int gender;
 	private String description;

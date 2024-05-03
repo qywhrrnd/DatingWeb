@@ -266,7 +266,7 @@ function movefile() {
 
 
 function score() {
-	$("#facescore").remove();
+	$("#AIface").val("");
     let fileInput = document.getElementById("file");
     var selectedFile = fileInput.files[0];
     if (selectedFile) {
@@ -279,9 +279,8 @@ function score() {
             },
             success: function (response) {
                 console.log(response.prediction);
-                $(
-				'<label id="facescore">'+ response.prediction + '점</label>')
-				.insertAfter("#scorebt");
+                $("#AIface").val(response.prediction);
+		
                 
             },
             error: function (xhr, status, error) {
@@ -358,12 +357,121 @@ function score() {
 	            $(".profile-photo").css("visibility", "hidden");
 	        }
 	    }
+	        
+	    function insertInfo(){
+	    	let form1 = $("#form1");
+	    	let name = $("#name").val();
+	    	let age = $("#age").val();
+	    	let gender = $("#gender").val();
+	    	let height = $("#height").val();
+	    	let weight = $("#weight").val();
+	    	let cellphone = $("#cellphone").val();
+	    	let address = $("#address").val();
+	    	let MBTI = $("#MBTI").val();
+	    	let smoking = $("#smoking").val();
+	    	let hobby = $("#hobby").val();
+	    	let style = $("#style").val();
+	    	let education = $("#education").val();
+	    	let religion = $("#religion").val();
+	    	let job = $("#job").val();
+	    	let file = $("#file").val();
+	    	let AIface = $("#AIface").val();
+	    	let description = $("#description").val();
+	    	
+	    	if(name==""){
+	    		alert("이름을 입력하세요");
+				$("#name").focus();
+				return;
+	    	}
+	    	if(age==""){
+	    		alert("나이를 입력하세요");
+				$("#age").focus();
+				return;
+	    	}
+	    	if(gender==""){
+	    		alert("성별을 골라주세요");
+				$("#gender").focus();
+				return;
+	    	}
+	    	if(height==""){
+	    		alert("키를 입력하세요");
+				$("#height").focus();
+				return;
+	    	}
+	    	if(weight==""){
+	    		alert("몸무게를 입력하세요");
+				$("#weight").focus();
+				return;
+	    	}
+	    	if(cellphone==""){
+	    		alert("전화번호를 입력하세요");
+				$("#cellphone").focus();
+				return;
+	    	}
+	    	if(address==""){
+	    		alert("주소를 입력하세요");
+				$("#address").focus();
+				return;
+	    	}
+	    	if(MBTI==""){
+	    		alert("MBTI를 입력하세요");
+				$("#MBTI").focus();
+				return;
+	    	}
+	    	if(smoking==""){
+	    		alert("흡연여부를 골라주세요");
+				$("#smoking").focus();
+				return;
+	    	}
+	    	if(hobby==""){
+	    		alert("취미를 입력하세요");
+				$("#hobby").focus();
+				return;
+	    	}
+	    	if(style==""){
+	    		alert("스타일을 입력하세요");
+				$("#style").focus();
+				return;
+	    	}
+	    	if(education==""){
+	    		alert("학벌을 입력하세요");
+				$("#education").focus();
+				return;
+	    	}
+	    	if(religion==""){
+	    		alert("종교를 입력하세요");
+				$("#religion").focus();
+				return;
+	    	}
+	    	if(job==""){
+	    		alert("직업을 입력하세요");
+				$("#job").focus();
+				return;
+	    	}
+	    	if(file==""){
+	    		alert("사진을 등록해 점수를 평가받아보세요");
+				$("#file").focus();
+				return;
+	    	}
+	    	if(AIface==""){
+	    		alert("점수를 평가받아보세요");
+				$("#AIface").focus();
+				return;
+	    	}
+	    	
+	    	form1.attr("action", "/info/insertInfo.do");
+			form1.submit();
+	    } 
+	 
 </script>
 
 <div class="container">
 	<h2 align="center">정보입력</h2>
 	<hr style="text-align: left; margin-left: 0">
 	<form id="form1" method="post" enctype="multipart/form-data">
+
+		<input type="hidden" name="userid" value="${sessionScope.userid}">
+
 		<table>
 			<tr>
 				<th>이름</th>
@@ -382,16 +490,17 @@ function score() {
 			</tr>
 			<tr>
 				<td><label for="male"> <input type="radio"
-						name="gender" id="male" value="male"> 남자
+						name="gender" id="male" value=1> 남자
 				</label> <label for="female"> <input type="radio" name="gender"
-						id="female" value="female"> 여자
+						id="female" value=2> 여자
 				</label></td>
 			</tr>
 			<tr>
 				<th>키</th>
 			</tr>
 			<tr>
-				<td><input type="number" name="tall" id="tall" placeholder="키"></td>
+				<td><input type="number" name="height" id="height"
+					placeholder="키"></td>
 			</tr>
 			<tr>
 				<th>몸무게</th>
@@ -404,7 +513,7 @@ function score() {
 				<th>휴대폰번호</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="phone" id="phone"
+				<td><input type="text" name="cellphone" id="cellphone"
 					placeholder="휴대폰번호(-없이 숫자만 입력해주세요)"></td>
 			</tr>
 			<tr>
@@ -424,7 +533,7 @@ function score() {
 				<th>MBTI</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="mbti" id="mbti"
+				<td><input type="text" name="MBTI" id="MBTI"
 					placeholder="MBTI(cute이런거 안돼요)"></td>
 			</tr>
 			<tr>
@@ -432,9 +541,9 @@ function score() {
 			</tr>
 			<tr>
 				<td><label for="pim"> <input type="radio"
-						name="smoking" id="pim" value="pim"> 핀다
+						name="smoking" id="pim" value=1> 핀다
 				</label> <label for="anpim"> <input type="radio" name="smoking"
-						id="anpim" value="anpim"> 안핀다
+						id="anpim" value=2> 안핀다
 				</label></td>
 			</tr>
 			<tr>
@@ -454,7 +563,8 @@ function score() {
 				<th>학력</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="grade" id="grade" placeholder="학력"></td>
+				<td><input type="text" name="education" id="education"
+					placeholder="학력"></td>
 			</tr>
 			<tr>
 				<th>종교</th>
@@ -483,6 +593,7 @@ function score() {
 				<td>
 					<button type="button" onclick="movefile()">사진확정</button>
 					<button type="button" id="scorebt" onclick="score()">점수확인</button>
+					<input type="text" id="AIface" name="AIface" readonly>
 				</td>
 
 			</tr>
@@ -491,16 +602,16 @@ function score() {
 			</tr>
 
 			<tr>
-				<td><textarea rows="5" cols="60" id="contents" name="contents"></textarea>
-					<script>
-						CKEDITOR.replace("contents", {
+				<td><textarea rows="5" cols="60" id="description"
+						name="description"></textarea> <script>
+						CKEDITOR.replace("description", {
 							filebrowserUploadUrl : "/info/imageUpload.do"
 						});
 					</script></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="button" value="등록"
-					onclick="auction_write()"></td>
+					onclick="insertInfo()"></td>
 			</tr>
 		</table>
 	</form>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info">
+
+	<insert id="insertInfo">
+		insert into info (userid, name, age, gender, height, weight, cellphone,
+		address, MBTI, smoking, hobby, style, education, religion, job,
+		filename, AIface, description)
+		values(#{userid},#{name},#{age},#{gender},#{height},#{weight},#{cellphone},#{address},#{MBTI},#{smoking},#{hobby},#{style},#{education},#{religion},#{job},#{filename},#{AIface},#{description})
+	</insert>
+
+</mapper>
