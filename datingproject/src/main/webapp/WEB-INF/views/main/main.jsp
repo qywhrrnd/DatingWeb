@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,17 +28,19 @@
 	href="/resources/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="/resources/css/owl.css">
 <link rel="stylesheet" href="/resources/css/lightbox.css">
-<!--
 
-TemplateMo 573 EduWell
+<script>
+							function showAlert() {
+								alert("로그인이 필요합니다.");
+								window.location.href = '/member/pagelogin.do';
+							}
+						</script>
 
-https://templatemo.com/tm-573-eduwell
 
--->
 </head>
 
 <body>
-  <%@ include file="../main/header.jsp"%>
+	<%@ include file="../main/header.jsp"%>
 	<!-- ***** Main Banner Area Start ***** -->
 	<section class="main-banner" id="top">
 		<div class="container">
@@ -252,11 +256,10 @@ https://templatemo.com/tm-573-eduwell
 														Did you know that you can visit <a rel="nofollow"
 															href="https://www.toocss.com/" target="_blank">TooCSS
 															website</a> for latest listing of HTML templates and a
-														variety of useful templates. <br>
-														<br>You just need to go and visit that website right
-														now. IF you have any suggestion or comment about this
-														template, you can feel free to go to contact page for our
-														email address.
+														variety of useful templates. <br> <br>You just
+														need to go and visit that website right now. IF you have
+														any suggestion or comment about this template, you can
+														feel free to go to contact page for our email address.
 													</p>
 													<span>36 Hours</span> <span>4 Weeks</span> <span
 														class="last-span">3 Certificates</span>
@@ -304,10 +307,9 @@ https://templatemo.com/tm-573-eduwell
 													<p>
 														Quinoa roof party squid prism sustainable letterpress cray
 														hammock tumeric man bun mixtape tofu subway tile cronut.
-														Deep v ennui subway tile organic seitan.<br>
-														<br>Kogi VHS freegan bicycle rights try-hard green
-														juice probably haven't heard of them cliche la croix af
-														chillwave.
+														Deep v ennui subway tile organic seitan.<br> <br>Kogi
+														VHS freegan bicycle rights try-hard green juice probably
+														haven't heard of them cliche la croix af chillwave.
 													</p>
 													<span>28 Hours</span> <span>4 Weeks</span> <span
 														class="last-span">1 Certificate</span>
@@ -330,10 +332,9 @@ https://templatemo.com/tm-573-eduwell
 													<p>
 														Quinoa roof party squid prism sustainable letterpress cray
 														hammock tumeric man bun mixtape tofu subway tile cronut.
-														Deep v ennui subway tile organic seitan.<br>
-														<br>Kogi VHS freegan bicycle rights try-hard green
-														juice probably haven't heard of them cliche la croix af
-														chillwave.
+														Deep v ennui subway tile organic seitan.<br> <br>Kogi
+														VHS freegan bicycle rights try-hard green juice probably
+														haven't heard of them cliche la croix af chillwave.
 													</p>
 													<span>48 Hours</span> <span>4 Weeks</span> <span
 														class="last-span">2 Certificates</span>
@@ -353,7 +354,7 @@ https://templatemo.com/tm-573-eduwell
 		</div>
 	</section>
 
-	<section class="simple-cta">
+	<section class="simple-cta" id="simple-cta">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 offset-lg-1">
@@ -365,9 +366,21 @@ https://templatemo.com/tm-573-eduwell
 					<h6>할인 이벤트</h6>
 					<h4>지금 결제하면!</h4>
 					<h5>포인트 10% 추가 증정</h5>
-					<div class="white-button">
-						<a href="/point/buypoint.do">지금 충전하기</a>
-					</div>
+
+
+					<c:choose>
+						<c:when test="${sessionScope.userid != null}">
+							<div class="white-button">
+								<a href="/point/buypoint.do">지금 충전하기</a>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="white-button">
+								<a href="#" onclick="showAlert()">지금 충전하기</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
+
 				</div>
 			</div>
 		</div>
