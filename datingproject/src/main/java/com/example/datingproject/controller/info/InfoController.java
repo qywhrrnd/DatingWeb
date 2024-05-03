@@ -17,10 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
@@ -40,8 +42,6 @@ public class InfoController {
 	InfoDTO infoDto;
 	@Autowired
 	MemberDAO mDao;
-	
-	
 
 	@PostMapping("info/imageUpload.do")
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -189,4 +189,13 @@ public class InfoController {
 
 		return "main/main";
 	}
+
+	@GetMapping("/info.do")
+	public ModelAndView list(ModelAndView mav) {
+		mav.setViewName("/info/info");
+		mav.addObject("list", infoDao.list());
+
+		return mav;
+	}
+
 }

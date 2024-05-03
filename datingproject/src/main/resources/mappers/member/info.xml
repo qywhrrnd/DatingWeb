@@ -8,5 +8,10 @@
 		filename, AIface, description)
 		values(#{userid},#{name},#{age},#{gender},#{height},#{weight},#{cellphone},#{address},#{MBTI},#{smoking},#{hobby},#{style},#{education},#{religion},#{job},#{filename},#{AIface},#{description})
 	</insert>
+	
+	<select id="list" resultType="com.example.datingproject.model.info.InfoDTO">
+	select * from info
+	
+	</select>
 
 </mapper>

@@ -37,6 +37,7 @@
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+							<a href="/info.do">남자여자</a>
 							<li class="scroll-to-section"><a href="#services">Services</a></li>
 							<li class="scroll-to-section"><a href="#courses">Courses</a></li>
 							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
