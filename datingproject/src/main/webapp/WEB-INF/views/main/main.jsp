@@ -366,7 +366,7 @@ https://templatemo.com/tm-573-eduwell
 					<h4>지금 결제하면!</h4>
 					<h5>포인트 10% 추가 증정</h5>
 					<div class="white-button">
-						<a href="contact-us.html">지금 충전하기</a>
+						<a href="/point/buypoint.do">지금 충전하기</a>
 					</div>
 				</div>
 			</div>
