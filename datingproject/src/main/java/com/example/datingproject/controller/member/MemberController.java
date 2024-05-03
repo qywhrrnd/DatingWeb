@@ -119,8 +119,9 @@ public class MemberController {
 
 	}
 
-	@RequestMapping("logout.do")
+	@RequestMapping("member/logout.do")
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		session.invalidate(); // 세션 초기화
 		mav.setViewName("login/login");
 		mav.addObject("message", "logout");
 		return mav;
