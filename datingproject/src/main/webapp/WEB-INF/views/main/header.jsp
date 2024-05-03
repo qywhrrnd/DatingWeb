@@ -26,12 +26,12 @@
 				<div class="col-12">
 					<nav class="main-nav">
 						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo"> <label>데마</label>
+						<a href="/" class="logo"> <label>데마</label>
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="#services">Services</a></li>
 							<li class="scroll-to-section"><a href="#courses">Courses</a></li>
 							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
