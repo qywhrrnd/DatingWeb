@@ -17,12 +17,19 @@
 
 	<select id="login" resultType="int">
 		select info from member
-		where (userid=#{userid}) and (passwd=#{passwd})
+		where
+		(userid=#{userid}) and (passwd=#{passwd})
 	</select>
-	
+
 	<select id="login2" resultType="String">
 		select userid from member
-		where (userid=#{userid}) and (passwd=#{passwd})
+		where
+		(userid=#{userid}) and (passwd=#{passwd})
 	</select>
+
+
+	<update id="infoupdate">
+		update member set info = 2 where userid = #{userid}
+	</update>
 
 </mapper>

@@ -44,4 +44,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne("member.login2", map);
 	}
 
+	@Override
+	public void infoupdate(String userid) {
+		session.update("member.infoupdate",userid);
+		
+	}
+
 }

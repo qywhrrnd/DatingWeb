@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
+import com.example.datingproject.model.member.MemberDAO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,6 +38,10 @@ public class InfoController {
 	InfoDAO infoDao;
 	@Autowired
 	InfoDTO infoDto;
+	@Autowired
+	MemberDAO mDao;
+	
+	
 
 	@PostMapping("info/imageUpload.do")
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -81,7 +86,7 @@ public class InfoController {
 	public ResponseEntity<Map<String, Double>> facescore(@RequestParam(name = "file") String file) {
 		System.out.println(file);
 		String prediction = "";
-		double prediction1 = 0;
+		double prediction1 = 0.00;
 		String pythonScriptPath = "C:/work/product/main3.py";
 		// 이미지 파일 경로
 		try {
@@ -180,6 +185,7 @@ public class InfoController {
 		dto.setAIface(AIface);
 		dto.setDescription(description);
 		infoDao.insertInfo(dto);
+		mDao.infoupdate(userid);
 
 		return "main/main";
 	}

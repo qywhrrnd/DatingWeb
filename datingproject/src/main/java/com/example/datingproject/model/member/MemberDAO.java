@@ -8,4 +8,6 @@ public interface MemberDAO {
 	int login(String userid, String passwd);
 	
 	String login2(String userid, String passwd);
+	
+	void infoupdate(String userid);
 }
