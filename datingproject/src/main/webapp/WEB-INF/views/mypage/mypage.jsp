@@ -205,78 +205,29 @@
 	}
 }
 </style>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--head-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
 
-	<link
-		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-		rel="stylesheet" id="bootstrap-css">
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
-
-	<!--head-->
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-		crossorigin="anonymous">
-	<c:forEach items="${map.ilist}" var="info">
 		<section id="about-us" class="py-5">
 			<div class="container">
 				<div class="row">
-					<!--left sidebar-->
-					<div class="col-md-3 pr-md-4">
-						<div class="sidebar-left">
-							<!--sidebar menu-->
-							<ul class="list-unstyled sidebar-menu pl-md-2 pr-md-0">
-								<li><a
-									class="sidebar-item active d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Dashboard <span class="fas fa-tachometer-alt"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Profile <span class="fas fa-user"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Post <span class="fas fa-copy"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Comment <span class="side-notif" title="1 new comment">1</span>
-										<span class="fas fa-comment"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Messages <span class="side-notif" title="1 new messages">1</span>
-										<span class="fas fa-envelope"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Favorite <span class="fas fa-heart"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Setting <span class="fas fa-cog"></span>
-								</a></li>
-								<li><a
-									class="sidebar-item d-flex justify-content-between align-items-center"
-									href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-										Sign out <span class="fas fa-sign-out-alt"></span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
+					
 
 					<!--Content-->
 					<div class="col-md-9">
@@ -298,7 +249,7 @@
 															<div class="avatars">
 
 																<a href="setting.html"> <img
-																	src="/resources/images/${info.filename}"
+																	src="/resources/images/${map.info.filename}"
 																	alt="Circle Image"
 																	class="avatar-lg rounded-circle img-fluid"
 																	data-toggle="tooltip" data-placement="bottom" title=""
@@ -560,6 +511,6 @@
 				</div>
 			</div>
 		</section>
-	</c:forEach>
+
 </body>
 </html>
