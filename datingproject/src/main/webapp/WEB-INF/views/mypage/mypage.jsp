@@ -409,7 +409,7 @@
 											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item"
-													href="/info/followinglist.do">
+													onclick="followinglist()">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">
@@ -433,7 +433,7 @@
 											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item"
-													href="/info/followerlist.do">
+													onclick="followerlist()">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">
