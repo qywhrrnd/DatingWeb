@@ -244,8 +244,9 @@ public class InfoController {
 
 	@RequestMapping("/info/followerlist.do")
 	public ModelAndView followerlist(@RequestParam(name="follower")String follower) {
-		List<InfoDTO> list = infoDao.list();
 		List<InfoDTO> list2 = infoDao.followerlist(follower);
+		System.out.println(list2);
+		List<InfoDTO> list = infoDao.list();
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("list2", list2);
@@ -255,8 +256,9 @@ public class InfoController {
 
 	@RequestMapping("/info/followinglist.do")
 	public ModelAndView followinglist(@RequestParam(name="following")String following) {
-		List<InfoDTO> list = infoDao.list();
 		List<InfoDTO> list2 = infoDao.followinglist(following);
+		System.out.println(list2);
+		List<InfoDTO> list = infoDao.list();
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("list2", list2);
