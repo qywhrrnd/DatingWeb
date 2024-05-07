@@ -5,5 +5,12 @@ import java.util.List;
 public interface InfoDAO {
 	void insertInfo(InfoDTO dto);
 	 List<InfoDTO> list(); 
-	
+	 
+	 void follow(String following, String follower);
+	 
+	 int countfollow(String follower);
+	 
+	 int checkfollow(String following, String follower);
+	 
+	 void cancelfollow(String following, String follower);
 }

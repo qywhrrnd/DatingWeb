@@ -190,12 +190,48 @@ public class InfoController {
 		return "main/main";
 	}
 
-	@GetMapping("/info.do")
-	public ModelAndView list(ModelAndView mav) {
-		mav.setViewName("/info/info");
-		mav.addObject("list", infoDao.list());
+	@RequestMapping("/info.do")
+	public ModelAndView list() {
+		List<InfoDTO> list = infoDao.list();
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("idao", infoDao);
+		return new ModelAndView("info/info", "map", map);
+	}
 
-		return mav;
+	@RequestMapping("/follow.do")
+	public String follow(@RequestParam(name = "following") String following,
+			@RequestParam(name = "follower") String follower) {
+		System.out.println(following);
+		System.out.println(follower);
+		infoDao.follow(following, follower);
+
+		return "redirect:/info.do";
+	}
+
+	@RequestMapping("/checkfollow.do")
+	public ModelAndView checkfollow(@RequestParam(name = "following") String following,
+			@RequestParam(name = "follower") String follower) {
+		System.out.println(following);
+		System.out.println(follower);
+		int check = infoDao.checkfollow(following, follower);
+		
+		List<InfoDTO> list = infoDao.list();
+		Map<String, Object> map = new HashMap<>();
+		map.put("check", check);
+		map.put("list", list);
+		map.put("idao", infoDao);
+
+		return new ModelAndView("info/info", "map", map);
+	}
+	
+	@RequestMapping("/cancelfollow.do")
+	public String cancelfollow(@RequestParam(name = "following") String following,
+			@RequestParam(name = "follower") String follower) {
+
+		infoDao.cancelfollow(following, follower);
+
+	return "redirect:/info.do";
 	}
 
 }

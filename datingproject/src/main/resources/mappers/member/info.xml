@@ -3,15 +3,34 @@
 <mapper namespace="info">
 
 	<insert id="insertInfo">
-		insert into info (userid, name, age, gender, height, weight, cellphone,
-		address, MBTI, smoking, hobby, style, education, religion, job,
+		insert into info (userid, name, age, gender, height,
+		weight, cellphone,
+		address, MBTI, smoking, hobby, style, education,
+		religion, job,
 		filename, AIface, description)
 		values(#{userid},#{name},#{age},#{gender},#{height},#{weight},#{cellphone},#{address},#{MBTI},#{smoking},#{hobby},#{style},#{education},#{religion},#{job},#{filename},#{AIface},#{description})
 	</insert>
-	
-	<select id="list" resultType="com.example.datingproject.model.info.InfoDTO">
-	select * from info
-	
+
+	<select id="list"
+		resultType="com.example.datingproject.model.info.InfoDTO">
+		select * from info
+
 	</select>
 
+	<insert id="follow">
+		insert into follow values(#{following},#{follower})
+	</insert>
+
+	<select id="countfollow" resultType="int">
+		select count(*) from follow where follower = #{follower}
+	</select>
+
+	<select id="checkfollow" resultType="int">
+		select count(*) from follow where following = #{following} and follower = #{follower}
+	</select>
+	
+	<delete id="cancelfollow">
+	delete from follow where following = #{following} and follower = #{follower}
+	</delete>
+	
 </mapper>

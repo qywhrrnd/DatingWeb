@@ -23,7 +23,6 @@ public class MemberDAOImpl implements MemberDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("userid", userid);
 		map.put("passwd", passwd);
-
 		session.insert("member.join", map);
 
 	}
