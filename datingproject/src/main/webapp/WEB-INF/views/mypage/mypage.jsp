@@ -221,7 +221,16 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
 
-
+<script>
+	function followerlist() {
+		let follower = document.getElementById('userid').value;
+		location.href = "/info/followerlist.do?follower=" + follower;
+	}
+	function followinglist() {
+		let following = document.getElementById('userid').value;
+		location.href = "/info/followinglist.do?following=" + following;
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
@@ -400,7 +409,7 @@
 											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													href="/info/followinglist.do">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">
@@ -424,7 +433,7 @@
 											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													href="/info/followerlist.do">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">

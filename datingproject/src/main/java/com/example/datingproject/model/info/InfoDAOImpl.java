@@ -65,6 +65,18 @@ public class InfoDAOImpl implements InfoDAO{
 		  
 		  return session.selectOne("info.detail", userid);
 	  }
+
+
+	@Override
+	public List<InfoDTO> followerlist(String follower) {
+		return session.selectList("info.followerlist");
+	}
+
+
+	@Override
+	public List<InfoDTO> followinglist(String following) {
+		return session.selectList("info.followinglist");
+	}
 	
 	
 	 

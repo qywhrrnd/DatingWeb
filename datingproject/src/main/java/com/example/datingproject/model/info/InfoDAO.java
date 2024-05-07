@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface InfoDAO {
 	void insertInfo(InfoDTO dto);
+	
 	 List<InfoDTO> list(); 
 	 
 	 void follow(String following, String follower);
@@ -15,4 +16,8 @@ public interface InfoDAO {
 	 void cancelfollow(String following, String follower);
 	 
 	 InfoDTO detail(String userid); 
+	 
+	 List<InfoDTO> followerlist(String follower); 
+	 
+	 List<InfoDTO> followinglist(String following); 
 }
