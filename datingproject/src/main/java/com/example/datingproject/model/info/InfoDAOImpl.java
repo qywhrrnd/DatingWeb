@@ -69,13 +69,13 @@ public class InfoDAOImpl implements InfoDAO{
 
 	@Override
 	public List<InfoDTO> followerlist(String follower) {
-		return session.selectList("info.followerlist");
+		return session.selectList("info.followerlist", follower);
 	}
 
 
 	@Override
 	public List<InfoDTO> followinglist(String following) {
-		return session.selectList("info.followinglist");
+		return session.selectList("info.followinglist", following);
 	}
 	
 	
