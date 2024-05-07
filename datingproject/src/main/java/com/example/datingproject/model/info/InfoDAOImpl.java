@@ -60,6 +60,12 @@ public class InfoDAOImpl implements InfoDAO{
 		
 	}
 	
+	 @Override
+	  public InfoDTO detail(String userid) {
+		  
+		  return session.selectOne("info.detail", userid);
+	  }
+	
 	
 	 
 

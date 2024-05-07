@@ -13,4 +13,6 @@ public interface InfoDAO {
 	 int checkfollow(String following, String follower);
 	 
 	 void cancelfollow(String following, String follower);
+	 
+	 InfoDTO detail(String userid); 
 }
