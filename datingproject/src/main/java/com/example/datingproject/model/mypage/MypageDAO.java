@@ -13,4 +13,6 @@ public interface MypageDAO {
 	void updaetinfo(InfoDTO dto);
 	
 	void updatepasswd(String userid, String passwd);
+	
+	void updateimg(String filename, double AIface, String userid);
 }

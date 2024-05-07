@@ -32,6 +32,10 @@
 		userid=#{userid}
 	</update>
 
+	<update id="updateimg">
+		update info set filename=#{filename},
+		AIface=#{AIface} where userid = #{userid}
+	</update>
 
 
 </mapper>

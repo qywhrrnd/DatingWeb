@@ -47,4 +47,15 @@ public class MypageImpl implements MypageDAO {
 
 	}
 
+	@Override
+	public void updateimg(String filename, double AIface, String userid) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("filename", filename);
+		map.put("AIface", AIface);
+		map.put("userid", userid);
+		
+		session.update("mypage.updateimg", map);
+		
+	}
+
 }

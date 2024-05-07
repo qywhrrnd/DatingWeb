@@ -240,18 +240,19 @@
 								<div class="mb-3 bg-dark">
 									<div class="row">
 										<div class="col-12">
+
 											<a class="position-absolute ml-3 mt-3 text-white"
 												onclick="showPasswordModal()" data-toggle="tooltip"
 												data-placement="bottom" title=""
 												data-original-title="Edit cover images"><i
-												class="fas fa-cog"></i></a>
+												class="fas fa-cog">개인정보수정</i></a>
 											<div class="row">
 												<div class="col-md-6 ml-auto mr-auto">
 													<div
 														class="profiles p-3 my-4 rounded text-center shadow-sm">
 														<div class="avatars">
-
-															<a href="setting.html"> <img
+															<h6 style="color: white;">대표 사진 변경을 원하시면 사진을 클릭해주세요</h6>
+															<a href="/mypage/detailimg.do"> <img
 																src="/resources/images/${map.ilist.filename}"
 																alt="Circle Image"
 																class="avatar-lg rounded-circle img-fluid"

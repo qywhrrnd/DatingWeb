@@ -17,7 +17,10 @@ import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDTO;
 import com.example.datingproject.model.mypage.MypageDAO;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 @Controller
 public class MypageController {
@@ -123,5 +126,45 @@ public class MypageController {
 			return modelAndView;
 		}
 
+	}
+	
+	
+	@GetMapping("mypage/detailimg.do")
+	public ModelAndView detailimg(HttpSession session) {
+		String userid = (String) session.getAttribute("userid");
+		InfoDTO ilist = mypageDao.mypageinfo(userid);
+		return new ModelAndView("mypage/change_img", "ilist", ilist);
+	}
+	
+	@RequestMapping("mypage/changeimg.do")
+	public String changeimg(HttpSession session, HttpServletRequest request, @RequestParam(name="AIface") double AIface) {
+		String userid = (String) session.getAttribute("userid");
+		ServletContext application = request.getSession().getServletContext();
+		String imgPath = application.getRealPath("/resources/images/");
+		String filename = "";
+		try {
+			boolean fileUploaded = false;
+
+			for (Part part : request.getParts()) {
+				filename = part.getSubmittedFileName();
+
+				if (filename != null && !filename.trim().equals("")) {
+					part.write(imgPath + filename);
+					fileUploaded = true;
+					break;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		InfoDTO dto = new InfoDTO();
+		dto.setAIface(AIface);
+		dto.setFilename(filename);
+		mypageDao.updateimg(filename, AIface, userid);
+		
+		
+		return "redirect:/mypage/mypage.do";
+		
 	}
 }
