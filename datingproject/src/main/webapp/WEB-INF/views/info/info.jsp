@@ -77,7 +77,7 @@
 								</div>
 								<div class="button mt-2 d-flex flex-row align-items-center">
 									<a class="btn btn-sm btn-outline-primary w-100"
-										href="/detail.do/${row.name}">VIEW</a> <input type="hidden"
+										href="/detail.do/${row.userid}">VIEW</a> <input type="hidden"
 										id="userid" value="${sessionScope.userid}">
 									<c:choose>
 										<c:when
