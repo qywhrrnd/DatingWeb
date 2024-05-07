@@ -43,12 +43,12 @@
 	</select>
 	
 	<select id="followerlist"
-		resultType="com.example.datingproject.model.info.InfoDTO">
+		resultType="String">
 		select following from follow where follower = #{follower}
 	</select>
 	
 	<select id="followinglist"
-		resultType="com.example.datingproject.model.info.InfoDTO">
+		resultType="String">
 		select follower from follow where following = #{following}
 	</select>
 	

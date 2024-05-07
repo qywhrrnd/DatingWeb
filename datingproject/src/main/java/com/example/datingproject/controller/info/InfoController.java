@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.datingproject.model.info.FollowDTO;
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
@@ -244,7 +245,7 @@ public class InfoController {
 
 	@RequestMapping("/info/followerlist.do")
 	public ModelAndView followerlist(@RequestParam(name="follower")String follower) {
-		List<InfoDTO> list2 = infoDao.followerlist(follower);
+		List<String> list2 = infoDao.followerlist(follower);
 		System.out.println(list2);
 		List<InfoDTO> list = infoDao.list();
 		Map<String, Object> map = new HashMap<>();
@@ -256,7 +257,7 @@ public class InfoController {
 
 	@RequestMapping("/info/followinglist.do")
 	public ModelAndView followinglist(@RequestParam(name="following")String following) {
-		List<InfoDTO> list2 = infoDao.followinglist(following);
+		List<String> list2 = infoDao.followinglist(following);
 		System.out.println(list2);
 		List<InfoDTO> list = infoDao.list();
 		Map<String, Object> map = new HashMap<>();

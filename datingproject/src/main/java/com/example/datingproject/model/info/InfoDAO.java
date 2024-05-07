@@ -17,7 +17,7 @@ public interface InfoDAO {
 	 
 	 InfoDTO detail(String userid); 
 	 
-	 List<InfoDTO> followerlist(String follower); 
+	 List<String> followerlist(String follower); 
 	 
-	 List<InfoDTO> followinglist(String following); 
+	 List<String> followinglist(String following); 
 }
