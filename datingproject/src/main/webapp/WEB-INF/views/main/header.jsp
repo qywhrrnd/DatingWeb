@@ -93,17 +93,17 @@
 						<ul class="nav">
 							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
 
-							<li class="scroll-to-section"><a href="#services">Services</a></li>
-							<li class="scroll-to-section"><a href="#courses">Courses</a></li>
+							<li class="scroll-to-section"><a href="/#services">Services</a></li>
+							<li class="scroll-to-section"><a href="/#courses">Courses</a></li>
 							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
 								<ul class="sub-menu">
 									<li><a href="about-us.html">About Us</a></li>
 									<li><a href="our-services.html">Our Services</a></li>
 									<li><a href="contact-us.html">Contact Us</a></li>
 								</ul></li>
-							<li class="scroll-to-section"><a href="#simple-cta">이벤트</a></li>
-							<li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-							<li class="scroll-to-section"><a href="#contact-section">Contact
+							<li class="scroll-to-section"><a href="/#simple-cta">이벤트</a></li>
+							<li class="scroll-to-section"><a href="/#testimonials">Testimonials</a></li>
+							<li class="scroll-to-section"><a href="/#contact-section">Contact
 									Us</a></li>
 
 							<li><a href="/info.do">남자여자</a></li>
