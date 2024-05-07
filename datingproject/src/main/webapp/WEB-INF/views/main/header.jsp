@@ -51,7 +51,22 @@
 							<li class="scroll-to-section"><a href="/#contact-section">Contact
 									Us</a></li>
 
-							<li><a href="/info.do">남자여자</a></li>
+													
+							
+							<c:choose>
+								<c:when test="${sessionScope.userid != null}">
+									<li><a href="/info.do">데이트상대찾기</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="#" onclick="showAlert()">데이트상대찾기</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+							
+							
+							
+							
+							
 							<c:choose>
 								<c:when test="${sessionScope.userid != null}">
 									<li><a href="/mypage/mypage.do">마이페이지</a></li>

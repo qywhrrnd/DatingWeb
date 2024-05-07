@@ -212,8 +212,6 @@ public class InfoController {
 	@RequestMapping("/checkfollow.do")
 	public ModelAndView checkfollow(@RequestParam(name = "following") String following,
 			@RequestParam(name = "follower") String follower) {
-		System.out.println(following);
-		System.out.println(follower);
 		int check = infoDao.checkfollow(following, follower);
 		
 		List<InfoDTO> list = infoDao.list();
