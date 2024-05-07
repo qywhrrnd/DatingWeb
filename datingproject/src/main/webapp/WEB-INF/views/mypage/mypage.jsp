@@ -210,62 +210,64 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
-<!--head-->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
+
+
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
 
-	<c:forEach items="${map.ilist}" var="info">
-		<section id="about-us" class="py-5">
-			<div class="container">
-				<div class="row">
-					
 
-					<!--Content-->
-					<div class="col-md-9">
-						<div class="dashboard-area">
-							<div class="row">
-								<div class="col-12">
-									<div class="mb-3 bg-dark">
-										<div class="row">
-											<div class="col-12">
-												<a class="position-absolute ml-3 mt-3 text-white"
-													href="setting.html" data-toggle="tooltip"
-													data-placement="bottom" title=""
-													data-original-title="Edit cover images"><i
-													class="fas fa-cog"></i></a>
-												<div class="row">
-													<div class="col-md-6 ml-auto mr-auto">
-														<div
-															class="profiles p-3 my-4 rounded text-center shadow-sm">
-															<div class="avatars">
+	<section id="about-us" class="py-5">
+		<div class="container">
+			<div class="row">
 
-																<a href="setting.html"> <img
-																	src="/resources/images/${info.filename}"
-																	alt="Circle Image"
-																	class="avatar-lg rounded-circle img-fluid"
-																	data-toggle="tooltip" data-placement="bottom" title=""
-																	data-original-title="Edit avatar images">
-																</a>
-															</div>
-															<div class="names">
-																<h3 class="title text-light">${info.userid}</h3>
-																<h3 class="title text-light">${info.name}</h3>
-																<c:forEach items="${map.mlist}" var="member">
-																<h3 class="title text-light">보유 포인트 : ${member.point}P</h3>
-																<a href="/point/buypoint.do">충전하기</a>
-																</c:forEach>
-																
-															</div>
+
+				<!--Content-->
+				<div class="col-md-9">
+					<div class="dashboard-area">
+						<div class="row">
+							<div class="col-12">
+								<div class="mb-3 bg-dark">
+									<div class="row">
+										<div class="col-12">
+											<a class="position-absolute ml-3 mt-3 text-white"
+												onclick="showPasswordModal()" data-toggle="tooltip"
+												data-placement="bottom" title=""
+												data-original-title="Edit cover images"><i
+												class="fas fa-cog"></i></a>
+											<div class="row">
+												<div class="col-md-6 ml-auto mr-auto">
+													<div
+														class="profiles p-3 my-4 rounded text-center shadow-sm">
+														<div class="avatars">
+
+															<a href="setting.html"> <img
+																src="/resources/images/${map.ilist.filename}"
+																alt="Circle Image"
+																class="avatar-lg rounded-circle img-fluid"
+																data-toggle="tooltip" data-placement="bottom" title=""
+																data-original-title="Edit avatar images">
+															</a>
+														</div>
+														<div class="names">
+															<h3 class="title text-light">${map.ilist.userid}</h3>
+															<h3 class="title text-light">${map.ilist.name}</h3>
+
+															<h3 class="title text-light">보유 포인트 :
+																${map.mlist.point}P</h3>
+															<a href="/point/buypoint.do">충전하기</a>
+
+
 														</div>
 													</div>
 												</div>
@@ -274,228 +276,226 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-12">
-									<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-										<li class="nav-item"><a class="nav-link active show"
-											id="pills-home-tab" data-toggle="pill" href="#pills-home"
-											role="tab" aria-controls="pills-home" aria-selected="true">Statistic</a>
-										</li>
-										<li class="nav-item"><a class="nav-link"
-											id="pills-profile-tab" data-toggle="pill"
-											href="#pills-profile" role="tab"
-											aria-controls="pills-profile" aria-selected="false">Profile</a></li>
-										<li class="nav-item"><a class="nav-link"
-											id="pills-contact-tab" data-toggle="pill"
-											href="#pills-contact" role="tab"
-											aria-controls="pills-contact" aria-selected="false">Latest
-												post</a></li>
-									</ul>
-									<div class="tab-content" id="pills-tabContent">
-										<div class="tab-pane fade active show" id="pills-home"
-											role="tabpanel" aria-labelledby="pills-home-tab">
-											<div class="row">
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-warning text-center">
-																			<i class="fas fa-copy"></i>
-																		</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+									<li class="nav-item"><a class="nav-link active show"
+										id="pills-home-tab" data-toggle="pill" href="#pills-home"
+										role="tab" aria-controls="pills-home" aria-selected="true">Statistic</a>
+									</li>
+									<li class="nav-item"><a class="nav-link"
+										id="pills-profile-tab" data-toggle="pill"
+										href="#pills-profile" role="tab" aria-controls="pills-profile"
+										aria-selected="false">Profile</a></li>
+									<li class="nav-item"><a class="nav-link"
+										id="pills-contact-tab" data-toggle="pill"
+										href="#pills-contact" role="tab" aria-controls="pills-contact"
+										aria-selected="false">Latest post</a></li>
+								</ul>
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade active show" id="pills-home"
+										role="tabpanel" aria-labelledby="pills-home-tab">
+										<div class="row">
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-warning text-center">
+																		<i class="fas fa-copy"></i>
 																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Article</p>
-																			112
-																		</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Article</p>
+																		112
 																	</div>
 																</div>
 															</div>
 														</div>
-													</a>
-												</div>
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-info text-center"
-																			title="1 new comment">
-																			<div class="notif">1</div>
-																			<i class="fas fa-comment"></i>
-																		</div>
-																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Comments</p>
-																			454
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-danger text-center">
-																			<i class="fas fa-heart"></i>
-																		</div>
-																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Favorite</p>
-																			56
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-twitter text-center"
-																			title="1 new messages">
-																			<div class="notif">1</div>
-																			<i class="fas fa-envelope"></i>
-																		</div>
-																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Messages</p>
-																			23
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-facebook text-center">
-																			<i class="fas fa-star"></i>
-																		</div>
-																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Following</p>
-																			112
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-												<div class="col-lg-4 col-sm-6">
-													<a class="member-item"
-														href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-														<div class="card mb-2 mb-md-5 py-3">
-															<div class="content">
-																<div class="row">
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="icon-big text-success text-center">
-																			<i class="fas fa-users"></i>
-																		</div>
-																	</div>
-																	<div
-																		class="col-6 d-flex justify-content-center align-items-center">
-																		<div class="numbers">
-																			<p>Follower</p>
-																			1567
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-											aria-labelledby="pills-profile-tab">
-											<div class="p-3 border mb-3">
-												<a class="position-absolute" style="right: 25px"
-													href="setting.html" data-toggle="tooltip"
-													data-placement="bottom" title=""
-													data-original-title="Edit profile"><i
-													class="fas fa-cog"></i></a>
-												<h3>Jenifer Tan</h3>
-												<p>
-													<b>Jobs:</b> Writter
-												</p>
-												<p>
-													<b>About:</b> Hello my name is Jenifer, My passion is
-													writting. I hope you enjoy with my article.
-												</p>
-												<p>
-													<b>Address:</b> Street 12 vo 05, California, United States
-												</p>
-												<p>
-													<b>Phone:</b> +1 987654321
-												</p>
-
-											</div>
-										</div>
-										<div class="tab-pane fade" id="pills-contact" role="tabpanel"
-											aria-labelledby="pills-contact-tab">
-											<div class="p-3 border mb-3">
-												<h5>Recently Published</h5>
-												<div class="row">
-													<div class="col-12">
-														<ul class="list-unstyled statistics">
-															<li><span class="text-primary">Oct 20</span> <a
-																class="h6"
-																href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Toyota
-																	Sienna rates marginal in passenger-side overlap crash
-																	test</a></li>
-															<li><span class="text-primary">Oct 12</span> <a
-																class="h6"
-																href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Ford
-																	reveals autonomous vehicle philosophies, priorities</a></li>
-															<li><span class="text-primary">Oct 7</span> <a
-																class="h6"
-																href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Offer
-																	Hints to How Dogs Became Domesticated</a></li>
-															<li><span class="text-primary">Oct 6</span> <a
-																class="h6"
-																href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Consumer
-																	apprehension grows over autonomous tech, study says</a></li>
-														</ul>
 													</div>
+												</a>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-info text-center"
+																		title="1 new comment">
+																		<div class="notif">1</div>
+																		<i class="fas fa-comment"></i>
+																	</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Comments</p>
+																		454
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-danger text-center">
+																		<i class="fas fa-heart"></i>
+																	</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Favorite</p>
+																		56
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-twitter text-center"
+																		title="1 new messages">
+																		<div class="notif">1</div>
+																		<i class="fas fa-envelope"></i>
+																	</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Messages</p>
+																		23
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-facebook text-center">
+																		<i class="fas fa-star"></i>
+																	</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Following</p>
+																		112
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<a class="member-item"
+													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													<div class="card mb-2 mb-md-5 py-3">
+														<div class="content">
+															<div class="row">
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="icon-big text-success text-center">
+																		<i class="fas fa-users"></i>
+																	</div>
+																</div>
+																<div
+																	class="col-6 d-flex justify-content-center align-items-center">
+																	<div class="numbers">
+																		<p>Follower</p>
+																		1567
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+										aria-labelledby="pills-profile-tab">
+										<div class="p-3 border mb-3">
+											<a class="position-absolute" style="right: 25px"
+												href="setting.html" data-toggle="tooltip"
+												data-placement="bottom" title=""
+												data-original-title="Edit profile"><i class="fas fa-cog"></i></a>
+											<h3>Jenifer Tan</h3>
+											<p>
+												<b>Jobs:</b> Writter
+											</p>
+											<p>
+												<b>About:</b> Hello my name is Jenifer, My passion is
+												writting. I hope you enjoy with my article.
+											</p>
+											<p>
+												<b>Address:</b> Street 12 vo 05, California, United States
+											</p>
+											<p>
+												<b>Phone:</b> +1 987654321
+											</p>
+
+										</div>
+									</div>
+									<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+										aria-labelledby="pills-contact-tab">
+										<div class="p-3 border mb-3">
+											<h5>Recently Published</h5>
+											<div class="row">
+												<div class="col-12">
+													<ul class="list-unstyled statistics">
+														<li><span class="text-primary">Oct 20</span> <a
+															class="h6"
+															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Toyota
+																Sienna rates marginal in passenger-side overlap crash
+																test</a></li>
+														<li><span class="text-primary">Oct 12</span> <a
+															class="h6"
+															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Ford
+																reveals autonomous vehicle philosophies, priorities</a></li>
+														<li><span class="text-primary">Oct 7</span> <a
+															class="h6"
+															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Offer
+																Hints to How Dogs Became Domesticated</a></li>
+														<li><span class="text-primary">Oct 6</span> <a
+															class="h6"
+															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Consumer
+																apprehension grows over autonomous tech, study says</a></li>
+													</ul>
 												</div>
 											</div>
 										</div>
@@ -506,7 +506,74 @@
 					</div>
 				</div>
 			</div>
-		</section>
-	</c:forEach>
+		</div>
+	</section>
+	<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog"
+		aria-labelledby="passwordModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="passwordModalLabel">비밀번호 확인</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<input type="password" id="passwordInput" class="form-control"
+						placeholder="비밀번호 입력">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary"
+						onclick="validatePassword()">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<input type="hidden" id="userid" value="${map.ilist.userid}">
+
+	<script>
+		function showPasswordModal() {
+			$('#passwordModal').modal('show');
+		}
+
+		function validatePassword() {
+			let userid = document.getElementById('userid').value;
+			let password = document.getElementById('passwordInput').value;
+
+			if (password.trim() === "") {
+				alert("비밀번호를 입력하세요.");
+				return;
+			}
+
+			// 비밀번호 확인을 위한 AJAX 요청
+			$.ajax({
+				url : '/mypage/checkpasswd.do',
+				type : 'POST',
+				data : {
+					userid : userid,
+					passwd : password
+				},
+				success : function(response) {
+					if (response === "correct") {
+						// 비밀번호가 올바른 경우 페이지 이동
+						window.location.href = "/mypage/pagesetting.do?userid="
+								+ userid;
+					} else if (response === "wrong") {
+						alert("비밀번호를 다시 확인해주세요.");
+					}
+				},
+				error : function(xhr, status, error) {
+					console.error('비밀번호 확인 중 오류가 발생했습니다.', status, error);
+				}
+			});
+
+			$('#passwordInput').val("");
+			$('#passwordModal').modal('hide');
+		}
+	</script>
 </body>
 </html>

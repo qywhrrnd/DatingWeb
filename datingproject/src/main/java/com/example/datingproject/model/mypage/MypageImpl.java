@@ -1,6 +1,7 @@
 package com.example.datingproject.model.mypage;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,36 @@ public class MypageImpl implements MypageDAO {
 
 	@Autowired
 	SqlSession session;
-	
+
 	@Override
-	public List<MemberDTO> mypagemember(String userid) {
-		return session.selectList("mypage.mypagemember", userid);
+	public MemberDTO mypagemember(String userid) {
+		return session.selectOne("mypage.mypagemember", userid);
 	}
 
 	@Override
-	public List<InfoDTO> mypageinfo(String userid) {
-		return session.selectList("mypage.mypageinfo", userid);
+	public InfoDTO mypageinfo(String userid) {
+		return session.selectOne("mypage.mypageinfo", userid);
+	}
+
+	@Override
+	public String checkpasswd(String userid) {
+		// TODO Auto-generated method stub
+		return session.selectOne("mypage.checkpasswd", userid);
+	}
+
+	@Override
+	public void updaetinfo(InfoDTO dto) {
+		session.update("mypage.updateinfo", dto);
+
+	}
+
+	@Override
+	public void updatepasswd(String userid, String passwd) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid", userid);
+		map.put("passwd", passwd);
+		session.update("mypage.updatepasswd", map);
+
 	}
 
 }

@@ -12,4 +12,26 @@
 		select * from info where userid = #{userid}
 	</select>
 
+
+	<select id="checkpasswd" resultType="String">
+		select passwd from member
+		where userid = #{userid}
+	</select>
+
+
+	<update id="updateinfo">
+		update info set name=#{name},
+		age=#{age},height=#{height},weight=#{weight},cellphone=#{cellphone},
+		address=#{address}, mbti=#{MBTI}, hobby=#{hobby}, style=#{style},
+		education=#{education}, religion=#{religion}, job=#{job},
+		description=#{description} where userid = #{userid}
+	</update>
+
+	<update id="updatepasswd">
+		update member set passwd=#{passwd} where
+		userid=#{userid}
+	</update>
+
+
+
 </mapper>
