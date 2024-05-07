@@ -224,6 +224,7 @@
 <body>
 	<%@ include file="../main/header.jsp"%>
 
+	<c:forEach items="${map.ilist}" var="info">
 		<section id="about-us" class="py-5">
 			<div class="container">
 				<div class="row">
@@ -249,7 +250,7 @@
 															<div class="avatars">
 
 																<a href="setting.html"> <img
-																	src="/resources/images/${map.info.filename}"
+																	src="/resources/images/${info.filename}"
 																	alt="Circle Image"
 																	class="avatar-lg rounded-circle img-fluid"
 																	data-toggle="tooltip" data-placement="bottom" title=""
@@ -259,16 +260,11 @@
 															<div class="names">
 																<h3 class="title text-light">${info.userid}</h3>
 																<h3 class="title text-light">${info.name}</h3>
-																<a href="#" class="btn btn-link btn-facebook"><i
-																	class="fab fa-facebook"></i></a> <a href="#"
-																	class="btn btn-link btn-twitter"><i
-																	class="fab fa-twitter"></i></a> <a href="#"
-																	class="btn btn-link btn-gplus"><i
-																	class="fab fa-google-plus"></i></a> <a href="#"
-																	class="btn btn-link btn-instagram"><i
-																	class="fab fa-instagram"></i></a> <a href="#"
-																	class="btn btn-link btn-youtube"><i
-																	class="fab fa-youtube"></i></a>
+																<c:forEach items="${map.mlist}" var="member">
+																<h3 class="title text-light">보유 포인트 : ${member.point}P</h3>
+																<a href="/point/buypoint.do">충전하기</a>
+																</c:forEach>
+																
 															</div>
 														</div>
 													</div>
@@ -511,6 +507,6 @@
 				</div>
 			</div>
 		</section>
-
+	</c:forEach>
 </body>
 </html>

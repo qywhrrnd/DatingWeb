@@ -15,7 +15,62 @@
 	href="/resources/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="/resources/css/owl.css">
 <link rel="stylesheet" href="/resources/css/lightbox.css">
+<script src="/resources/jquery/jquery.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<script src="/resources/js/isotope.min.js"></script>
+<script src="/resources/js/owl-carousel.js"></script>
+<script src="/resources/js/lightbox.js"></script>
+<script src="/resources/js/tabs.js"></script>
+<script src="/resources/js/video.js"></script>
+<script src="/resources/js/slick-slider.js"></script>
+<script src="/resources/js/custom.js"></script>
+<script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
 <script>
 	function showAlert() {
 		alert("로그인이 필요합니다.");
@@ -37,7 +92,7 @@
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-							<a href="/info.do">남자여자</a>
+
 							<li class="scroll-to-section"><a href="#services">Services</a></li>
 							<li class="scroll-to-section"><a href="#courses">Courses</a></li>
 							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
@@ -50,6 +105,8 @@
 							<li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
 							<li class="scroll-to-section"><a href="#contact-section">Contact
 									Us</a></li>
+
+							<li><a href="/info.do">남자여자</a></li>
 							<c:choose>
 								<c:when test="${sessionScope.userid != null}">
 									<li><a href="/mypage/mypage.do">마이페이지</a></li>
