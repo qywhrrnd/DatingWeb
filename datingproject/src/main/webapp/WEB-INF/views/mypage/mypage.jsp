@@ -422,8 +422,9 @@
 																<div
 																	class="col-6 d-flex justify-content-center align-items-center">
 																	<div class="numbers">
+																	<input type="hidden" name="userid" value="${sessionScope.userid}">
 																		<p>Following</p>
-																		112
+																		<span>${map.mdto.countfollowing}</span>
 																	</div>
 																</div>
 															</div>
@@ -447,7 +448,7 @@
 																	class="col-6 d-flex justify-content-center align-items-center">
 																	<div class="numbers">
 																		<p>Follower</p>
-																		1567
+																		<span>${map.mdto.countfollower}</span>
 																	</div>
 																</div>
 															</div>

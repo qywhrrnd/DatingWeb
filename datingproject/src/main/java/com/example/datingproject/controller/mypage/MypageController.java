@@ -1,7 +1,6 @@
 package com.example.datingproject.controller.mypage;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDTO;
 import com.example.datingproject.model.mypage.MypageDAO;
+import com.example.datingproject.model.mypage.MypageDTO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,12 +31,20 @@ public class MypageController {
 	@RequestMapping("mypage/mypage.do")
 	public ModelAndView mypage(HttpSession session) {
 		String userid = (String) session.getAttribute("userid");
+		MypageDTO mypageDto = new MypageDTO();
 		MemberDTO mlist = mypageDao.mypagemember(userid);
 		InfoDTO ilist = mypageDao.mypageinfo(userid);
+		int countfollower = mypageDao.countfollower(userid);
+		int countfollowing = mypageDao.countfollowing(userid);
+		System.out.println(countfollower);
+		System.out.println(countfollowing);
+		mypageDto.setCountfollower(countfollower);
+		mypageDto.setCountfollowing(countfollowing);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("mlist", mlist);
 		map.put("ilist", ilist);
+		map.put("mdto", mypageDto);
 
 		return new ModelAndView("mypage/mypage", "map", map);
 
@@ -91,7 +99,7 @@ public class MypageController {
 		dto.setReligion(religion);
 		dto.setJob(job);
 		dto.setDescription(description);
-		mypageDao.updaetinfo(dto);
+		mypageDao.updateinfo(dto);
 
 		return "redirect:/mypage/mypage.do";
 	}
@@ -165,6 +173,6 @@ public class MypageController {
 		
 		
 		return "redirect:/mypage/mypage.do";
-		
 	}
+	
 }

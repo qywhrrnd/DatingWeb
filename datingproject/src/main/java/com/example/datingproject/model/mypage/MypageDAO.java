@@ -10,9 +10,13 @@ public interface MypageDAO {
 	
 	String checkpasswd(String userid);
 	
-	void updaetinfo(InfoDTO dto);
+	void updateinfo(InfoDTO dto);
 	
 	void updatepasswd(String userid, String passwd);
 	
 	void updateimg(String filename, double AIface, String userid);
+	
+	int countfollowing(String userid);
+	
+	int countfollower(String userid);
 }

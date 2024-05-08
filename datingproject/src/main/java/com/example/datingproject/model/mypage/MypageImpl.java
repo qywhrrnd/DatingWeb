@@ -33,7 +33,7 @@ public class MypageImpl implements MypageDAO {
 	}
 
 	@Override
-	public void updaetinfo(InfoDTO dto) {
+	public void updateinfo(InfoDTO dto) {
 		session.update("mypage.updateinfo", dto);
 
 	}
@@ -53,9 +53,19 @@ public class MypageImpl implements MypageDAO {
 		map.put("filename", filename);
 		map.put("AIface", AIface);
 		map.put("userid", userid);
-		
+
 		session.update("mypage.updateimg", map);
-		
+
+	}
+
+	@Override
+	public int countfollowing(String userid) {
+		return session.selectOne("mypage.countfollowing", userid);
+	}
+
+	@Override
+	public int countfollower(String userid) {
+		return session.selectOne("mypage.countfollower", userid);
 	}
 
 }

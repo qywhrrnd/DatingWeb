@@ -37,5 +37,13 @@
 		AIface=#{AIface} where userid = #{userid}
 	</update>
 
+	<select id="countfollowing" resultType="int">
+		select count(*) from follow where following = #{userid}
+	</select>
+
+	<select id="countfollower" resultType="int">
+		select count(*) from follow where follower = #{userid}
+	</select>
+
 
 </mapper>
