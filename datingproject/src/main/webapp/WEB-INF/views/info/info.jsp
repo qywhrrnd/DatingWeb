@@ -42,7 +42,7 @@
 		let point = document.getElementById('point').value;
 
 		let userid = document.getElementById('userid').value;
-		let otherid = document.getElementById('otherid').value;
+		 let otherid = document.getElementById('otherid_' + userid).value;
 		if (confirm("결제할래??")) {
 			if (point < 500) {
 				alert("포인트를 충전하세요");
@@ -78,7 +78,8 @@
 									class="rounded" width="155">
 							</div>
 							<div class="ml-3 w-100">
-								<input type="hidden" id="otherid" value="${row.userid}">
+							<input type="text" id="otherid_${row.userid}" value="${row.userid}">
+
 
 								<h4 class="mb-0 mt-0">${row.name}</h4>
 								<span>${row.job}</span>
