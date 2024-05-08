@@ -212,9 +212,9 @@
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="section-heading">
-						<h6>OUR COURSES</h6>
+						<h6>데마에 가입하면?!?</h6>
 						<h4>
-							What You Can <em>Learn</em>
+							무엇을 할 수 있을까 <em>데이트?</em>
 						</h4>
 						<p>You just think about TemplateMo whenever you need free CSS
 							templates for your business website</p>
@@ -227,16 +227,16 @@
 								<div class="col-lg-3">
 									<div class="menu">
 										<div class="active gradient-border">
-											<span>Web Development</span>
+											<span>이성찾기</span>
 										</div>
 										<div class="gradient-border">
-											<span>Graphic Design</span>
+											<span>팔로우</span>
 										</div>
 										<div class="gradient-border">
-											<span>Web Design</span>
+											<span>채팅하기</span>
 										</div>
 										<div class="gradient-border">
-											<span>WordPress</span>
+											<span>데이트</span>
 										</div>
 									</div>
 								</div>
@@ -391,9 +391,9 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h6>Testimonials</h6>
+						<h6>리뷰</h6>
 						<h4>
-							What They <em>Think</em>
+							데마 이용 <em>리뷰</em>
 						</h4>
 					</div>
 				</div>
@@ -501,36 +501,35 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="section-heading">
-									<h6>Contact us</h6>
+									<h6>리뷰 남기기</h6>
 									<h4>
-										Say <em>Hello</em>
+										리뷰를 <em>보내주세요</em>
 									</h4>
-									<p>IF you need a working contact form by PHP script, please
-										visit TemplateMo's contact page for more info.</p>
+									<p>여러분의 리뷰가 데마에 큰 힘이 됩니다.</p>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
 									<input type="name" name="name" id="name"
-										placeholder="Full Name" autocomplete="on" required>
+										placeholder="이름" autocomplete="on" required>
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
 									<input type="text" name="email" id="email"
-										pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+										pattern="[^ @]*@[^ @]*" placeholder="아이디" required="">
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
 									<textarea name="message" id="message"
-										placeholder="Your Message"></textarea>
+										placeholder="리뷰 내용"></textarea>
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
 									<button type="submit" id="form-submit"
-										class="main-gradient-button">Send Message</button>
+										class="main-gradient-button">전송하기</button>
 								</fieldset>
 							</div>
 						</div>
