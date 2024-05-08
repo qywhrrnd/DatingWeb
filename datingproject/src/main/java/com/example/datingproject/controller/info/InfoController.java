@@ -273,17 +273,18 @@ public class InfoController {
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
 
 		int count = infoDao.viewlog(userid, otherid);
+		System.out.println(count);
 		if (count == 0) {
 
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
 			mav.setViewName("info/detail");
-			mav.addObject("dto", infoDao.detail(userid));
+			mav.addObject("dto", infoDao.detail(otherid));
 			return mav;
 
 		} else {
 			mav.setViewName("info/detail");
-			mav.addObject("dto", infoDao.detail(userid));
+			mav.addObject("dto", infoDao.detail(otherid));
 			return mav;
 
 		}

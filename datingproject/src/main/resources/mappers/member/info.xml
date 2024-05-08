@@ -64,12 +64,11 @@
 	</update>
 	
 	<select id="viewcount" resultType="int">
-	
-	select count(*) from viewlog where userid1=#{userid} and userid2=#{userid}
+	select count(*) from viewlog where userid1=#{userid1} and userid2=#{userid2}
 	</select>
 	
 	<insert id="viewinsert">
-	insert into viewlog (userid1,userid2) value (#{userid1},#{userid2})
+	insert into viewlog (userid1,userid2) values (#{userid1},#{userid2})
 	</insert>
 	
 	
