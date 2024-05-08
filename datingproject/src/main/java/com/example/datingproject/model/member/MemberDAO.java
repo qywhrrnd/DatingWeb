@@ -10,4 +10,6 @@ public interface MemberDAO {
 	String login2(String userid, String passwd);
 	
 	void infoupdate(String userid);
+	
+	int getpoint(String userid);
 }

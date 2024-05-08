@@ -40,6 +40,16 @@
 		location.href = "/cancelfollow.do?following=" + following
 				+ "&follower=" + follower;
 	}
+	
+	function point(){
+		let point = document.getElementById('point').value;
+		if(confirm("결제할래??")){
+			if()
+			location.href="/detail.do/{row.userid}";	
+		}
+		
+	}
+	
 </script>
 </head>
 <body>
@@ -64,6 +74,7 @@
 							</div>
 							<div class="ml-3 w-100">
 								<input type="hidden" value="${row.userid}">
+								<input type="hidden" value="${row.point}">
 								<h4 class="mb-0 mt-0">${row.name}</h4>
 								<span>${row.job}</span>
 								<div
@@ -75,10 +86,14 @@
 										<span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
 									</div>
 								</div>
+								
 								<div class="button mt-2 d-flex flex-row align-items-center">
+									
+									
 									<a class="btn btn-sm btn-outline-primary w-100"
-										href="/detail.do/${row.userid}">VIEW</a> <input type="hidden"
-										id="userid" value="${sessionScope.userid}">
+										 onclick="point()">VIEW</a> 
+									
+									
 									<c:choose>
 										<c:when
 											test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">

@@ -7,10 +7,15 @@
 		where userid=#{userid}
 	</select>
 
-
+	<select id="getpoint" resultType="int">
+		select point from member
+		where
+		userid=#{userid}
+	</select>
 
 	<insert id="join">
-		insert into member (userid, passwd, info, point) values
+		insert into member (userid, passwd, info, point)
+		values
 		(#{userid}, #{passwd}, 1, 0)
 	</insert>
 
@@ -31,12 +36,13 @@
 	<update id="infoupdate">
 		update member set info = 2 where userid = #{userid}
 	</update>
-	
+
 	<update id="point">
-		update member set point = point + #{point} where userid = #{userid}
+		update member set point = point + #{point} where
+		userid = #{userid}
 	</update>
-	
-	
-	
+
+
+
 
 </mapper>

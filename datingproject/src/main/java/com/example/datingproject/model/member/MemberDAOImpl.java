@@ -45,8 +45,14 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void infoupdate(String userid) {
-		session.update("member.infoupdate",userid);
-		
+		session.update("member.infoupdate", userid);
+
+	}
+
+	@Override
+	public int getpoint(String userid) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.getpoint", userid);
 	}
 
 }

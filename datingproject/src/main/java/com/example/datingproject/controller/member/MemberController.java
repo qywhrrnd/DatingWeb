@@ -105,7 +105,9 @@ public class MemberController {
 		} else {
 			int info = memberDao.login(userid, passwd);
 			if (info == 1) {
+				int point = memberDao.getpoint(userid);
 				session.setAttribute("userid", userid);
+				session.setAttribute("point", point);
 				message = "개인정보를 입력해주세요";
 				url = "login/information";
 

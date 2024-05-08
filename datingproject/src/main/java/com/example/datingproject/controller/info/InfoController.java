@@ -195,7 +195,6 @@ public class InfoController {
 	@RequestMapping("/info.do")
 	public ModelAndView list() {
 		List<InfoDTO> list = infoDao.list();
-		System.out.println(list);
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("idao", infoDao);
@@ -235,14 +234,7 @@ public class InfoController {
 		return "redirect:/info.do";
 	}
 
-	@GetMapping("/detail.do/{userid}")
-	public ModelAndView detail(@PathVariable(name = "userid") String userid, ModelAndView mav) {
-
-		mav.setViewName("/info/detail");
-		mav.addObject("dto", infoDao.detail(userid));
-		return mav;
-	}
-
+	
 	@RequestMapping("/info/followerlist.do")
 	public ModelAndView followerlist(@RequestParam(name = "follower") String follower) {
 		List<String> list2 = infoDao.followerlist(follower);
@@ -275,5 +267,15 @@ public class InfoController {
 		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
+	
+	
+	@GetMapping("/detail.do/{userid}")
+	public ModelAndView detail(@PathVariable(name = "userid") String userid, ModelAndView mav) {
+
+		mav.setViewName("/info/detail");
+		mav.addObject("dto", infoDao.detail(userid));
+		return mav;
+	}
+
 
 }
