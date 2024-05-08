@@ -13,7 +13,7 @@
 
 	<select id="list"
 		resultType="com.example.datingproject.model.info.InfoDTO">
-		select * from info
+		select * from info order by aiface desc
 
 	</select>
 
