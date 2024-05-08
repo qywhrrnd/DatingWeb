@@ -32,7 +32,7 @@ public class InfoDTO {
 	private double AIface;
 	private int gender;
 	private String description;
-	private int point;
+
 	
 	
 	

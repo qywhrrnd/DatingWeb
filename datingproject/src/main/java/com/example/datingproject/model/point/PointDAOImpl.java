@@ -23,4 +23,10 @@ public class PointDAOImpl implements PointDAO {
 
 	}
 
+	@Override
+	public void chatpoint(String userid) {
+		session.update("member.chatpoint", userid);
+
+	}
+
 }
