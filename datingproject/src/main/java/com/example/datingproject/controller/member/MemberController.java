@@ -112,7 +112,9 @@ public class MemberController {
 				url = "login/information";
 
 			} else if (info == 2) {
+				int point = memberDao.getpoint(userid);
 				session.setAttribute("userid", userid);
+				session.setAttribute("point", point);
 				message = "환영합니다.";
 				url = "main/main";
 			}

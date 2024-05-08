@@ -29,6 +29,7 @@ import com.example.datingproject.model.info.FollowDTO;
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
+import com.example.datingproject.model.member.MemberDTO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -269,9 +270,12 @@ public class InfoController {
 	}
 	
 	
-	@GetMapping("/detail.do/{userid}")
-	public ModelAndView detail(@PathVariable(name = "userid") String userid, ModelAndView mav) {
-		int count = infoDao.
+	@GetMapping("/detail.do")
+	public ModelAndView detail(@RequestParam(name = "userid") String userid,@RequestParam(name = "otherid") String otherid,  ModelAndView mav) {
+		System.out.println(userid);
+		System.out.println(otherid);
+		
+		
 		
 		mav.setViewName("info/detail");
 		mav.addObject("dto", infoDao.detail(userid));

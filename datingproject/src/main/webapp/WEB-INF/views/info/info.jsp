@@ -40,12 +40,16 @@
 
 	function point() {
 		let point = document.getElementById('point').value;
+
+		let userid = document.getElementById('userid').value;
+		let otherid = document.getElementById('otherid').value;
 		if (confirm("결제할래??")) {
 			if (point < 500) {
 				alert("포인트를 충전하세요");
 				location.href = "/point/buypoint.do";
 			} else {
-				location.href = "/detail.do/{row.userid}";
+				location.href = "/detail.do?userid=" + userid + "&otherid="
+						+ otherid;
 			}
 		}
 
@@ -60,7 +64,8 @@
 	<br>
 	<br>
 	<br>
-
+	<input type="hidden" id="userid" value="${sessionScope.userid}">
+	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
 		<div class="row justify-content-center">
 			<c:forEach var="row" items="${map.list}">
@@ -73,8 +78,8 @@
 									class="rounded" width="155">
 							</div>
 							<div class="ml-3 w-100">
-								<input type="hidden" id="userid" value="${sessionScope.userid}">
-								<input type="hidden" id="point" value="${sessionScope.point}">
+								<input type="hidden" id="otherid" value="${row.userid}">
+
 								<h4 class="mb-0 mt-0">${row.name}</h4>
 								<span>${row.job}</span>
 								<div

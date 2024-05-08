@@ -12,4 +12,6 @@ public interface MemberDAO {
 	void infoupdate(String userid);
 	
 	int getpoint(String userid);
+	
+	
 }
