@@ -28,4 +28,6 @@ public interface InfoDAO {
 	 void insertlog (String userid1, String userid2);
 	 
 	 void updatepoint(String userid);
+	 
+	 int gender(String userid);
 }

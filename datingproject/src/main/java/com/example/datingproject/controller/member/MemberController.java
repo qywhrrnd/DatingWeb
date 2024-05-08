@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.email.MailSendService;
 import com.example.datingproject.model.email.RedisUtil;
+import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
 
@@ -38,6 +39,9 @@ public class MemberController {
 
 	@Autowired
 	MemberDAO memberDao;
+	
+	@Autowired
+	InfoDAO infoDao;
 
 	@Autowired
 	InfoDTO infoDto;
@@ -104,17 +108,20 @@ public class MemberController {
 			url = "login/login";
 		} else {
 			int info = memberDao.login(userid, passwd);
+			int point = memberDao.getpoint(userid);
+			int gender = infoDao.gender(userid);
+			
 			if (info == 1) {
-				int point = memberDao.getpoint(userid);
 				session.setAttribute("point", point);
 				session.setAttribute("userid", userid);
 				message = "개인정보를 입력해주세요";
 				url = "login/information";
 
 			} else if (info == 2) {
-				int point = memberDao.getpoint(userid);
+				
 				session.setAttribute("userid", userid);
 				session.setAttribute("point", point);
+				session.setAttribute("gender", gender);
 				message = "환영합니다.";
 				url = "main/main";
 			}

@@ -100,4 +100,9 @@ public class InfoDAOImpl implements InfoDAO {
 
 	}
 
+	@Override
+	public int gender(String userid) {
+		return session.selectOne("info.gender", userid);
+	}
+
 }

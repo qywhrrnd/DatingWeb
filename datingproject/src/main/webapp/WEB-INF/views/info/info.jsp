@@ -42,7 +42,7 @@
 		let point = document.getElementById('point').value;
 
 		let userid = document.getElementById('userid').value;
-		 let otherid = document.getElementById('otherid_' + userid).value;
+		let otherid = document.getElementById('otherid_' + userid).value;
 		if (confirm("보고싶어?")) {
 			if (point < 500) {
 				alert("포인트를 충전하세요");
@@ -68,59 +68,91 @@
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
 		<div class="row justify-content-center">
-			<c:forEach var="row" items="${map.list}">
-				<div class="col-md-6 mb-4">
-					<div class="card p-3">
-						<div class="d-flex align-items-center">
-							<div class="image">
-								<img
-									src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-									class="rounded" width="155">
-							</div>
-							<div class="ml-3 w-100">
-							<input type="text" id="otherid_${row.userid}" value="${row.userid}">
+			<c:choose>
+				 <c:when test="${sessionScope.gender == 1}">
+        <!-- 성별이 여성일 때만 실행될 부분 -->
+        <c:forEach var="row" items="${map.list}">
+            <!-- 여기에 여성 사용자 정보를 보여주는 코드 추가 -->
+            <c:if test="${row.gender == 2}">
+                <div class="col-md-6 mb-4">
+                    <div class="card p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="image">
+                                <img src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155">
+                            </div>
+                            <div class="ml-3 w-100">
+                                <input type="text" id="otherid_${row.userid}" value="${row.userid}">
+                                <h4 class="mb-0 mt-0">${row.name}</h4>
+                                <span>${row.job}</span>
+                                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                                    <div class="d-flex flex-column">
+                                        <span class="followers">팔로워</span> <span class="number2">${map.idao.countfollow(row.userid)}</span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
+                                    </div>
+                                </div>
+                                <div class="button mt-2 d-flex flex-row align-items-center">
+                                    <a class="btn btn-sm btn-outline-primary w-100" onclick="point()">VIEW</a>
+                                    <c:choose>
+                                        <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
+                                            <input type="button" class="btn btn-sm btn-primary w-100 ml-3" onclick="cancelfollow('${row.userid}')" value="팔로잉" style="background-color: #EB3324; border-color: #EB3324;">
+                                        </c:when>
+                                        <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">
+                                            <input type="button" class="btn btn-sm btn-primary w-100 ml-2" onclick="follow('${row.userid}')" value="팔로우">
+                                        </c:when>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </c:forEach>
+    </c:when>
 
-
-								<h4 class="mb-0 mt-0">${row.name}</h4>
-								<span>${row.job}</span>
-								<div
-									class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-									<div class="d-flex flex-column">
-										<span class="followers">팔로워</span> <span class="number2">${map.idao.countfollow(row.userid)}</span>
-									</div>
-									<div class="d-flex flex-column">
-										<span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
-									</div>
-								</div>
-
-								<div class="button mt-2 d-flex flex-row align-items-center">
-
-
-									<a class="btn btn-sm btn-outline-primary w-100"
-										onclick="point()">VIEW</a>
-
-
-									<c:choose>
-										<c:when
-											test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
-											<input type="button"
-												class="btn btn-sm btn-primary w-100 ml-3"
-												onclick="cancelfollow('${row.userid}')" value="팔로잉"
-												style="background-color: #EB3324; border-color: #EB3324;">
-										</c:when>
-										<c:when
-											test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">
-											<input type="button"
-												class="btn btn-sm btn-primary w-100 ml-2"
-												onclick="follow('${row.userid}')" value="팔로우">
-										</c:when>
-									</c:choose>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+			 <c:when test="${sessionScope.gender == 2}">
+        <!-- 성별이 여성일 때만 실행될 부분 -->
+        <c:forEach var="row" items="${map.list}">
+            <!-- 여기에 여성 사용자 정보를 보여주는 코드 추가 -->
+            <c:if test="${row.gender == 1}">
+                <div class="col-md-6 mb-4">
+                    <div class="card p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="image">
+                                <img src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155">
+                            </div>
+                            <div class="ml-3 w-100">
+                                <input type="text" id="otherid_${row.userid}" value="${row.userid}">
+                                <h4 class="mb-0 mt-0">${row.name}</h4>
+                                <span>${row.job}</span>
+                                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                                    <div class="d-flex flex-column">
+                                        <span class="followers">팔로워</span> <span class="number2">${map.idao.countfollow(row.userid)}</span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
+                                    </div>
+                                </div>
+                                <div class="button mt-2 d-flex flex-row align-items-center">
+                                    <a class="btn btn-sm btn-outline-primary w-100" onclick="point()">VIEW</a>
+                                    <c:choose>
+                                        <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
+                                            <input type="button" class="btn btn-sm btn-primary w-100 ml-3" onclick="cancelfollow('${row.userid}')" value="팔로잉" style="background-color: #EB3324; border-color: #EB3324;">
+                                        </c:when>
+                                        <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">
+                                            <input type="button" class="btn btn-sm btn-primary w-100 ml-2" onclick="follow('${row.userid}')" value="팔로우">
+                                        </c:when>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </c:forEach>
+    </c:when>
+			</c:choose>
 		</div>
 	</div>
 
