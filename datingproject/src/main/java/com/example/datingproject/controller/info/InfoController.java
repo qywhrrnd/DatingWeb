@@ -271,7 +271,7 @@ public class InfoController {
 	
 	@GetMapping("/detail.do/{userid}")
 	public ModelAndView detail(@PathVariable(name = "userid") String userid, ModelAndView mav) {
-		
+		int count = infoDao.
 		
 		mav.setViewName("info/detail");
 		mav.addObject("dto", infoDao.detail(userid));

@@ -22,4 +22,10 @@ public interface InfoDAO {
 	 List<String> followinglist(String following); 
 	 
 	 List<InfoDTO> followlist(String userid); 
+	 
+	 int viewlog(String userid1, String userid2);
+	 
+	 void insertlog (String userid1, String userid2);
+	 
+	 void updatepoint(String userid);
 }

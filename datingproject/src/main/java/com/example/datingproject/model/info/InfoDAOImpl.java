@@ -74,7 +74,30 @@ public class InfoDAOImpl implements InfoDAO {
 
 	@Override
 	public List<InfoDTO> followlist(String userid) {
-		return session.selectList("info.followlist",userid);
+		return session.selectList("info.followlist", userid);
+	}
+
+	@Override
+	public int viewlog(String userid1, String userid2) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid1", userid1);
+		map.put("userid2", userid2);
+		return session.selectOne("info.viewcount", map);
+	}
+
+	@Override
+	public void insertlog(String userid1, String userid2) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid1", userid1);
+		map.put("userid2", userid2);
+		session.insert("info.viewinsert", map);
+
+	}
+
+	@Override
+	public void updatepoint(String userid) {
+		session.update("info.point", userid);
+
 	}
 
 }
