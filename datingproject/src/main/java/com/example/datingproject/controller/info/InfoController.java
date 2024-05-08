@@ -235,7 +235,6 @@ public class InfoController {
 		return "redirect:/info.do";
 	}
 
-	
 	@RequestMapping("/info/followerlist.do")
 	public ModelAndView followerlist(@RequestParam(name = "follower") String follower) {
 		List<String> list2 = infoDao.followerlist(follower);
@@ -249,7 +248,7 @@ public class InfoController {
 		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
-		map.put("idao", infoDao);		
+		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
 
@@ -268,19 +267,27 @@ public class InfoController {
 		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
-	
-	
-	@GetMapping("/detail.do")
-	public ModelAndView detail(@RequestParam(name = "userid") String userid,@RequestParam(name = "otherid") String otherid,  ModelAndView mav) {
-		System.out.println(userid);
-		System.out.println(otherid);
-		
-		
-		
-		mav.setViewName("info/detail");
-		mav.addObject("dto", infoDao.detail(userid));
-		return mav;
-	}
 
+	@GetMapping("/detail.do")
+	public ModelAndView detail(@RequestParam(name = "userid") String userid,
+			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
+
+		int count = infoDao.viewlog(userid, otherid);
+		if (count == 0) {
+
+			infoDao.insertlog(userid, otherid);
+			infoDao.updatepoint(userid);
+			mav.setViewName("info/detail");
+			mav.addObject("dto", infoDao.detail(userid));
+			return mav;
+
+		} else {
+			mav.setViewName("info/detail");
+			mav.addObject("dto", infoDao.detail(userid));
+			return mav;
+
+		}
+
+	}
 
 }
