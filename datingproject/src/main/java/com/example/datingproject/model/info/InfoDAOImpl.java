@@ -9,76 +9,72 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InfoDAOImpl implements InfoDAO{
-	
+public class InfoDAOImpl implements InfoDAO {
+
 	@Autowired
 	SqlSession session;
 
 	@Override
 	public void insertInfo(InfoDTO dto) {
 		// TODO Auto-generated method stub
-		session.insert("info.insertInfo",dto);
+		session.insert("info.insertInfo", dto);
 	}
 
-	
-	  @Override 
-	  public List<InfoDTO> list() { // TODO Auto-generated method stub
-	  return session.selectList("info.list"); }
-
+	@Override
+	public List<InfoDTO> list() { // TODO Auto-generated method stub
+		return session.selectList("info.list");
+	}
 
 	@Override
 	public void follow(String following, String follower) {
-		Map<String ,Object>map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("following", following);
 		map.put("follower", follower);
-		session.insert("info.follow",map);
-		
-	}
+		session.insert("info.follow", map);
 
+	}
 
 	@Override
 	public int countfollow(String follower) {
-		return session.selectOne("info.countfollow",follower);
+		return session.selectOne("info.countfollow", follower);
 	}
-
 
 	@Override
 	public int checkfollow(String following, String follower) {
-		Map<String ,Object>map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("following", following);
 		map.put("follower", follower);
-		return session.selectOne("info.checkfollow",map);
+		return session.selectOne("info.checkfollow", map);
 	}
-
 
 	@Override
 	public void cancelfollow(String following, String follower) {
-		Map<String ,Object>map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("following", following);
 		map.put("follower", follower);
-		session.delete("info.cancelfollow",map);
-		
-	}
-	
-	 @Override
-	  public InfoDTO detail(String userid) {
-		  
-		  return session.selectOne("info.detail", userid);
-	  }
+		session.delete("info.cancelfollow", map);
 
+	}
+
+	@Override
+	public InfoDTO detail(String userid) {
+
+		return session.selectOne("info.detail", userid);
+	}
 
 	@Override
 	public List<String> followerlist(String follower) {
 		return session.selectList("info.followerlist", follower);
 	}
 
-
 	@Override
 	public List<String> followinglist(String following) {
 		return session.selectList("info.followinglist", following);
 	}
-	
-	
-	 
+
+	@Override
+	public List<InfoDTO> followlist(String userid) {
+		return session.selectList("info.followlist",userid);
+	}
 
 }

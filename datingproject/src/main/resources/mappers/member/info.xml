@@ -52,4 +52,9 @@
 		select follower from follow where following = #{following}
 	</select>
 	
+	<select id="followlist"
+		resultType="com.example.datingproject.model.info.InfoDTO">
+		select * from info where userid = #{userid}
+	</select>
+	
 </mapper>

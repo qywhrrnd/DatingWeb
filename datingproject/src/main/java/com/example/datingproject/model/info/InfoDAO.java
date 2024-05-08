@@ -20,4 +20,6 @@ public interface InfoDAO {
 	 List<String> followerlist(String follower); 
 	 
 	 List<String> followinglist(String following); 
+	 
+	 List<InfoDTO> followlist(String userid); 
 }

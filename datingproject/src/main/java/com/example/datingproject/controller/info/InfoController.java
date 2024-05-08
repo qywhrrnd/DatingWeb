@@ -195,6 +195,7 @@ public class InfoController {
 	@RequestMapping("/info.do")
 	public ModelAndView list() {
 		List<InfoDTO> list = infoDao.list();
+		System.out.println(list);
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("idao", infoDao);
@@ -215,7 +216,7 @@ public class InfoController {
 	public ModelAndView checkfollow(@RequestParam(name = "following") String following,
 			@RequestParam(name = "follower") String follower) {
 		int check = infoDao.checkfollow(following, follower);
-		
+
 		List<InfoDTO> list = infoDao.list();
 		Map<String, Object> map = new HashMap<>();
 		map.put("check", check);
@@ -224,50 +225,55 @@ public class InfoController {
 
 		return new ModelAndView("info/info", "map", map);
 	}
-	
+
 	@RequestMapping("/cancelfollow.do")
 	public String cancelfollow(@RequestParam(name = "following") String following,
 			@RequestParam(name = "follower") String follower) {
 
 		infoDao.cancelfollow(following, follower);
 
-	return "redirect:/info.do";
+		return "redirect:/info.do";
 	}
-	
+
 	@GetMapping("/detail.do/{userid}")
-	public ModelAndView detail(@PathVariable(name="userid")String userid, ModelAndView mav) {
-		
-		
+	public ModelAndView detail(@PathVariable(name = "userid") String userid, ModelAndView mav) {
+
 		mav.setViewName("/info/detail");
-		mav.addObject("dto",infoDao.detail(userid));
+		mav.addObject("dto", infoDao.detail(userid));
 		return mav;
 	}
 
 	@RequestMapping("/info/followerlist.do")
-	public ModelAndView followerlist(@RequestParam(name="follower")String follower) {
+	public ModelAndView followerlist(@RequestParam(name = "follower") String follower) {
 		List<String> list2 = infoDao.followerlist(follower);
-		System.out.println(list2);
-		List<InfoDTO> list = infoDao.list();
+
+		List<InfoDTO> list = new ArrayList<>();
+
+		for (String a : list2) {
+			List<InfoDTO> sublist = infoDao.followlist(a);
+			list.addAll(sublist);
+			System.out.println(list);
+		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
-		map.put("list2", list2);
-		map.put("idao", infoDao);
+		map.put("idao", infoDao);		
 		return new ModelAndView("mypage/follower", "map", map);
 	}
 
 	@RequestMapping("/info/followinglist.do")
-	public ModelAndView followinglist(@RequestParam(name="following")String following) {
+	public ModelAndView followinglist(@RequestParam(name = "following") String following) {
 		List<String> list2 = infoDao.followinglist(following);
-		System.out.println(list2);
-		List<InfoDTO> list = infoDao.list();
+		List<InfoDTO> list = new ArrayList<>();
+
+		for (String a : list2) {
+			List<InfoDTO> sublist = infoDao.followlist(a);
+			list.addAll(sublist);
+			System.out.println(list);
+		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
-		map.put("list2", list2);
 		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
-	
-	
-
 
 }
