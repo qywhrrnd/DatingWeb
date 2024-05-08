@@ -17,9 +17,6 @@
 .image {
 	text-align: center; /* 이미지를 중앙으로 정렬하기 위한 스타일 */
 }
-
-
-
 </style>
 <script>
 	function follow(follower) {
@@ -40,16 +37,19 @@
 		location.href = "/cancelfollow.do?following=" + following
 				+ "&follower=" + follower;
 	}
-	
-	function point(){
+
+	function point() {
 		let point = document.getElementById('point').value;
-		if(confirm("결제할래??")){
-			if()
-			location.href="/detail.do/{row.userid}";	
+		if (confirm("결제할래??")) {
+			if (point < 500) {
+				alert("포인트를 충전하세요");
+				location.href = "/point/buypoint.do";
+			} else {
+				location.href = "/detail.do/{row.userid}";
+			}
 		}
-		
+
 	}
-	
 </script>
 </head>
 <body>
@@ -73,8 +73,8 @@
 									class="rounded" width="155">
 							</div>
 							<div class="ml-3 w-100">
-								<input type="hidden" value="${row.userid}">
-								<input type="hidden" value="${row.point}">
+								<input type="hidden" id="userid" value="${sessionScope.userid}">
+								<input type="hidden" id="point" value="${sessionScope.point}">
 								<h4 class="mb-0 mt-0">${row.name}</h4>
 								<span>${row.job}</span>
 								<div
@@ -86,20 +86,21 @@
 										<span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
 									</div>
 								</div>
-								
+
 								<div class="button mt-2 d-flex flex-row align-items-center">
-									
-									
+
+
 									<a class="btn btn-sm btn-outline-primary w-100"
-										 onclick="point()">VIEW</a> 
-									
-									
+										onclick="point()">VIEW</a>
+
+
 									<c:choose>
 										<c:when
 											test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
 											<input type="button"
 												class="btn btn-sm btn-primary w-100 ml-3"
-												onclick="cancelfollow('${row.userid}')" value="팔로잉" style="background-color: #EB3324; border-color: #EB3324;">
+												onclick="cancelfollow('${row.userid}')" value="팔로잉"
+												style="background-color: #EB3324; border-color: #EB3324;">
 										</c:when>
 										<c:when
 											test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">

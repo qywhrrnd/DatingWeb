@@ -57,4 +57,21 @@
 		select * from info where userid = #{userid}
 	</select>
 	
+	<update id="point">
+	update member set
+	point = point - 500
+	where userid = #{userid}
+	</update>
+	
+	<select id="viewcount" resultType="int">
+	
+	select count(*) from viewlog where userid1=#{userid} and userid2=#{userid}
+	</select>
+	
+	<insert id="viewinsert">
+	insert into viewlog (userid1,userid2) value (#{userid1},#{userid2})
+	</insert>
+	
+	
+	
 </mapper>
