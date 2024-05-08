@@ -8,4 +8,8 @@ public interface ChatBoxDAO {
 	void craetechatbox(String userid, String otherid);
 
 	int chatboxcheck(String userid, String otherid);
+
+	int checkchatlog(String userid, String otherid);
+
+	void chatlog(String userid, String otherid);
 }

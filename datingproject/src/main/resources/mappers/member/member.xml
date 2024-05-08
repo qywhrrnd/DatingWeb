@@ -42,7 +42,10 @@
 		userid = #{userid}
 	</update>
 
-
+	<update id="chatpoint">
+		update member set point = point - 500 where
+		userid = #{userid}
+	</update>
 
 
 </mapper>
