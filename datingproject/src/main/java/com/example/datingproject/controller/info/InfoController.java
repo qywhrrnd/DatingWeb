@@ -45,6 +45,19 @@ public class InfoController {
 	InfoDTO infoDto;
 	@Autowired
 	MemberDAO mDao;
+	
+	 @Autowired
+	    private HttpServletRequest request;
+	
+    private String redirectToPreviousPage() {
+        String referer = request.getHeader("Referer");
+        if (referer != null && !referer.isEmpty()) {
+            return "redirect:" + referer;
+        } else {
+            // 이전 페이지가 없으면 기본 페이지로 리디렉션
+            return "redirect:/";
+        }
+    }
 
 	@PostMapping("info/imageUpload.do")
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -209,7 +222,7 @@ public class InfoController {
 		System.out.println(follower);
 		infoDao.follow(following, follower);
 
-		return "redirect:/info.do";
+		return redirectToPreviousPage();
 	}
 
 	@RequestMapping("/checkfollow.do")
@@ -232,7 +245,7 @@ public class InfoController {
 
 		infoDao.cancelfollow(following, follower);
 
-		return "redirect:/info.do";
+		return redirectToPreviousPage();
 	}
 
 	@RequestMapping("/info/followerlist.do")
