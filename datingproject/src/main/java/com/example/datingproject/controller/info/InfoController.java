@@ -286,9 +286,7 @@ public class InfoController {
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
 
 		int count = infoDao.viewlog(userid, otherid);
-		System.out.println(count);
 		if (count == 0) {
-
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
 			mav.setViewName("info/detail");

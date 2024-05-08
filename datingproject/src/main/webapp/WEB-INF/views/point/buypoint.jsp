@@ -43,7 +43,6 @@
 
 
 
-
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
@@ -56,16 +55,17 @@
 	<form name="form1" method="post">
 		<div align="center">
 			<h2>포인트 충전</h2>
+
 			<div class="card-body bg-white mt-0 shadow">
 				<p style="font-weight: bold">카카오페이 충전</p>
 
 				<label class="box-radio-input"><input type="radio"
 					name="point" value="10000"><span>10,000원(11,000P)</span></label><br>
 				<label class="box-radio-input"><input type="radio"
-					name="point" value="20000"><span>20,000원(22,000P)</span></label>
-				<br> <label class="box-radio-input"><input type="radio"
-					name="point" value="30000"><span>30,000원(33,000P)</span></label>
-				<br> <label class="box-radio-input"><input type="radio"
+					name="point" value="20000"><span>20,000원(22,000P)</span></label> <br>
+				<label class="box-radio-input"><input type="radio"
+					name="point" value="30000"><span>30,000원(33,000P)</span></label> <br>
+				<label class="box-radio-input"><input type="radio"
 					name="point" value="40000"><span>40,000원(44,000P)</span></label><br>
 				<label class="box-radio-input"><input type="radio"
 					name="point" value="50000"><span>50,000원(55,000P)</span></label>

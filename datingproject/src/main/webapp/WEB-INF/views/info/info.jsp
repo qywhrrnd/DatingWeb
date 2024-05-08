@@ -43,7 +43,7 @@
 
 		let userid = document.getElementById('userid').value;
 		 let otherid = document.getElementById('otherid_' + userid).value;
-		if (confirm("결제할래??")) {
+		if (confirm("보고싶어?")) {
 			if (point < 500) {
 				alert("포인트를 충전하세요");
 				location.href = "/point/buypoint.do";
