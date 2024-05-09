@@ -90,8 +90,9 @@ button {
 <script type="text/javascript">
 	var ws;
 
-	function goRoom(number) {
-		location.href = "/chat/moveChating?roomNumber=" + number;
+	function goRoom(number, userid, otherid) {
+		location.href = "/chat/moveChating?roomNumber=" + number + "&userid="
+				+ userid + "&otherid=" + otherid;
 	}
 
 	function commonAjax(url, parameter, type, calbak, contentType) {
@@ -115,7 +116,10 @@ button {
 
 
 	<%@ include file="../main/header.jsp"%>
-
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 		<h1>채팅방</h1>
 		<div id="roomContainer" class="roomContainer">
@@ -132,14 +136,17 @@ button {
 						<c:choose>
 							<c:when test="${sessionScope.userid == row.user1}">
 								<td class="room">${row.user2 }</td>
+								<td class="go"><button type="button"
+										onclick="goRoom(parseInt('${row.roomNumber}'),'${sessionScope.userid}', '${row.user2}')">참여</button></td>
 							</c:when>
 							<c:when test="${sessionScope.userid == row.user2}">
 								<td class="room">${row.user1 }</td>
+								<td class="go"><button type="button"
+										onclick="goRoom(parseInt('${row.roomNumber}'),'${sessionScope.userid}', '${row.user1}')">참여</button></td>
 							</c:when>
 						</c:choose>
 
-						<td class="go"><button type="button"
-								onclick="goRoom(parseInt('${row.roomNumber}'))">참여</button></td>
+
 
 					</tr>
 				</c:forEach>

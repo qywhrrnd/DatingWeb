@@ -91,12 +91,87 @@
 .listButton:hover {
 	background-color: #218838;
 }
+
+.chating {
+	padding: 40px 0;
+	background-color: #A8C0D6;
+}
+
+.chating .chat {
+	display: flex;
+	align-items: flex-start;
+	padding: 20px;
+}
+
+.chating .chat .icon {
+	position: relative;
+	overflow: hidden;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #eee;
+}
+
+.chating .chat .icon i {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	font-size: 2.5rem;
+	color: #aaa;
+	transform: translateX(-50%);
+}
+
+.chating .chat .textbox {
+	position: relative;
+	display: inline-block;
+	max-width: calc(100% - 70px);
+	padding: 10px;
+	margin-top: 7px;
+	font-size: 13px;
+	border-radius: 10px;
+}
+
+.chating .chat .textbox::before {
+	position: absolute;
+	display: block;
+	top: 0;
+	font-size: 1.5rem;
+}
+
+.chating .ch1 .textbox {
+	margin-left: 20px;
+	background-color: #ddd;
+}
+
+.chating .ch1 .textbox::before {
+	left: -15px;
+	content: "◀";
+	color: #ddd;
+}
+
+.chating .ch2 {
+	flex-direction: row-reverse;
+}
+
+.chating .ch2 .textbox {
+	margin-right: 20px;
+	background-color: #F9EB54;
+}
+
+.chating .ch2 .textbox::before {
+	right: -15px;
+	content: "▶";
+	color: #F9EB54;
+}
 </style>
 </head>
 <body>
 
 	<%@ include file="../main/header.jsp"%>
-<br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 		<h1>채팅방</h1>
 		<input type="hidden" id="userid" value="${sessionScope.userid}">
@@ -154,15 +229,16 @@
 					} else {
 
 						if (d.userid == sessionid) {
-							$("#chating").append(
-									"<div class='bubble me'><strong style='color:black;'>"
-											+ d.userid + "</strong><br>"
-											+ d.msg + "</div>");
+							$("#chating")
+									.append(
+											"<div class='chat ch2'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${medto.filename}'></i></div><div class='textbox'>"
+													+ d.msg + "</div></div>");
+
 						} else {
-							$("#chating").append(
-									"<div class='bubble others'><strong style='color:black;'>"
-											+ d.userid + "</strong><br>"
-											+ d.msg + "</div>");
+							$("#chating")
+									.append(
+											"<div class='chat ch1'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${dto.filename}'></i></div><div class='textbox'>"
+													+ d.msg + "</div></div>");
 						}
 						$("#chating").scrollTop($("#chating")[0].scrollHeight);
 					}
@@ -225,14 +301,12 @@
 					$.each(response, function(index, row) {
 						if (sessionId == row.userid) {
 							$("#chating").append(
-									"<div class='bubble me'><strong style='color:black;'>"
-											+ row.userid + "</strong><br>"
-											+ row.message + "</div>");
+									"<div class='chat ch2'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${medto.filename}'></i></div><div class='textbox'>"
+											+ row.message + "</div></div>");
 						} else {
 							$("#chating").append(
-									"<div class='bubble others'><strong style='color:black;'>"
-											+ row.userid + "</strong><br>"
-											+ row.message + "</div>");
+									"<div class='chat ch1'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${dto.filename}'></i></div><div class='textbox'>"
+											+ row.message + "</div></div>");
 						}
 					});
 					$("#chating").scrollTop($("#chating")[0].scrollHeight);

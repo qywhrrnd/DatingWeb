@@ -18,6 +18,8 @@ import com.example.datingproject.model.chat.ChatBoxDAO;
 import com.example.datingproject.model.chat.ChatBoxDTO;
 import com.example.datingproject.model.chat.ChatDAO;
 import com.example.datingproject.model.chat.ChatDTO;
+import com.example.datingproject.model.info.InfoDAO;
+import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
 import com.example.datingproject.model.point.PointDAO;
 
@@ -38,6 +40,9 @@ public class ChatController {
 
 	@Autowired
 	MemberDAO memberDao;
+	
+	@Autowired
+	InfoDAO infoDao;
 
 	List<ChatBoxDTO> roomList = new ArrayList<ChatBoxDTO>();
 	static int roomNumber = 0;
@@ -50,7 +55,7 @@ public class ChatController {
 		String userid = (String) session.getAttribute("userid");
 
 		List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
-		url = "chat/box";
+		url = "chat/chatbox";
 		return new ModelAndView(url, "list", list);
 	}
 
@@ -58,7 +63,13 @@ public class ChatController {
 	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
 		ModelAndView mv = new ModelAndView();
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
-
+		String otherid = (String) params.get("otherid");
+		String userid = (String) params.get("userid");
+		InfoDTO dto = infoDao.detail(otherid);
+		InfoDTO medto = infoDao.detail(userid);
+		
+		mv.addObject("dto", dto);
+		mv.addObject("medto", medto);
 		mv.addObject("roomNumber", params.get("roomNumber"));
 		mv.setViewName("chat/chat");
 
