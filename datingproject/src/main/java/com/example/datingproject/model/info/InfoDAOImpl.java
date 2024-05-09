@@ -105,4 +105,10 @@ public class InfoDAOImpl implements InfoDAO {
 		return session.selectOne("info.gender", userid);
 	}
 
+	@Override
+	public int followercount(String userid) {
+		return session.selectOne("info.followercount", userid);
+		
+	}
+
 }

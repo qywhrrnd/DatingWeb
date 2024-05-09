@@ -16,6 +16,7 @@
 	}
 </script>
 
+
 </head>
 <body>
 
@@ -29,8 +30,7 @@
 		<!-- Top navbar -->
 		
 		<!-- Header -->
-		<div
-			style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+		<div style="min-height: 800px; background-image: url('../resources/images/SAKA.jpg'); background-size: cover; background-position: center top;">
 			<!-- Mask -->
 			<span></span>
 			<!-- Header container -->
@@ -39,9 +39,7 @@
 					<div class="col-lg-7 col-md-10">
 						
 					
-						<a onclick="chat('${sessionScope.userid}', '${dto.userid}')"
-							class="btn btn-info">채팅하기</a>
-
+					
 					</div>
 				</div>
 			</div>
@@ -55,7 +53,7 @@
 							<div class="col-lg-3 order-lg-2">
 								<div class="card-profile-image">
 									<a href="#"> <img
-										src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+										src="resources/images/${dto.filename}"
 										class="rounded-circle">
 									</a>
 								</div>
@@ -64,8 +62,7 @@
 						<div
 							class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
 							<div class="d-flex justify-content-between">
-								<a href="#" class="btn btn-sm btn-info mr-4">Connect</a> <a
-									href="#" class="btn btn-sm btn-default float-right">Message</a>
+								<a onclick="chat('${sessionScope.userid}', '${dto.userid}')" class="btn btn-sm btn-info mr-4">채팅 쪾~~~♥</a>
 							</div>
 						</div>
 						<div class="card-body pt-0 pt-md-4">
@@ -74,7 +71,7 @@
 									<div
 										class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
-											<span class="heading">22</span> <span class="description">Friends</span>
+											<span class="heading">${sessionScope.follower}</span> <span class="description">followers</span>
 										</div>
 										<div>
 											<span class="heading">10</span> <span class="description">Photos</span>

@@ -76,6 +76,10 @@
 	<insert id="viewinsert">
 		insert into viewlog (userid1,userid2) values (#{userid1},#{userid2})
 	</insert>
+	
+	<select id="followercount" resultType="int">
+	select count(*) from follow where following=#{following}
+	</select>
 
 
 

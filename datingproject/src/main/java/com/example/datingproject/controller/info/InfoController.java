@@ -34,6 +34,7 @@ import com.example.datingproject.model.member.MemberDTO;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 @Controller
@@ -283,10 +284,15 @@ public class InfoController {
 
 	@GetMapping("/detail.do")
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
-			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
-
+			@RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
+		
+		
+		int follower = infoDao.followercount(otherid);
+		
+		session.setAttribute("follower",follower);
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
+			
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
 			InfoDTO dto = infoDao.detail(otherid);
