@@ -29,10 +29,10 @@
 		<!-- Top navbar -->
 		
 		<!-- Header -->
-		<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+		<div
 			style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
 			<!-- Mask -->
-			<span class="mask bg-gradient-default opacity-8"></span>
+			<span></span>
 			<!-- Header container -->
 			<div class="container-fluid d-flex align-items-center">
 				<div class="row">
@@ -110,7 +110,7 @@
 					</div>
 				</div>
 				<div class="col-xl-8 order-xl-1">
-					<div class="card bg-secondary shadow">
+					<div>
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
