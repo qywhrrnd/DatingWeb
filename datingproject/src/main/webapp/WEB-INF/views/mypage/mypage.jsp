@@ -383,7 +383,7 @@
 											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
+													href="/chat/room.do">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">
@@ -398,7 +398,7 @@
 																<div
 																	class="col-6 d-flex justify-content-center align-items-center">
 																	<div class="numbers">
-																		<p>Messages</p>
+																		<p>채팅</p>
 																		23
 																	</div>
 																</div>

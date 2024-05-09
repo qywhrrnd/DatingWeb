@@ -37,7 +37,7 @@
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-							
+
 
 							<li class="scroll-to-section"><a href="/#services">Services</a></li>
 							<li class="scroll-to-section"><a href="/#courses">Courses</a></li>
@@ -52,8 +52,8 @@
 							<li class="scroll-to-section"><a href="/#contact-section">Contact
 									Us</a></li>
 
-													
-							
+
+
 							<c:choose>
 								<c:when test="${sessionScope.userid != null}">
 									<li><a href="/info.do">데이트상대찾기</a></li>
@@ -62,12 +62,12 @@
 									<li><a href="#" onclick="showAlert()">데이트상대찾기</a></li>
 								</c:otherwise>
 							</c:choose>
-							
-							
-							
-							
-							
-							
+
+
+
+
+
+
 							<c:choose>
 								<c:when test="${sessionScope.userid != null}">
 									<li><a href="/mypage/mypage.do">마이페이지</a></li>
