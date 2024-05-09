@@ -18,6 +18,7 @@ import com.example.datingproject.model.chat.ChatBoxDAO;
 import com.example.datingproject.model.chat.ChatBoxDTO;
 import com.example.datingproject.model.chat.ChatDAO;
 import com.example.datingproject.model.chat.ChatDTO;
+import com.example.datingproject.model.member.MemberDAO;
 import com.example.datingproject.model.point.PointDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,6 +35,9 @@ public class ChatController {
 
 	@Autowired
 	PointDAO pointDao;
+
+	@Autowired
+	MemberDAO memberDao;
 
 	List<ChatBoxDTO> roomList = new ArrayList<ChatBoxDTO>();
 	static int roomNumber = 0;
@@ -66,16 +70,22 @@ public class ChatController {
 			@RequestParam(name = "otherid") String otherid) {
 		int countlog = chatboxDao.checkchatlog(userid, otherid);
 		int count = chatboxDao.chatboxcheck(userid, otherid);
+		int point = memberDao.getpoint(userid);
 
 		if (countlog == 0 && count == 0) {
-			List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
-			pointDao.chatpoint(userid);
-			chatboxDao.craetechatbox(userid, otherid);
-			return new ModelAndView("chat/box", "list", list);
-
+			if (point < 1000) {
+				String message = "포인트가 부족합니다. 충전해주세요.";
+				return new ModelAndView("point/buypoint", "message", message);
+			} else {
+				pointDao.chatpoint(userid);
+				chatboxDao.craetechatbox(userid, otherid);
+				chatboxDao.chatlog(userid, otherid);
+				List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
+				return new ModelAndView("chat/chatbox", "list", list);
+			}
 		} else {
 			List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
-			return new ModelAndView("chat/box", "list", list);
+			return new ModelAndView("chat/chatbox", "list", list);
 
 		}
 

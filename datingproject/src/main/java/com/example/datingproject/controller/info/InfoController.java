@@ -284,21 +284,22 @@ public class InfoController {
 	@GetMapping("/detail.do")
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
-		
-		System.out.println(userid);
-		System.out.println(otherid);
 
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
+			InfoDTO dto = infoDao.detail(otherid);
 			mav.setViewName("info/detail");
-			mav.addObject("dto", infoDao.detail(otherid));
+			mav.addObject("dto", dto);
+			System.out.println(dto);
 			return mav;
 
 		} else {
+			InfoDTO dto = infoDao.detail(otherid);
 			mav.setViewName("info/detail");
-			mav.addObject("dto", infoDao.detail(otherid));
+			mav.addObject("dto", dto);
+			System.out.println(dto);
 			return mav;
 
 		}

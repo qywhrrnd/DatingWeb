@@ -96,7 +96,7 @@
 <body>
 
 	<%@ include file="../main/header.jsp"%>
-
+<br><br><br><br>
 	<div class="container">
 		<h1>채팅방</h1>
 		<input type="hidden" id="userid" value="${sessionScope.userid}">

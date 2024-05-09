@@ -29,16 +29,16 @@
 
 
 	<insert id="savechat">
-		insert into chatting (idx, roomnumber, userid,
+		insert into chat (idx, roomnumber, userid,
 		message) values((select
-		nvl(max(idx) + 1, 1) from chatting),
+		nvl(max(idx) + 1, 1) from chat),
 		#{roomnumber}, #{userid},
 		#{message})
 	</insert>
 
 	<select id="loadchat"
 		resultType="com.example.datingproject.model.chat.ChatDTO">
-		select * from chatting where roomnumber=#{roomnumber} order
+		select * from chat where roomnumber=#{roomnumber} order
 		by idx
 	</select>
 
@@ -52,7 +52,6 @@
 	<insert id="chatlog">
 		insert into chatlog (userid1, userid2) values
 		(#{userid}, #{otherid})
-
 	</insert>
 
 

@@ -48,7 +48,7 @@ public class ChatBoxImpl implements ChatBoxDAO {
 	public void chatlog(String userid, String otherid) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("userid", userid);
-		map.put("userid", userid);
+		map.put("otherid", otherid);
 		session.insert("chat.chatlog",map);
 		
 	}

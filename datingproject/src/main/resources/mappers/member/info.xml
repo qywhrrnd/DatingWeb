@@ -42,10 +42,7 @@
 
 	<select id="detail"
 		resultType="com.example.datingproject.model.info.InfoDTO">
-		select name,address, gender, aiface, height, weight, mbti,
-		smoking, hobby,
-		style, education,
-		religion, job from info
+		select * from info
 		where
 		userid=#{userid}
 

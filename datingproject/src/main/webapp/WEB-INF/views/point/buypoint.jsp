@@ -41,7 +41,9 @@
 	}
 </script>
 
-
+<script>
+	alert("${message}");
+</script>
 
 </head>
 <body>
