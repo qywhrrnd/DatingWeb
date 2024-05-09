@@ -284,6 +284,9 @@ public class InfoController {
 	@GetMapping("/detail.do")
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
+		
+		System.out.println(userid);
+		System.out.println(otherid);
 
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
