@@ -30,7 +30,7 @@
 		<!-- Top navbar -->
 		
 		<!-- Header -->
-		<div style="min-height: 800px; background-image: url('../resources/images/SAKA.jpg'); background-size: cover; background-position: center top;">
+		<div style="min-height: 800px; background-image: url('../resources/images/디마리아.jpg'); background-size: cover; background-position: center top;">
 			<!-- Mask -->
 			<span></span>
 			<!-- Header container -->
@@ -84,14 +84,13 @@
 							</div>
 							<div class="text-center">
 								<h3>
-									Jessica Jones<span class="font-weight-light">, 27</span>
+									${dto.name}<span class="font-weight-light">, ${dto.age}</span>
 								</h3>
 								<div class="h5 font-weight-300">
-									<i class="ni location_pin mr-2"></i>Bucharest, Romania
+									<i class="ni location_pin mr-2"></i>${dto.address}
 								</div>
 								<div class="h5 mt-4">
-									<i class="ni business_briefcase-24 mr-2"></i>Solution Manager -
-									Creative Tim Officer
+									<i class="ni business_briefcase-24 mr-2"></i>${dto.job}
 								</div>
 								<div>
 									<i class="ni education_hat mr-2"></i>University of Computer
@@ -113,9 +112,7 @@
 								<div class="col-8">
 									<h3 class="mb-0">My account</h3>
 								</div>
-								<div class="col-4 text-right">
-									<a href="#!" class="btn btn-sm btn-primary">Settings</a>
-								</div>
+								
 							</div>
 						</div>
 						<div class="card-body">
@@ -128,7 +125,7 @@
 												<label class="form-control-label" for="input-username">Username</label>
 												<input type="text" id="input-username"
 													class="form-control form-control-alternative"
-													placeholder="Username" value="lucky.jesse">
+													placeholder="Username" value="lucky.jesse" readonly="readonly">
 											</div>
 										</div>
 										<div class="col-lg-6">
