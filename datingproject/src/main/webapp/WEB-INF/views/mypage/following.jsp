@@ -40,6 +40,18 @@
             location.href = "/cancelfollow.do?following=" + following
                 + "&follower=" + follower;
         }
+        
+        function point(pointValue, userId, otherId) {
+            let otherid = otherId; // otherId를 직접 사용
+            if (confirm("보고싶어?")) {
+                if (pointValue < 500) {
+                    alert("포인트를 충전하세요");
+                    location.href = "/point/buypoint.do";
+                } else {
+                    location.href = "/detail.do?userid=" + userId + "&otherid=" + otherid;
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -76,7 +88,8 @@
                                             </div>
                                         </div>
                                         <div class="button mt-2 d-flex flex-row align-items-center">
-                                            <a class="btn btn-sm btn-outline-primary w-100" href="/detail.do/${row.userid}">VIEW</a>
+                                            <a class="btn btn-sm btn-outline-primary w-100"
+													onclick="point(${sessionScope.point}, '${sessionScope.userid}', '${row.userid}')">VIEW</a>
                                             <input type="hidden" id="userid" value="${sessionScope.userid}">
                                             <c:choose>
                                                 <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
