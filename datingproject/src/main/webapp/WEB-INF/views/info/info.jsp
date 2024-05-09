@@ -38,22 +38,18 @@
 				+ "&follower=" + follower;
 	}
 
-	function point() {
-		let point = document.getElementById('point').value;
-
-		let userid = document.getElementById('userid').value;
-		let otherid = document.getElementById('otherid_' + userid).value;
-		if (confirm("보고싶어?")) {
-			if (point < 500) {
-				alert("포인트를 충전하세요");
-				location.href = "/point/buypoint.do";
-			} else {
-				location.href = "/detail.do?userid=" + userid + "&otherid="
-						+ otherid;
-			}
-		}
-
+	function point(pointValue, userId, otherId) {
+	    let otherid = otherId; // otherId를 직접 사용
+	    if (confirm("보고싶어?")) {
+	        if (pointValue < 500) {
+	            alert("포인트를 충전하세요");
+	            location.href = "/point/buypoint.do";
+	        } else {
+	            location.href = "/detail.do?userid=" + userId + "&otherid=" + otherid;
+	        }
+	    }
 	}
+
 </script>
 </head>
 <body>
@@ -99,7 +95,9 @@
 											</div>
 											<div class="button mt-2 d-flex flex-row align-items-center">
 												<a class="btn btn-sm btn-outline-primary w-100"
-													onclick="point()">VIEW</a>
+													onclick="point(${sessionScope.point}, '${sessionScope.userid}', '${row.userid}')">VIEW</a>
+
+
 												<c:choose>
 													<c:when
 														test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
