@@ -176,6 +176,7 @@
 		<h1>채팅방</h1>
 		<input type="hidden" id="userid" value="${sessionScope.userid}">
 		<input type="hidden" id="roomnumber" value="${roomNumber}">
+		<input type="hidden" id="otherid" value="${otherid}">
 
 		<div id="chating" class="chating"></div>
 
@@ -257,6 +258,7 @@
 				type : "message",
 				roomNumber : $("#roomnumber").val(),
 				userid : $("#userid").val(),
+				otherid : $("#otherid").val(),
 				msg : $("#message").val()
 			}
 
@@ -273,6 +275,7 @@
 					data : {
 						roomnumber : option.roomNumber,
 						userid : option.userid,
+						otherid : option.otherid,
 						message : option.msg
 					},
 					success : function() {
