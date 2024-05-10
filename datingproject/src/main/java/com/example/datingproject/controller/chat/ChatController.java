@@ -69,6 +69,7 @@ public class ChatController {
 		InfoDTO medto = infoDao.detail(userid);
 		
 		mv.addObject("dto", dto);
+		mv.addObject("otherid", otherid);
 		mv.addObject("medto", medto);
 		mv.addObject("roomNumber", params.get("roomNumber"));
 		mv.setViewName("chat/chat");
