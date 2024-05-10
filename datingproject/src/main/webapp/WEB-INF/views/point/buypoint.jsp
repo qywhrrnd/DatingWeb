@@ -42,7 +42,9 @@
 </script>
 
 <script>
-	alert("${message}");
+	if (message != null) {
+		alert("${message}");
+	}
 </script>
 
 </head>
