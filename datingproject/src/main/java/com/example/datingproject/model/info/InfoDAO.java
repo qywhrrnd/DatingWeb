@@ -30,4 +30,6 @@ public interface InfoDAO {
 	 void updatepoint(String userid);
 	 
 	 int gender(String userid);
+	 
+	 int followercount(String userid);
 }
