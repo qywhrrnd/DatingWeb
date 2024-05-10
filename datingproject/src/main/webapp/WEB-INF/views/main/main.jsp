@@ -41,7 +41,8 @@
 
 <body>
 	<%@ include file="../main/header.jsp"%>
-	<!-- ***** Main Banner Area Start ***** -->
+	
+
 	<section class="main-banner" id="top">
 		<div class="container">
 			<div class="row">
@@ -510,8 +511,8 @@
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
-									<input type="name" name="name" id="name"
-										placeholder="이름" autocomplete="on" required>
+									<input type="name" name="name" id="name" placeholder="이름"
+										autocomplete="on" required>
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
@@ -522,8 +523,7 @@
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
-									<textarea name="message" id="message"
-										placeholder="리뷰 내용"></textarea>
+									<textarea name="message" id="message" placeholder="리뷰 내용"></textarea>
 								</fieldset>
 							</div>
 							<div class="col-lg-12">

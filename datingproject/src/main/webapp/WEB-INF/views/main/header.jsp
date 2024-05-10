@@ -16,15 +16,10 @@
 <link rel="stylesheet" href="/resources/css/owl.css">
 <link rel="stylesheet" href="/resources/css/lightbox.css">
 
-<script>
-	function showAlert() {
-		alert("로그인이 필요합니다.");
-		window.location.href = '/member/pagelogin.do';
-	}
-</script>
 
 </head>
 <body>
+
 	<header class="header-area header-sticky">
 		<div class="container">
 			<div class="row">
@@ -105,6 +100,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</header>
 </body>
 </html>
