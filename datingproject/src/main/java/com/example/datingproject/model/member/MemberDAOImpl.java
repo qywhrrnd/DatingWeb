@@ -55,4 +55,15 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne("member.getpoint", userid);
 	}
 
+	@Override
+	public void uplvl(String userid) {
+		session.update("member.uplvl", userid);
+
+	}
+
+	@Override
+	public int getlvl(String userid) {
+		return session.selectOne("member.getlvl", userid);
+	}
+
 }

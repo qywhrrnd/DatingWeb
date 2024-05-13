@@ -11,8 +11,10 @@
 <link href="resources/css/detail.css" rel="stylesheet">
 <script>
 	function chat(userid, otherid) {
-		location.href = "/chat/createchatbox.do?userid=" + userid + "&otherid="
-				+ otherid;
+		if (confirm("1000point를 이용해 채팅을 시작하시겠습니까?")) {
+			location.href = "/chat/createchatbox.do?userid=" + userid
+					+ "&otherid=" + otherid;
+		}
 	}
 </script>
 
@@ -31,7 +33,7 @@
 
 		<!-- Header -->
 		<div
-			style="min-height: 800px; background-image: url('../resources/images/디마리아.jpg'); background-size: cover; background-position: center top;">
+			style="min-height: 800px; background-image: url('../resources/images/back.jpg'); background-size: cover; background-position: center top;">
 			<!-- Mask -->
 			<span></span>
 			<!-- Header container -->
@@ -59,7 +61,7 @@
 							class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
 							<div class="d-flex justify-content-between">
 								<a onclick="chat('${sessionScope.userid}', '${dto.userid}')"
-									class="btn btn-sm btn-info mr-4">채팅 쪾~~~♥</a>
+									class="btn btn-sm btn-info mr-4">채팅</a>
 							</div>
 						</div>
 						<div class="card-body pt-0 pt-md-4">
@@ -85,9 +87,10 @@
 									${dto.name}<span class="font-weight-light">(${dto.age})</span>
 								</h3>
 								<div class="h5 font-weight-300">
-									<i class="ni location_pin mr-2"></i>키: ${dto.height} <br>몸무게: ${dto.weight}<br>학력:${dto.education}
+									<i class="ni location_pin mr-2"></i>키: ${dto.height} <br>몸무게:
+									${dto.weight}<br>학력:${dto.education}
 								</div>
-								
+
 								<div class="h5 mt-4">
 									<i class="ni business_briefcase-24 mr-2"></i>${dto.job}
 								</div>
@@ -101,7 +104,11 @@
 					</div>
 				</div>
 				<div class="col-xl-8 order-xl-1">
-				<br><br><br><br><br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 					<div>
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
@@ -119,8 +126,14 @@
 							<form>
 
 									<hr class="my-4">
+<<<<<<< HEAD
 									
 									<h6 class="heading-small text-muted mb-4"> 나를 소개해요</h6>
+=======
+
+									<h6 class="heading-small text-muted mb-4">Contact
+										information</h6>
+>>>>>>> branch 'master' of https://github.com/JaeGyunP/DatingWeb.git
 									<div class="pl-lg-4">
 										<div class="row">
 											<div class="col-md-12">
@@ -180,7 +193,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<hr class="my-4">
 
 
@@ -190,17 +203,41 @@
 									<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
 									
 									<div class="pl-lg-4">
+<<<<<<< HEAD
 									<div class="form-group focused">
 									 <a>${dto.description}</a>
 									</div>
 
 
 									
+=======
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group focused">
+													<img src="resources/images/${dto.filename}">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group">
+													<img src="resources/images/${dto.filename}">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-6">
+												<img src="resources/images/${dto.filename}">
+											</div>
+											<div class="col-lg-6">
+												<img src="resources/images/${dto.filename}">
+											</div>
+										</div>
+>>>>>>> branch 'master' of https://github.com/JaeGyunP/DatingWeb.git
 									</div>
-									<hr class="my-4">
-									<!-- Address -->
-					
-									<!-- Description -->
+								</div>
+								<hr class="my-4">
+								<!-- Address -->
+
+								<!-- Description -->
 							</form>
 						</div>
 					</div>

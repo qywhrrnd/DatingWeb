@@ -49,6 +49,11 @@
            }
        }
    }
+   function uplvl(){
+	   if(confirm("레벨을 올리시겠습니까?")){
+		   location.href = "/member/uplvl.do";
+	   }
+   }
 
 </script>
 </head>
@@ -64,6 +69,10 @@
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
 		<div class="row justify-content-center">
+			<h2>나의 얼굴 점수 : ${map.Aiface}</h2>
+			<h3>나의 레벨 : ${map.lvl}</h3>
+			<h6>레벨을 올리면 더 높은 점수의 회원들을 확인할 수 있습니다.</h6>
+			<input type="button" value="레벨 올리기" onclick="uplvl()">
 			<c:choose>
 				<c:when test="${sessionScope.gender == 1}">
 					<!-- 성별이 여성일 때만 실행될 부분 -->

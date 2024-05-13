@@ -18,18 +18,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.datingproject.model.info.FollowDTO;
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
-import com.example.datingproject.model.member.MemberDTO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -208,9 +205,16 @@ public class InfoController {
 	}
 
 	@RequestMapping("/info.do")
-	public ModelAndView list() {
-		List<InfoDTO> list = infoDao.list();
+	public ModelAndView list(HttpSession session) {
+		String userid = (String) session.getAttribute("userid");
+		int lvl = mDao.getlvl(userid);
+		double Aiface = infoDao.getaiface(userid);
+		double a = lvl + Aiface;
+		
+		List<InfoDTO> list = infoDao.list(a);
 		Map<String, Object> map = new HashMap<>();
+		map.put("Aiface", Aiface);
+		map.put("lvl", lvl);
 		map.put("list", list);
 		map.put("idao", infoDao);
 		return new ModelAndView("info/info", "map", map);
@@ -228,10 +232,13 @@ public class InfoController {
 
 	@RequestMapping("/checkfollow.do")
 	public ModelAndView checkfollow(@RequestParam(name = "following") String following,
-			@RequestParam(name = "follower") String follower) {
+			@RequestParam(name = "follower") String follower, HttpSession session) {
 		int check = infoDao.checkfollow(following, follower);
-
-		List<InfoDTO> list = infoDao.list();
+		String userid = (String) session.getAttribute("userid");
+		int lvl = mDao.getlvl(userid);
+		double Aiface = infoDao.getaiface(userid);
+		double a = lvl + Aiface;
+		List<InfoDTO> list = infoDao.list(a);
 		Map<String, Object> map = new HashMap<>();
 		map.put("check", check);
 		map.put("list", list);
