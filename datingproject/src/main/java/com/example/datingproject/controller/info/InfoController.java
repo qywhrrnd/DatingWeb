@@ -45,10 +45,10 @@ public class InfoController {
 	InfoDTO infoDto;
 	@Autowired
 	MemberDAO mDao;
-	@Autowired
-	ReviewDTO reviewDto;
+	
 	@Autowired
 	ReviewDAO reviewDao;
+	
 
 	@Autowired
 	private HttpServletRequest request;
@@ -217,6 +217,7 @@ public class InfoController {
 		double Aiface = infoDao.getaiface(userid);
 		double a = lvl * 0.1;
 		double b = Aiface + a;
+		b = Math.floor(b * 100) / 100.00;
 		List<InfoDTO> list = infoDao.list(b);
 		Map<String, Object> map = new HashMap<>();
 		map.put("b", b);
@@ -296,42 +297,43 @@ public class InfoController {
 		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
+
 	@GetMapping("/detail.do")
 
-	public ModelAndView detail(@RequestParam(name = "userid") String userid,
-			@RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
+	   public ModelAndView detail(@RequestParam(name = "userid") String userid,
+	         @RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
 
-		int follower = infoDao.followercount(otherid);
+	      int follower = infoDao.followercount(otherid);
 
-		session.setAttribute("follower", follower);
-		int count = infoDao.viewlog(userid, otherid);
-		if (count == 0) {
+	      session.setAttribute("follower", follower);
+	      int count = infoDao.viewlog(userid, otherid);
+	      if (count == 0) {
 
-			infoDao.insertlog(userid, otherid);
-			infoDao.updatepoint(userid);
-			
-			
-			List<ReviewDTO> list = reviewDao.list(otherid);
-			InfoDTO dto = infoDao.detail(otherid);
-			mav.setViewName("info/detail");
-			mav.addObject("list",list);
-			mav.addObject("dto", dto);
-			
-			
-			
-			return mav;
+	         infoDao.insertlog(userid, otherid);
+	         infoDao.updatepoint(userid);
+	         
+	         
+	         List<ReviewDTO> list = reviewDao.list(otherid);
+	         InfoDTO dto = infoDao.detail(otherid);
+	         mav.setViewName("info/detail");
+	         mav.addObject("list",list);
+	         mav.addObject("dto", dto);
+	         
+	         
+	         
+	         return mav;
 
-		} else {
-			List<ReviewDTO> list = reviewDao.list(otherid);
-			InfoDTO dto = infoDao.detail(otherid);
-			mav.setViewName("info/detail");
-			mav.addObject("list",list);
-			mav.addObject("dto", dto);
-			System.out.println(dto);
-			return mav;
+	      } else {
+	         List<ReviewDTO> list = reviewDao.list(otherid);
+	         InfoDTO dto = infoDao.detail(otherid);
+	         mav.setViewName("info/detail");
+	         mav.addObject("list",list);
+	         mav.addObject("dto", dto);
+	         System.out.println(dto);
+	         return mav;
 
-		}
+	      }
 
-	}
+	   }
 
 }
