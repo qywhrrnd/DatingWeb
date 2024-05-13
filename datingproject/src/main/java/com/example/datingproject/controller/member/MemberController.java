@@ -148,6 +148,7 @@ public class MemberController {
 			int lvl = memberDao.getlvl(userid);
 			double Aiface = infoDao.getaiface(userid);
 			double b = Aiface + (lvl * 0.1);
+			b = Math.floor(b * 100) / 100.00;
 			if (b > 5.00) {
 				String message = "더 이상 올릴수없습니다.";
 				String alertScript = "<script>alert('" + message + "');</script>";
