@@ -13,5 +13,7 @@ public interface MemberDAO {
 	
 	int getpoint(String userid);
 	
+	void uplvl(String userid);
 	
+	int getlvl(String userid);
 }

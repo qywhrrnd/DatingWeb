@@ -21,8 +21,8 @@ public class InfoDAOImpl implements InfoDAO {
 	}
 
 	@Override
-	public List<InfoDTO> list() { // TODO Auto-generated method stub
-		return session.selectList("info.list");
+	public List<InfoDTO> list(double a) {
+		return session.selectList("info.list", a);
 	}
 
 	@Override
@@ -108,7 +108,12 @@ public class InfoDAOImpl implements InfoDAO {
 	@Override
 	public int followercount(String userid) {
 		return session.selectOne("info.followercount", userid);
-		
+
+	}
+
+	@Override
+	public double getaiface(String userid) {
+		return session.selectOne("info.getaiface", userid);
 	}
 
 }

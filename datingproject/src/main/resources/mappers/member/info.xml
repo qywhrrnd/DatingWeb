@@ -13,12 +13,15 @@
 
 	<select id="list"
 		resultType="com.example.datingproject.model.info.InfoDTO">
-		select * from info order by aiface desc
+		select * from info where aiface &lt; #{a}
+		order by aiface
+		desc
 
 	</select>
 
 	<select id="gender" resultType="int">
-		select gender from info where userid=#{userid}
+		select gender from info where
+		userid=#{userid}
 	</select>
 
 
@@ -37,7 +40,8 @@
 	</select>
 
 	<delete id="cancelfollow">
-		delete from follow where following = #{following} and follower = #{follower}
+		delete from follow where following = #{following} and
+		follower = #{follower}
 	</delete>
 
 	<select id="detail"
@@ -65,22 +69,30 @@
 
 	<update id="point">
 		update member set
-		point = point - 500
-		where userid = #{userid}
+		point = point - 1000
+		where userid =
+		#{userid}
 	</update>
 
 	<select id="viewcount" resultType="int">
-		select count(*) from viewlog where userid1=#{userid1} and userid2=#{userid2}
+		select count(*) from viewlog
+		where userid1=#{userid1} and userid2=#{userid2}
 	</select>
 
 	<insert id="viewinsert">
-		insert into viewlog (userid1,userid2) values (#{userid1},#{userid2})
+		insert into viewlog (userid1,userid2) values
+		(#{userid1},#{userid2})
 	</insert>
-	
+
 	<select id="followercount" resultType="int">
-	select count(*) from follow where following=#{following}
+		select count(*) from
+		follow where following=#{following}
 	</select>
 
-
+	<select id="getaiface" resultType="double">
+		select aiface from
+		info where
+		userid = #{userid}
+	</select>
 
 </mapper>

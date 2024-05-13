@@ -14,9 +14,9 @@
 	</select>
 
 	<insert id="join">
-		insert into member (userid, passwd, info, point)
+		insert into member (userid, passwd, info, point, lvl)
 		values
-		(#{userid}, #{passwd}, 1, 0)
+		(#{userid}, #{passwd}, 1, 0, 1)
 	</insert>
 
 
@@ -43,9 +43,22 @@
 	</update>
 
 	<update id="chatpoint">
-		update member set point = point - 500 where
-		userid = #{userid}
+		update member set point = point - 1000 where
+		userid =
+		#{userid}
 	</update>
 
+
+	<update id="uplvl">
+		update member set lvl = lvl + 1 where userid =
+		#{userid}
+	</update>
+
+
+	<select id="getlvl" resultType="int">
+		select lvl from member
+		where
+		userid=#{userid}
+	</select>
 
 </mapper>

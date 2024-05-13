@@ -16,4 +16,6 @@ public class MemberDTO {
 	private String passwd;
 	private String num;
 	private int point;
+	private int lvl;
+	
 }

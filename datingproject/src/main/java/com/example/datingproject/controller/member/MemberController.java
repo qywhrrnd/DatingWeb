@@ -39,7 +39,7 @@ public class MemberController {
 
 	@Autowired
 	MemberDAO memberDao;
-	
+
 	@Autowired
 	InfoDAO infoDao;
 
@@ -68,7 +68,7 @@ public class MemberController {
 			mail.joinEmail(userid);
 
 		}
-		Map<String, String> response = new HashMap<>(); 
+		Map<String, String> response = new HashMap<>();
 		response.put("message", message);
 		return ResponseEntity.ok(response);
 	}
@@ -109,8 +109,7 @@ public class MemberController {
 		} else {
 			int info = memberDao.login(userid, passwd);
 			int point = memberDao.getpoint(userid);
-			
-			
+
 			if (info == 1) {
 				session.setAttribute("point", point);
 				session.setAttribute("userid", userid);
@@ -138,5 +137,19 @@ public class MemberController {
 		return mav;
 	}
 
-	
+	@RequestMapping("member/uplvl.do")
+	public ModelAndView uplvl(HttpSession session) {
+		String userid = (String) session.getAttribute("userid");
+		int point = memberDao.getpoint(userid);
+		if (point < 1000) {
+			String message = "포인트가 부족합니다. 충전해주세요.";
+			return new ModelAndView("point/buypoint", "message", message);
+		} else {
+			memberDao.uplvl(userid);
+			infoDao.updatepoint(userid);
+			return new ModelAndView("redirect:/info.do");
+		}
+
+	}
+
 }
