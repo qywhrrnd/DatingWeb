@@ -82,17 +82,14 @@
 							</div>
 							<div class="text-center">
 								<h3>
-									${dto.name}<span class="font-weight-light">, ${dto.age}</span>
+									${dto.name}<span class="font-weight-light">(${dto.age})</span>
 								</h3>
 								<div class="h5 font-weight-300">
-									<i class="ni location_pin mr-2"></i>${dto.address}
+									<i class="ni location_pin mr-2"></i>키: ${dto.height} <br>몸무게: ${dto.weight}<br>학력:${dto.education}
 								</div>
+								
 								<div class="h5 mt-4">
 									<i class="ni business_briefcase-24 mr-2"></i>${dto.job}
-								</div>
-								<div>
-									<i class="ni education_hat mr-2"></i>University of Computer
-									Science
 								</div>
 								<hr class="my-4">
 								<p>Ryan — the name taken by Melbourne-raised, Brooklyn-based
@@ -104,6 +101,7 @@
 					</div>
 				</div>
 				<div class="col-xl-8 order-xl-1">
+				<br><br><br><br><br>
 					<div>
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
@@ -111,121 +109,120 @@
 									<h3 class="mb-0">My account</h3>
 								</div>
 
+
+
 							</div>
 						</div>
+
+
 						<div class="card-body">
 							<form>
-								<h6 class="heading-small text-muted mb-4">User information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-username">키</label>
-												<input type="text" id="input-username"
-													class="form-control form-control-alternative"
-													placeholder="Username" value="${dto.height}"
-													readonly="readonly">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label class="form-control-label" for="input-email">몸무게</label>
-												<input type="text" id="input-email"
-													class="form-control form-control-alternative"
-													value="${dto.weight}" readonly="readonly">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">학력</label>
-												<input type="text" id="input-first-name"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.education}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-last-name">직업</label>
-												<input type="text" id="input-last-name"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.job}">
-											</div>
-										</div>
-									</div>
-								</div>
-								<hr class="my-4">
-								<!-- Address -->
-								<h6 class="heading-small text-muted mb-4">Contact
-									information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">스타일</label>
-												<input id="input-address"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.style}" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">취미</label>
-												<input id="input-address"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.hobby}" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-city">MBTI</label>
-												<input type="text" id="input-city"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.MBTI}">
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-country">종교</label>
-												<input type="text" id="input-country"
-													class="form-control form-control-alternative"
-													readonly="readonly" value="${dto.religion}">
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label class="form-control-label" for="input-country">흡연</label>
-												<c:choose>
-													<c:when test="${dto.smoking == 1}">
-														<input type="text" id="input-postal-code"
-															class="form-control form-control-alternative"
-															readonly="readonly" value="흡연">
-													</c:when>
-													<c:when test="${dto.smoking == 2}">
-														<input type="text" id="input-postal-code"
-															class="form-control form-control-alternative"
-															readonly="readonly" value="비흡연">
-													</c:when>
-												</c:choose>
 
-											</div>
-										</div>
-									</div>
-								</div>
-								<hr class="my-4">
-								<!-- Description -->
 								<h6 class="heading-small text-muted mb-4">About me</h6>
 								<div class="pl-lg-4">
 									<div class="form-group focused">
-										<label>나의 한마디</label>
-										<a>${dto.description}</a>
+										<label>나의 한마디</label> <a>${dto.description}</a>
 									</div>
-								</div>
+
+									<hr class="my-4">
+									
+									<h6 class="heading-small text-muted mb-4">Contact
+										information</h6>
+									<div class="pl-lg-4">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-address">스타일</label>
+													<input id="input-address"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="${dto.style}" type="text">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-address">취미</label>
+													<input id="input-address"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="${dto.hobby}" type="text">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-4">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-city">MBTI</label>
+													<input type="text" id="input-city"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="${dto.MBTI}">
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-country">종교</label>
+													<input type="text" id="input-country"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="${dto.religion}">
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="form-group">
+													<label class="form-control-label" for="input-country">흡연</label>
+													<c:choose>
+														<c:when test="${dto.smoking == 1}">
+															<input type="text" id="input-postal-code"
+																class="form-control form-control-alternative"
+																readonly="readonly" value="흡연">
+														</c:when>
+														<c:when test="${dto.smoking == 2}">
+															<input type="text" id="input-postal-code"
+																class="form-control form-control-alternative"
+																readonly="readonly" value="비흡연">
+														</c:when>
+													</c:choose>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<hr class="my-4">
+
+
+
+
+
+									<h6 class="heading-small text-muted mb-4">User Photos</h6>
+
+
+									<div class="pl-lg-4">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group focused">
+													<img src="resources/images/${dto.filename}">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group">
+													<img src="resources/images/${dto.filename}">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-6">
+												<img src="resources/images/${dto.filename}">
+											</div>
+											<div class="col-lg-6">
+												<img src="resources/images/${dto.filename}">
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr class="my-4">
+									<!-- Address -->
+					
+									<!-- Description -->
 							</form>
 						</div>
 					</div>
