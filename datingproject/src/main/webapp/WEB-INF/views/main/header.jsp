@@ -31,53 +31,37 @@
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-
-
+				
 							<li class="scroll-to-section"><a href="/#services">Services</a></li>
 							<li class="scroll-to-section"><a href="/#courses">Courses</a></li>
-							<li class="has-sub"><a href="javascript:void(0)">Pages</a>
-								<ul class="sub-menu">
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="our-services.html">Our Services</a></li>
-									<li><a href="contact-us.html">Contact Us</a></li>
-								</ul></li>
+
 							<li class="scroll-to-section"><a href="/#simple-cta">이벤트</a></li>
 							<li class="scroll-to-section"><a href="/#testimonials">Testimonials</a></li>
 							<li class="scroll-to-section"><a href="/#contact-section">Contact
 									Us</a></li>
 
 
+							<li class="has-sub"><a href="javascript:void(0)">데마 이용하기</a>
+								<ul class="sub-menu">
+									<c:choose>
+										<c:when test="${sessionScope.userid != null}">
+											<li><a href="/info.do">데이트상대찾기</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="#" onclick="showAlert()">데이트상대찾기</a></li>
+										</c:otherwise>
+									</c:choose>
 
-							<c:choose>
-								<c:when test="${sessionScope.userid != null}">
-									<li><a href="/info.do">데이트상대찾기</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="#" onclick="showAlert()">데이트상대찾기</a></li>
-								</c:otherwise>
-							</c:choose>
+									<c:choose>
+										<c:when test="${sessionScope.userid != null}">
+											<li><a href="/mypage/mypage.do">마이페이지</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="#" onclick="showAlert()">마이페이지</a></li>
+										</c:otherwise>
+									</c:choose>
 
-
-
-
-
-
-							<c:choose>
-								<c:when test="${sessionScope.userid != null}">
-									<li><a href="/mypage/mypage.do">마이페이지</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="#" onclick="showAlert()">마이페이지</a></li>
-								</c:otherwise>
-							</c:choose>
-
-
-
-
-
-
-
+								</ul></li>
 
 
 							<c:choose>
@@ -100,7 +84,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</header>
 </body>
 </html>

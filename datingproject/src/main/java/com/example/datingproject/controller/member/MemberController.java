@@ -123,7 +123,7 @@ public class MemberController {
 				session.setAttribute("point", point);
 				session.setAttribute("gender", gender);
 				message = "환영합니다.";
-				url = "main/main";
+				url = "redirect:/";
 			}
 		}
 		return new ModelAndView(url, "message", message);

@@ -248,50 +248,40 @@
 												<div class="left-image" style="width: 350px; height: 365;">
 													<img src="/resources/images/llll.png" alt="">
 													<div class="price">
-														<h6>500</h6>
+														<h6>₩500</h6>
 													</div>
 												</div>
 												<div class="right-content">
 													<h4>데이트 상대를 찾아보세요</h4>
 													<p>
-														Did you know that you can visit <a rel="nofollow"
-															href="https://www.toocss.com/" target="_blank">TooCSS
-															website</a> for latest listing of HTML templates and a
-														variety of useful templates. <br> <br>You just
-														need to go and visit that website right now. IF you have
-														any suggestion or comment about this template, you can
-														feel free to go to contact page for our email address.
+														상대방의 상세 정보를 확인해보세요 <br> 단돈 500원에 상대방에 대해 알 수 있습니다. <br>
+														<br>우리는 연애의 시작을 쉽고 흥미롭게 만들어 드립니다. 당신의 이상형을 찾을 수 있는
+														최적의 플랫폼을 제공합니다. 저희와 함께하면 새로운 사람들을 만나고, 특별한 연인을 만들어보세요. 우리의
+														서비스는 진정한 사랑을 찾는 분들을 위해 디자인되었습니다. 지금 시작해보세요, 당신의 인생을 바꿀 수도
+														있는 특별한 만남이 기다리고 있습니다.
 													</p>
-													<span>36 Hours</span> <span>4 Weeks</span> <span
-														class="last-span">3 Certificates</span>
+
 													<div class="text-button">
-														<a href="contact-us.html">Subscribe Course</a>
+														<a href="/info.do">데이트 상대 찾으러 가기</a>
 													</div>
 												</div>
 											</div>
 										</li>
 										<li>
 											<div>
-												<div class="left-image">
-													<img src="/resources/images/courses-02.jpg" alt="">
+												<div class="left-image" style="width: 350px; height: 365;">
+													<img src="/resources/images/aaaaaa.png" alt="">
 													<div class="price">
-														<h6>$156</h6>
+														<h6>free</h6>
 													</div>
 												</div>
 												<div class="right-content">
-													<h4>Creative Graphic Design</h4>
-													<p>
-														You are not allowed to redistribute this template ZIP file
-														on any other website without a permission from us.<br>
-														<br>There are some unethical people on this world
-														copied and reposted our templates without any permission
-														from us. Their Karma will hit them really hard. Yeah!
+													<h4>팔로우 팔로잉 기능을 이용해보세요</h4>
+													<p>우리는 당신이 누구를 팔로우하고 있는지, 누가 당신을 팔로우하고 있는지에 대한 정보를 손쉽게
+														확인할 수 있는 팔로우 팔로잉 기능을 제공합니다. 이 기능을 통해 당신이 관심을 가지는 사람들을
+														따라가고, 당신을 따라가는 사람들을 손쉽게 파악할 수 있습니다. 서로의 관심을 나누고 소통하며 더 나은
+														관계를 형성하는데 도움이 되는 기능입니다. 시작해보세요, 당신이 만나고 싶은 사람들이 여기에 있습니다.
 													</p>
-													<span>48 Hours</span> <span>6 Weeks</span> <span
-														class="last-span">1 Certificate</span>
-													<div class="text-button">
-														<a href="contact-us.html">Subscribe Course</a>
-													</div>
 												</div>
 											</div>
 										</li>
@@ -322,26 +312,17 @@
 										</li>
 										<li>
 											<div>
-												<div class="left-image">
-													<img src="/resources/images/courses-04.jpg" alt="">
-													<div class="price">
-														<h6>$76</h6>
-													</div>
+												<div class="left-image" style="width: 300px; height: 365;">
+													<img src="/resources/images/acc.jpg" alt="">
+
 												</div>
 												<div class="right-content">
-													<h4>WordPress Introduction</h4>
-													<p>
-														Quinoa roof party squid prism sustainable letterpress cray
-														hammock tumeric man bun mixtape tofu subway tile cronut.
-														Deep v ennui subway tile organic seitan.<br> <br>Kogi
-														VHS freegan bicycle rights try-hard green juice probably
-														haven't heard of them cliche la croix af chillwave.
-													</p>
-													<span>48 Hours</span> <span>4 Weeks</span> <span
-														class="last-span">2 Certificates</span>
-													<div class="text-button">
-														<a href="contact-us.html">Subscribe Course</a>
-													</div>
+													<h4>마음맞는 상대방과 데이트를 즐기세요</h4>
+													<p>당신이 사랑스런 순간을 만들어 내는데 도움이 되고 싶습니다. 저희 소개팅 플랫폼은 당신에게
+														특별한 데이트를 경험하고 의미 있는 관계를 형성할 수 있는 기회를 제공합니다. 우리는 당신이 그 특별한
+														사람과의 만남을 즐기며 새로운 경험을 나눌 수 있도록 돕기를 원합니다. 이제 당신의 데이트 생활을 더욱
+														풍요롭게 만들어 보세요. 우리와 함께라면, 더 나은 데이트가 당신을 기다리고 있습니다.</p>
+
 												</div>
 											</div>
 										</li>
@@ -483,18 +464,13 @@
 										<i class="fa fa-phone"></i>
 									</div>
 									<h4>Phone</h4>
-									<span>010-3379-4049</span>
+									<span>010-3379-4049</span><br>
+									<span>010-8561-9313</span><br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>010-4755-6762</span>
 								</div>
 							</div>
-							<div class="col-lg-4">
-								<div class="contact-info">
-									<div class="icon">
-										<i class="fa fa-phone"></i>
-									</div>
-									<h4>Phone</h4>
-									<span>090-080-0760</span>
-								</div>
-							</div>
+
+
 						</div>
 					</div>
 				</div>
