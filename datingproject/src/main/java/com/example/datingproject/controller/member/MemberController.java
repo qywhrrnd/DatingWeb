@@ -1,26 +1,14 @@
 package com.example.datingproject.controller.member;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.email.MailSendService;
@@ -29,9 +17,6 @@ import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
 
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -148,7 +133,9 @@ public class MemberController {
 			int lvl = memberDao.getlvl(userid);
 			double Aiface = infoDao.getaiface(userid);
 			double b = Aiface + (lvl * 0.1);
-			b = Math.floor(b * 100) / 100.00;
+			System.out.println(b);
+			b = Math.floor(b * 100) / 100.0;
+			System.out.println(b);
 			if (b > 5.00) {
 				String message = "더 이상 올릴수없습니다.";
 				String alertScript = "<script>alert('" + message + "');</script>";

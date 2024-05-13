@@ -217,7 +217,7 @@ public class InfoController {
 		double Aiface = infoDao.getaiface(userid);
 		double a = lvl * 0.1;
 		double b = Aiface + a;
-		b = Math.floor(b * 100) / 100.00;
+		b = Math.floor(b * 100) / 100.0;
 		List<InfoDTO> list = infoDao.list(b);
 		Map<String, Object> map = new HashMap<>();
 		map.put("b", b);
