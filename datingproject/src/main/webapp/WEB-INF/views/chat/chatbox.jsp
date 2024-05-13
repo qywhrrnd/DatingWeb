@@ -130,17 +130,17 @@ button {
 					<th class="go">참여</th>
 				</tr>
 
-				<c:forEach var="row" items="${list}">
+				<c:forEach var="row" items="${map.list}">
 					<tr>
 						<td class="num">${row.roomNumber}</td>
 						<c:choose>
 							<c:when test="${sessionScope.userid == row.user1}">
-								<td class="room">${row.user2 }</td>
+								<td class="room">${map.chatdao.searchname2(row.roomNumber)}</td>
 								<td class="go"><button type="button"
 										onclick="goRoom(parseInt('${row.roomNumber}'),'${sessionScope.userid}', '${row.user2}')">참여</button></td>
 							</c:when>
 							<c:when test="${sessionScope.userid == row.user2}">
-								<td class="room">${row.user1 }</td>
+								<td class="room">${map.chatdao.searchname(row.roomNumber)}</td>
 								<td class="go"><button type="button"
 										onclick="goRoom(parseInt('${row.roomNumber}'),'${sessionScope.userid}', '${row.user1}')">참여</button></td>
 							</c:when>

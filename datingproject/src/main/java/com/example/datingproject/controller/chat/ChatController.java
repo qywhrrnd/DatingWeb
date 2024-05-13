@@ -3,6 +3,7 @@ package com.example.datingproject.controller.chat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,10 +54,12 @@ public class ChatController {
 		String url = "";
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("userid");
-
 		List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
 		url = "chat/chatbox";
-		return new ModelAndView(url, "list", list);
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("chatdao", chatboxDao);
+		return new ModelAndView(url, "map", map);
 	}
 
 	@RequestMapping("chat/moveChating")

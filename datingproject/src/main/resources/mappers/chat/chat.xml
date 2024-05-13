@@ -30,16 +30,19 @@
 
 	<insert id="savechat">
 		insert into chat (idx, roomnumber, userid,
-		message) values((select
+		message)
+		values((select
 		nvl(max(idx) + 1, 1) from chat),
-		#{roomnumber}, #{userid},
+		#{roomnumber},
+		#{userid},
 		#{message})
 	</insert>
 
 	<select id="loadchat"
 		resultType="com.example.datingproject.model.chat.ChatDTO">
 		select * from chat where roomnumber=#{roomnumber} order
-		by idx
+		by
+		idx
 	</select>
 
 
@@ -54,5 +57,14 @@
 		(#{userid}, #{otherid})
 	</insert>
 
+	<select id="searchname" resultType="String">
+		select name from info where userid = (select user1 from chatbox where
+		roomnumber=#{roomnumber})
+	</select>
+
+	<select id="searchname2" resultType="String">
+		select name from info where userid = (select user2 from chatbox where
+		roomnumber=#{roomnumber})
+	</select>
 
 </mapper>

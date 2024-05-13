@@ -12,4 +12,8 @@ public interface ChatBoxDAO {
 	int checkchatlog(String userid, String otherid);
 
 	void chatlog(String userid, String otherid);
+	
+	String searchname(int roomnumber);
+	
+	String searchname2(int roomnumber);
 }

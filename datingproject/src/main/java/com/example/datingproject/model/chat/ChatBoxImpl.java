@@ -53,4 +53,14 @@ public class ChatBoxImpl implements ChatBoxDAO {
 		
 	}
 
+	@Override
+	public String searchname(int roomnumber) {
+		return session.selectOne("chat.searchname",roomnumber);
+	}
+
+	@Override
+	public String searchname2(int roomnumber) {
+		return session.selectOne("chat.searchname2",roomnumber);
+	}
+
 }
