@@ -32,13 +32,12 @@
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 				
-							<li class="scroll-to-section"><a href="/#services">Services</a></li>
-							<li class="scroll-to-section"><a href="/#courses">Courses</a></li>
+							<li class="scroll-to-section"><a href="/#services">성공사례</a></li>
+							<li class="scroll-to-section"><a href="/#courses">데마 기능 소개</a></li>
 
 							<li class="scroll-to-section"><a href="/#simple-cta">이벤트</a></li>
-							<li class="scroll-to-section"><a href="/#testimonials">Testimonials</a></li>
-							<li class="scroll-to-section"><a href="/#contact-section">Contact
-									Us</a></li>
+							<li class="scroll-to-section"><a href="/#testimonials">이용 리뷰</a></li>
+							<li class="scroll-to-section"><a href="/#contact-section">문의 하기</a></li>
 
 
 							<li class="has-sub"><a href="javascript:void(0)">데마 이용하기</a>
