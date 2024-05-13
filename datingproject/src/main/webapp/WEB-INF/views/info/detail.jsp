@@ -16,6 +16,15 @@
 					+ "&otherid=" + otherid;
 		}
 	}
+
+	function review(userid, otherid) {
+		if (confirm("리뷰를 작성하시겠습니까?")) {
+			location.href = "/review/reviewwrite.do?=userid=" + userid
+					+ "&otherid=" + otherid;
+
+		}
+
+	}
 </script>
 
 
@@ -211,10 +220,11 @@
 						</div>
 						<hr class="my-4">
 						<!-- Address -->
-						
-<!-- 리뷰 평점 -->
+
+						<!-- 리뷰 평점 -->
 						<h6 class="heading-small text-muted mb-4">★★리뷰 ★</h6>
-						<input type="button" value="리뷰쓰기" onclick=review()>
+						<input type="button" value="리뷰쓰기"
+							onclick="review('${sessionScope.userid}','${dto.userid}')">
 
 						<div class="pl-lg-4">
 
@@ -254,7 +264,7 @@ tr:hover {
 											<td>${row.start}</td>
 											<td>${row.reviewContent}</td>
 										</tr>
-								</c:forEach>
+									</c:forEach>
 								</table>
 
 
@@ -267,13 +277,13 @@ tr:hover {
 					</div>
 					<hr class="my-4">
 
-						<hr class="my-4">
+					<hr class="my-4">
 
 
-					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 	<footer class="footer">
