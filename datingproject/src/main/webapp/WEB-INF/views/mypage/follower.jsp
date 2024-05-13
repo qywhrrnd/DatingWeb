@@ -65,48 +65,57 @@
     <div class="container mt-5">
         <table class="table">
             <tbody>
-                <c:forEach var="row" items="${map.list}">
-                    <tr>
-                        <td>
-                            <div class="user-card">
-                                <div class="d-flex align-items-center p-3">
-                                    <div class="image">
-                                        <img src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded">
-                                    </div>
-                                    <div class="ml-3 w-100">
-                                        <input type="hidden" value="${row.userid}">
-                                        <h4 class="mb-0 mt-0">${row.name}</h4>
-                                        <span>${row.job}</span>
-                                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                                            <div class="d-flex flex-column">
-                                                <span class="followers">팔로워</span>
-                                                <span class="number2">${map.idao.countfollow(row.userid)}</span>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="rating">AI평점</span>
-                                                <span class="number3">${row.AIface}</span>
-                                            </div>
-                                        </div>
-                                        <div class="button mt-2 d-flex flex-row align-items-center">
-                                            <a class="btn btn-sm btn-outline-primary w-100"
+					<c:forEach var="row" items="${map.list}">
+						<tr>
+							<td>
+								<div class="user-card">
+									<div class="d-flex align-items-center p-3">
+										<div class="image">
+											<img
+												src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+												class="rounded">
+										</div>
+										<div class="ml-3 w-100">
+											<input type="hidden" value="${row.userid}">
+											<h4 class="mb-0 mt-0">${row.name}</h4>
+											<span>${row.job}</span>
+											<div
+												class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+												<div class="d-flex flex-column">
+													<span class="followers">팔로워</span> <span class="number2">${map.idao.countfollow(row.userid)}</span>
+												</div>
+												<div class="d-flex flex-column">
+													<span class="rating">AI평점</span> <span class="number3">${row.AIface}</span>
+												</div>
+											</div>
+											<div class="button mt-2 d-flex flex-row align-items-center">
+												<a class="btn btn-sm btn-outline-primary w-100"
 													onclick="point(${sessionScope.point}, '${sessionScope.userid}', '${row.userid}')">VIEW</a>
-                                            <input type="hidden" id="userid" value="${sessionScope.userid}">
-                                            <c:choose>
-                                                <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
-                                                    <input type="button" class="btn btn-sm btn-primary w-100 ml-3" onclick="cancelfollow('${row.userid}')" value="팔로잉" style="background-color: #EB3324; border-color: #EB3324;">
-                                                </c:when>
-                                                <c:when test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">
-                                                    <input type="button" class="btn btn-sm btn-primary w-100 ml-2" onclick="follow('${row.userid}')" value="팔로우">
-                                                </c:when>
-                                            </c:choose>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
+												<input type="hidden" id="userid"
+													value="${sessionScope.userid}">
+												<c:choose>
+													<c:when
+														test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
+														<input type="button"
+															class="btn btn-sm btn-primary w-100 ml-3"
+															onclick="cancelfollow('${row.userid}')" value="팔로잉"
+															style="background-color: #EB3324; border-color: #EB3324;">
+													</c:when>
+													<c:when
+														test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 0}">
+														<input type="button"
+															class="btn btn-sm btn-primary w-100 ml-2"
+															onclick="follow('${row.userid}')" value="팔로우">
+													</c:when>
+												</c:choose>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+			</tbody>
         </table>
     </div>
 </body>

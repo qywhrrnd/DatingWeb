@@ -230,6 +230,12 @@
 		let following = document.getElementById('userid').value;
 		location.href = "/info/followinglist.do?following=" + following;
 	}
+	function nofollowerlist() {
+		alert("없어요");
+	}
+	function nofollowinglist() {
+		alert("없어요");
+	}
 </script>
 </head>
 <body>
@@ -382,8 +388,7 @@
 												</a>
 											</div>
 											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													href="/chat/room.do">
+												<a class="member-item" href="/chat/room.do">
 													<div class="card mb-2 mb-md-5 py-3">
 														<div class="content">
 															<div class="row">
@@ -407,106 +412,170 @@
 													</div>
 												</a>
 											</div>
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													onclick="followinglist()">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-facebook text-center">
-																		<i class="fas fa-star"></i>
-																	</div>
-																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																	<input type="hidden" name="userid" value="${sessionScope.userid}">
-																		<p>Following</p>
-																		<span>${map.mdto.countfollowing}</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													onclick="followerlist()">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-success text-center">
-																		<i class="fas fa-users"></i>
-																	</div>
-																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																		<p>Follower</p>
-																		<span>${map.mdto.countfollower}</span>
+											<c:choose>
+												<c:when test="${map.mdto.countfollowing >= 1}">
+													<div class="col-lg-4 col-sm-6">
+														<a class="member-item" onclick="followinglist()">
+															<div class="card mb-2 mb-md-5 py-3">
+																<div class="content">
+																	<div class="row">
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="icon-big text-facebook text-center">
+																				<i class="fas fa-star"></i>
+																			</div>
+																		</div>
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="numbers">
+																				<input type="hidden" name="userid"
+																					value="${sessionScope.userid}">
+																				<p>Following</p>
+																				<span>${map.mdto.countfollowing}</span>
+																			</div>
+																		</div>
 																	</div>
 																</div>
 															</div>
-														</div>
+														</a>
 													</div>
-												</a>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-										aria-labelledby="pills-profile-tab">
-										<div class="p-3 border mb-3">
-											<a class="position-absolute" style="right: 25px"
-												href="setting.html" data-toggle="tooltip"
-												data-placement="bottom" title=""
-												data-original-title="Edit profile"><i class="fas fa-cog"></i></a>
-											<h3>Jenifer Tan</h3>
-											<p>
-												<b>Jobs:</b> Writter
-											</p>
-											<p>
-												<b>About:</b> Hello my name is Jenifer, My passion is
-												writting. I hope you enjoy with my article.
-											</p>
-											<p>
-												<b>Address:</b> Street 12 vo 05, California, United States
-											</p>
-											<p>
-												<b>Phone:</b> +1 987654321
-											</p>
+												</c:when>
+												<c:when test="${map.mdto.countfollowing < 1}">
+													<div class="col-lg-4 col-sm-6">
+														<a class="member-item" onclick="nofollowinglist()">
+															<div class="card mb-2 mb-md-5 py-3">
+																<div class="content">
+																	<div class="row">
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="icon-big text-facebook text-center">
+																				<i class="fas fa-star"></i>
+																			</div>
+																		</div>
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="numbers">
+																				<input type="hidden" name="userid"
+																					value="${sessionScope.userid}">
+																				<p>Following</p>
+																				<span>${map.mdto.countfollowing}</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+												</c:when>
+											</c:choose>
+											<c:choose>
+												<c:when test="${map.mdto.countfollower > 0}">
+													<div class="col-lg-4 col-sm-6">
+														<a class="member-item" onclick="followerlist()">
+															<div class="card mb-2 mb-md-5 py-3">
+																<div class="content">
+																	<div class="row">
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="icon-big text-facebook text-center">
+																				<i class="fas fa-star"></i>
+																			</div>
+																		</div>
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="numbers">
+																				<input type="hidden" name="userid"
+																					value="${sessionScope.userid}">
+																				<p>Following</p>
+																				<span>${map.mdto.countfollower}</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+												</c:when>
+												<c:when test="${map.mdto.countfollower < 1}">
+													<div class="col-lg-4 col-sm-6">
+														<a class="member-item" onclick="nofollowerlist()">
+															<div class="card mb-2 mb-md-5 py-3">
+																<div class="content">
+																	<div class="row">
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="icon-big text-facebook text-center">
+																				<i class="fas fa-star"></i>
+																			</div>
+																		</div>
+																		<div
+																			class="col-6 d-flex justify-content-center align-items-center">
+																			<div class="numbers">
+																				<input type="hidden" name="userid"
+																					value="${sessionScope.userid}">
+																				<p>Following</p>
+																				<span>${map.mdto.countfollower}</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+												</c:when>
+											</c:choose>
+											<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+												aria-labelledby="pills-profile-tab">
+												<div class="p-3 border mb-3">
+													<a class="position-absolute" style="right: 25px"
+														href="setting.html" data-toggle="tooltip"
+														data-placement="bottom" title=""
+														data-original-title="Edit profile"><i
+														class="fas fa-cog"></i></a>
+													<h3>Jenifer Tan</h3>
+													<p>
+														<b>Jobs:</b> Writter
+													</p>
+													<p>
+														<b>About:</b> Hello my name is Jenifer, My passion is
+														writting. I hope you enjoy with my article.
+													</p>
+													<p>
+														<b>Address:</b> Street 12 vo 05, California, United States
+													</p>
+													<p>
+														<b>Phone:</b> +1 987654321
+													</p>
 
-										</div>
-									</div>
-									<div class="tab-pane fade" id="pills-contact" role="tabpanel"
-										aria-labelledby="pills-contact-tab">
-										<div class="p-3 border mb-3">
-											<h5>Recently Published</h5>
-											<div class="row">
-												<div class="col-12">
-													<ul class="list-unstyled statistics">
-														<li><span class="text-primary">Oct 20</span> <a
-															class="h6"
-															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Toyota
-																Sienna rates marginal in passenger-side overlap crash
-																test</a></li>
-														<li><span class="text-primary">Oct 12</span> <a
-															class="h6"
-															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Ford
-																reveals autonomous vehicle philosophies, priorities</a></li>
-														<li><span class="text-primary">Oct 7</span> <a
-															class="h6"
-															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Offer
-																Hints to How Dogs Became Domesticated</a></li>
-														<li><span class="text-primary">Oct 6</span> <a
-															class="h6"
-															href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Consumer
-																apprehension grows over autonomous tech, study says</a></li>
-													</ul>
+												</div>
+											</div>
+											<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+												aria-labelledby="pills-contact-tab">
+												<div class="p-3 border mb-3">
+													<h5>Recently Published</h5>
+													<div class="row">
+														<div class="col-12">
+															<ul class="list-unstyled statistics">
+																<li><span class="text-primary">Oct 20</span> <a
+																	class="h6"
+																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Toyota
+																		Sienna rates marginal in passenger-side overlap crash
+																		test</a></li>
+																<li><span class="text-primary">Oct 12</span> <a
+																	class="h6"
+																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Ford
+																		reveals autonomous vehicle philosophies, priorities</a></li>
+																<li><span class="text-primary">Oct 7</span> <a
+																	class="h6"
+																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Offer
+																		Hints to How Dogs Became Domesticated</a></li>
+																<li><span class="text-primary">Oct 6</span> <a
+																	class="h6"
+																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Consumer
+																		apprehension grows over autonomous tech, study says</a></li>
+															</ul>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -516,8 +585,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 	<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog"
 		aria-labelledby="passwordModalLabel" aria-hidden="true">

@@ -106,7 +106,7 @@
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
-									<h3 class="mb-0">My account</h3>
+									<h3 class="mb-0">${dto.name} 프로필</h3>
 								</div>
 
 
@@ -118,16 +118,9 @@
 						<div class="card-body">
 							<form>
 
-								<h6 class="heading-small text-muted mb-4">About me</h6>
-								<div class="pl-lg-4">
-									<div class="form-group focused">
-										<label>나의 한마디</label> <a>${dto.description}</a>
-									</div>
-
 									<hr class="my-4">
 									
-									<h6 class="heading-small text-muted mb-4">Contact
-										information</h6>
+									<h6 class="heading-small text-muted mb-4"> 나를 소개해요</h6>
 									<div class="pl-lg-4">
 										<div class="row">
 											<div class="col-md-12">
@@ -181,6 +174,7 @@
 																readonly="readonly" value="비흡연">
 														</c:when>
 													</c:choose>
+													
 
 												</div>
 											</div>
@@ -193,31 +187,15 @@
 
 
 
-									<h6 class="heading-small text-muted mb-4">User Photos</h6>
-
-
+									<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
+									
 									<div class="pl-lg-4">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group focused">
-													<img src="resources/images/${dto.filename}">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group">
-													<img src="resources/images/${dto.filename}">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-6">
-												<img src="resources/images/${dto.filename}">
-											</div>
-											<div class="col-lg-6">
-												<img src="resources/images/${dto.filename}">
-												</div>
-											</div>
-										</div>
+									<div class="form-group focused">
+									 <a>${dto.description}</a>
+									</div>
+
+
+									
 									</div>
 									<hr class="my-4">
 									<!-- Address -->
