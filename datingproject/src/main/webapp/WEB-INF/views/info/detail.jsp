@@ -24,23 +24,20 @@
 
 
 	<%@ include file="../main/header.jsp"%>
-	
-	
+
+
 	<div class="main-content">
 		<!-- Top navbar -->
-		
+
 		<!-- Header -->
-		<div style="min-height: 800px; background-image: url('../resources/images/디마리아.jpg'); background-size: cover; background-position: center top;">
+		<div
+			style="min-height: 800px; background-image: url('../resources/images/디마리아.jpg'); background-size: cover; background-position: center top;">
 			<!-- Mask -->
 			<span></span>
 			<!-- Header container -->
 			<div class="container-fluid d-flex align-items-center">
 				<div class="row">
-					<div class="col-lg-7 col-md-10">
-						
-					
-					
-					</div>
+					<div class="col-lg-7 col-md-10"></div>
 				</div>
 			</div>
 		</div>
@@ -52,8 +49,7 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-3 order-lg-2">
 								<div class="card-profile-image">
-									<a href="#"> <img
-										src="resources/images/${dto.filename}"
+									<a href="#"> <img src="resources/images/${dto.filename}"
 										class="rounded-circle">
 									</a>
 								</div>
@@ -62,7 +58,8 @@
 						<div
 							class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
 							<div class="d-flex justify-content-between">
-								<a onclick="chat('${sessionScope.userid}', '${dto.userid}')" class="btn btn-sm btn-info mr-4">채팅 쪾~~~♥</a>
+								<a onclick="chat('${sessionScope.userid}', '${dto.userid}')"
+									class="btn btn-sm btn-info mr-4">채팅 쪾~~~♥</a>
 							</div>
 						</div>
 						<div class="card-body pt-0 pt-md-4">
@@ -71,7 +68,8 @@
 									<div
 										class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
-											<span class="heading">${sessionScope.follower}</span> <span class="description">followers</span>
+											<span class="heading">${sessionScope.follower}</span> <span
+												class="description">followers</span>
 										</div>
 										<div>
 											<span class="heading">10</span> <span class="description">Photos</span>
@@ -112,7 +110,7 @@
 								<div class="col-8">
 									<h3 class="mb-0">My account</h3>
 								</div>
-								
+
 							</div>
 						</div>
 						<div class="card-body">
@@ -122,36 +120,37 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-username">Username</label>
+												<label class="form-control-label" for="input-username">키</label>
 												<input type="text" id="input-username"
 													class="form-control form-control-alternative"
-													placeholder="Username" value="lucky.jesse" readonly="readonly">
+													placeholder="Username" value="${dto.height}"
+													readonly="readonly">
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label class="form-control-label" for="input-email">Email
-													address</label> <input type="email" id="input-email"
+												<label class="form-control-label" for="input-email">몸무게</label>
+												<input type="text" id="input-email"
 													class="form-control form-control-alternative"
-													placeholder="jesse@example.com">
+													value="${dto.weight}" readonly="readonly">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">First
-													name</label> <input type="text" id="input-first-name"
+												<label class="form-control-label" for="input-first-name">학력</label>
+												<input type="text" id="input-first-name"
 													class="form-control form-control-alternative"
-													placeholder="First name" value="Lucky">
+													readonly="readonly" value="${dto.education}">
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-last-name">Last
-													name</label> <input type="text" id="input-last-name"
+												<label class="form-control-label" for="input-last-name">직업</label>
+												<input type="text" id="input-last-name"
 													class="form-control form-control-alternative"
-													placeholder="Last name" value="Jesse">
+													readonly="readonly" value="${dto.job}">
 											</div>
 										</div>
 									</div>
@@ -164,38 +163,56 @@
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">Address</label>
+												<label class="form-control-label" for="input-address">스타일</label>
 												<input id="input-address"
 													class="form-control form-control-alternative"
-													placeholder="Home Address"
-													value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-													type="text">
+													readonly="readonly" value="${dto.style}" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group focused">
+												<label class="form-control-label" for="input-address">취미</label>
+												<input id="input-address"
+													class="form-control form-control-alternative"
+													readonly="readonly" value="${dto.hobby}" type="text">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-city">City</label>
+												<label class="form-control-label" for="input-city">MBTI</label>
 												<input type="text" id="input-city"
 													class="form-control form-control-alternative"
-													placeholder="City" value="New York">
+													readonly="readonly" value="${dto.MBTI}">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-country">Country</label>
+												<label class="form-control-label" for="input-country">종교</label>
 												<input type="text" id="input-country"
 													class="form-control form-control-alternative"
-													placeholder="Country" value="United States">
+													readonly="readonly" value="${dto.religion}">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="input-country">Postal
-													code</label> <input type="number" id="input-postal-code"
-													class="form-control form-control-alternative"
-													placeholder="Postal code">
+												<label class="form-control-label" for="input-country">흡연</label>
+												<c:choose>
+													<c:when test="${dto.smoking == 1}">
+														<input type="text" id="input-postal-code"
+															class="form-control form-control-alternative"
+															readonly="readonly" value="흡연">
+													</c:when>
+													<c:when test="${dto.smoking == 2}">
+														<input type="text" id="input-postal-code"
+															class="form-control form-control-alternative"
+															readonly="readonly" value="비흡연">
+													</c:when>
+												</c:choose>
+
 											</div>
 										</div>
 									</div>
@@ -205,10 +222,10 @@
 								<h6 class="heading-small text-muted mb-4">About me</h6>
 								<div class="pl-lg-4">
 									<div class="form-group focused">
-										<label>About Me</label>
+										<label>나의 한마디</label>
 										<textarea rows="4"
 											class="form-control form-control-alternative"
-											placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+											readonly="readonly">${dto.description}</textarea>
 									</div>
 								</div>
 							</form>
