@@ -68,7 +68,7 @@ public class MemberController {
 			mail.joinEmail(userid);
 
 		}
-		Map<String, String> response = new HashMap<>();
+		Map<String, String> response = new HashMap<>(); 
 		response.put("message", message);
 		return ResponseEntity.ok(response);
 	}

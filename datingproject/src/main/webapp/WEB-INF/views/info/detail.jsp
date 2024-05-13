@@ -223,9 +223,7 @@
 								<div class="pl-lg-4">
 									<div class="form-group focused">
 										<label>나의 한마디</label>
-										<textarea rows="4"
-											class="form-control form-control-alternative"
-											readonly="readonly">${dto.description}</textarea>
+										<a>${dto.description}</a>
 									</div>
 								</div>
 							</form>
