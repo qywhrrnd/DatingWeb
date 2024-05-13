@@ -104,16 +104,12 @@
 					</div>
 				</div>
 				<div class="col-xl-8 order-xl-1">
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br> <br> <br>
 					<div>
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
-									<h3 class="mb-0">${dto.name} 프로필</h3>
+									<h3 class="mb-0">${dto.name}프로필</h3>
 								</div>
 
 
@@ -123,128 +119,105 @@
 
 
 						<div class="card-body">
-							<form>
 
-									<hr class="my-4">
-<<<<<<< HEAD
-									
-									<h6 class="heading-small text-muted mb-4"> 나를 소개해요</h6>
-=======
 
-									<h6 class="heading-small text-muted mb-4">Contact
-										information</h6>
->>>>>>> branch 'master' of https://github.com/JaeGyunP/DatingWeb.git
-									<div class="pl-lg-4">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group focused">
-													<label class="form-control-label" for="input-address">스타일</label>
-													<input id="input-address"
-														class="form-control form-control-alternative"
-														readonly="readonly" value="${dto.style}" type="text">
-												</div>
-											</div>
+							<hr class="my-4">
+
+
+							<h6 class="heading-small text-muted mb-4">나를 소개해요</h6>
+
+
+							<h6 class="heading-small text-muted mb-4">Contact
+								information</h6>
+
+							<div class="pl-lg-4">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-address">스타일</label>
+											<input id="input-address"
+												class="form-control form-control-alternative"
+												readonly="readonly" value="${dto.style}" type="text">
 										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group focused">
-													<label class="form-control-label" for="input-address">취미</label>
-													<input id="input-address"
-														class="form-control form-control-alternative"
-														readonly="readonly" value="${dto.hobby}" type="text">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4">
-												<div class="form-group focused">
-													<label class="form-control-label" for="input-city">MBTI</label>
-													<input type="text" id="input-city"
-														class="form-control form-control-alternative"
-														readonly="readonly" value="${dto.MBTI}">
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group focused">
-													<label class="form-control-label" for="input-country">종교</label>
-													<input type="text" id="input-country"
-														class="form-control form-control-alternative"
-														readonly="readonly" value="${dto.religion}">
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group">
-													<label class="form-control-label" for="input-country">흡연</label>
-													<c:choose>
-														<c:when test="${dto.smoking == 1}">
-															<input type="text" id="input-postal-code"
-																class="form-control form-control-alternative"
-																readonly="readonly" value="흡연">
-														</c:when>
-														<c:when test="${dto.smoking == 2}">
-															<input type="text" id="input-postal-code"
-																class="form-control form-control-alternative"
-																readonly="readonly" value="비흡연">
-														</c:when>
-													</c:choose>
-													
-
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<hr class="my-4">
-
-
-
-
-
-									<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
-									
-									<div class="pl-lg-4">
-<<<<<<< HEAD
-									<div class="form-group focused">
-									 <a>${dto.description}</a>
-									</div>
-
-
-									
-=======
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group focused">
-													<img src="resources/images/${dto.filename}">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group">
-													<img src="resources/images/${dto.filename}">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-6">
-												<img src="resources/images/${dto.filename}">
-											</div>
-											<div class="col-lg-6">
-												<img src="resources/images/${dto.filename}">
-											</div>
-										</div>
->>>>>>> branch 'master' of https://github.com/JaeGyunP/DatingWeb.git
 									</div>
 								</div>
-								<hr class="my-4">
-								<!-- Address -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-address">취미</label>
+											<input id="input-address"
+												class="form-control form-control-alternative"
+												readonly="readonly" value="${dto.hobby}" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-city">MBTI</label>
+											<input type="text" id="input-city"
+												class="form-control form-control-alternative"
+												readonly="readonly" value="${dto.MBTI}">
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-country">종교</label>
+											<input type="text" id="input-country"
+												class="form-control form-control-alternative"
+												readonly="readonly" value="${dto.religion}">
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label class="form-control-label" for="input-country">흡연</label>
+											<c:choose>
+												<c:when test="${dto.smoking == 1}">
+													<input type="text" id="input-postal-code"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="흡연">
+												</c:when>
+												<c:when test="${dto.smoking == 2}">
+													<input type="text" id="input-postal-code"
+														class="form-control form-control-alternative"
+														readonly="readonly" value="비흡연">
+												</c:when>
+											</c:choose>
 
-								<!-- Description -->
-							</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<hr class="my-4">
+
+
+
+
+
+							<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
+
+							<div class="pl-lg-4">
+
+								<div class="form-group focused">
+									<a>${dto.description}</a>
+								</div>
+
+
+
+							</div>
 						</div>
+						<hr class="my-4">
+						<!-- Address -->
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<footer class="footer">
 		<div class="row align-items-center justify-content-xl-between">
 			<div class="col-xl-6 m-auto text-center">
