@@ -41,7 +41,7 @@
 
 <body>
 	<%@ include file="../main/header.jsp"%>
-	
+
 
 	<section class="main-banner" id="top">
 		<div class="container">
@@ -245,14 +245,14 @@
 									<ul class="nacc">
 										<li class="active">
 											<div>
-												<div class="left-image">
-													<img src="/resources/images/courses-01.jpg" alt="">
+												<div class="left-image" style="width: 350px; height: 365;">
+													<img src="/resources/images/llll.png" alt="">
 													<div class="price">
-														<h6>$128</h6>
+														<h6>500</h6>
 													</div>
 												</div>
 												<div class="right-content">
-													<h4>Web Development</h4>
+													<h4>데이트 상대를 찾아보세요</h4>
 													<p>
 														Did you know that you can visit <a rel="nofollow"
 															href="https://www.toocss.com/" target="_blank">TooCSS
@@ -471,10 +471,11 @@
 
 						<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7151.84524236698!2d-122.19494600413192!3d47.56605883252286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490695e625f8965%3A0xf99b055e76477def!2sNewcastle%20Beach%20Park%20Playground%2C%20Bellevue%2C%20WA%2098006%2C%20USA!5e0!3m2!1sen!2sth!4v1644335269264!5m2!1sen!2sth"
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10192.715542466526!2d126.91716883977586!3d37.555703978147026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca08f39f7e9bf%3A0xc61dbdcedf9c91a9!2z7ISc7Jq47Yq567OE7IucIOqzteyLnOyngOyXrCDrqqjsnLgg7J6Q7IucIOy7sOyCsOuKpOybkCDsmIHrj5kg7J6Q7IucIOyEnOyXrCDshLHrrLjsnpkg7J6Q7Iuc7J6Q!5e0!3m2!1sen!2sth!4v1644339645341!5m2!1sen!2sth"
 							width="100%" height="420px" frameborder="0"
 							style="border: 0; border-radius: 15px; position: relative; z-index: 2;"
-							allowfullscreen=""></iframe>
+							allowfullscreen=""> </iframe>
+
 						<div class="row">
 							<div class="col-lg-4 offset-lg-1">
 								<div class="contact-info">
@@ -482,7 +483,7 @@
 										<i class="fa fa-phone"></i>
 									</div>
 									<h4>Phone</h4>
-									<span>010-020-0340</span>
+									<span>010-3379-4049</span>
 								</div>
 							</div>
 							<div class="col-lg-4">
@@ -490,7 +491,7 @@
 									<div class="icon">
 										<i class="fa fa-phone"></i>
 									</div>
-									<h4>Mobile</h4>
+									<h4>Phone</h4>
 									<span>090-080-0760</span>
 								</div>
 							</div>
@@ -502,16 +503,17 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="section-heading">
-									<h6>리뷰 남기기</h6>
+									<h6>리뷰 / 문의하기</h6>
 									<h4>
-										리뷰를 <em>보내주세요</em>
+										리뷰 / 문의를 <em>보내주세요</em>
 									</h4>
+
 									<p>여러분의 리뷰가 데마에 큰 힘이 됩니다.</p>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
-									<input type="name" name="name" id="name" placeholder="이름"
+									<input type="text" name="name" id="name" placeholder="이름"
 										autocomplete="on" required>
 								</fieldset>
 							</div>

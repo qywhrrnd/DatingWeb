@@ -109,7 +109,7 @@ public class MemberController {
 		} else {
 			int info = memberDao.login(userid, passwd);
 			int point = memberDao.getpoint(userid);
-			int gender = infoDao.gender(userid);
+			
 			
 			if (info == 1) {
 				session.setAttribute("point", point);
@@ -118,7 +118,7 @@ public class MemberController {
 				url = "login/information";
 
 			} else if (info == 2) {
-				
+				int gender = infoDao.gender(userid);
 				session.setAttribute("userid", userid);
 				session.setAttribute("point", point);
 				session.setAttribute("gender", gender);
