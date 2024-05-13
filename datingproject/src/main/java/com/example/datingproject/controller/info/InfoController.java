@@ -296,6 +296,7 @@ public class InfoController {
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
 			InfoDTO dto = infoDao.detail(otherid);
+
 			mav.setViewName("info/detail");
 			mav.addObject("dto", dto);
 			System.out.println(dto);
