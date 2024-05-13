@@ -27,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
+import com.example.datingproject.model.review.ReviewDAO;
+import com.example.datingproject.model.review.ReviewDTO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,6 +45,10 @@ public class InfoController {
 	InfoDTO infoDto;
 	@Autowired
 	MemberDAO mDao;
+	@Autowired
+	ReviewDTO reviewDto;
+	@Autowired
+	ReviewDAO reviewDao;
 
 	@Autowired
 	private HttpServletRequest request;
@@ -290,8 +296,8 @@ public class InfoController {
 		map.put("idao", infoDao);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
-
 	@GetMapping("/detail.do")
+
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
 
@@ -303,16 +309,23 @@ public class InfoController {
 
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
+			
+			
+			List<ReviewDTO> list = reviewDao.list(otherid);
 			InfoDTO dto = infoDao.detail(otherid);
-
 			mav.setViewName("info/detail");
+			mav.addObject("list",list);
 			mav.addObject("dto", dto);
-			System.out.println(dto);
+			
+			
+			
 			return mav;
 
 		} else {
+			List<ReviewDTO> list = reviewDao.list(otherid);
 			InfoDTO dto = infoDao.detail(otherid);
 			mav.setViewName("info/detail");
+			mav.addObject("list",list);
 			mav.addObject("dto", dto);
 			System.out.println(dto);
 			return mav;

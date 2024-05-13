@@ -211,13 +211,70 @@
 						</div>
 						<hr class="my-4">
 						<!-- Address -->
+						
+<!-- 리뷰 평점 -->
+						<h6 class="heading-small text-muted mb-4">★★리뷰 ★</h6>
+						<input type="button" value="리뷰쓰기" onclick=review()>
+
+						<div class="pl-lg-4">
+
+							<div class="form-group focused">
+								<style>
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #ddd;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+</style>
+
+
+								<table>
+									<tr>
+										<th>이름</th>
+										<th>별점</th>
+										<th>후기</th>
+									</tr>
+									<c:forEach var="row" items="${list}">
+										<tr>
+											<td>${row.name}</td>
+											<td>${row.start}</td>
+											<td>${row.reviewContent}</td>
+										</tr>
+								</c:forEach>
+								</table>
+
+
+							</div>
+
+
+
+
+						</div>
+					</div>
+					<hr class="my-4">
+
+						<hr class="my-4">
 
 
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 	<footer class="footer">
 		<div class="row align-items-center justify-content-xl-between">
