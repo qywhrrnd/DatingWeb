@@ -5,7 +5,7 @@ import java.util.List;
 public interface InfoDAO {
 	void insertInfo(InfoDTO dto);
 
-	List<InfoDTO> list(double a);
+	List<InfoDTO> list(double b);
 
 	void follow(String following, String follower);
 

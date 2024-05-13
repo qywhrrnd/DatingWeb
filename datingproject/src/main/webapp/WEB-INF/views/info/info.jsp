@@ -49,16 +49,13 @@
            }
        }
    }
+   
+   
    function uplvl(){
-	   
-	   if (${map.lvl} == 5) {
-	        alert("더 이상 레벨을 올릴 수 없습니다.");
-	    } else {
-	        if (confirm("레벨을 올리시겠습니까?")) {
+	   	        if (confirm("레벨을 올리시겠습니까?")) {
 	            // Redirect to the uplvl page
-	            window.location.href = "/member/uplvl.do";
-	        }
-	    }
+	            location.href = "/member/uplvl.do";
+	        	    }
 	}
 
 </script>
@@ -71,12 +68,14 @@
 	<br>
 	<br>
 	<br>
+	   ${alertScript}
 	<input type="hidden" id="userid" value="${sessionScope.userid}">
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
 		<div class="row justify-content-center">
 			<h2>나의 얼굴 점수 : ${map.Aiface}</h2>
 			<h3>나의 레벨 : ${map.lvl}</h3>
+			<h3>볼수 있는 점수 : ${map.b}</h3>
 			<h6>레벨을 올리면 더 높은 점수의 회원들을 확인할 수 있습니다.</h6>
 			<input type="button" value="레벨 올리기" onclick="uplvl()">
 			<c:choose>

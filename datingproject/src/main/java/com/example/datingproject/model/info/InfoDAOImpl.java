@@ -21,8 +21,8 @@ public class InfoDAOImpl implements InfoDAO {
 	}
 
 	@Override
-	public List<InfoDTO> list(double a) {
-		return session.selectList("info.list", a);
+	public List<InfoDTO> list(double b) {
+		return session.selectList("info.list", b);
 	}
 
 	@Override

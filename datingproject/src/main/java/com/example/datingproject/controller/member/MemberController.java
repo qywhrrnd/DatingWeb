@@ -145,9 +145,19 @@ public class MemberController {
 			String message = "포인트가 부족합니다. 충전해주세요.";
 			return new ModelAndView("point/buypoint", "message", message);
 		} else {
-			memberDao.uplvl(userid);
-			infoDao.updatepoint(userid);
-			return new ModelAndView("redirect:/info.do");
+			int lvl = memberDao.getlvl(userid);
+			double Aiface = infoDao.getaiface(userid);
+			double b = Aiface + (lvl * 0.1);
+			if (b > 5.00) {
+				String message = "이미 참여한 이벤트 입니다";
+				// JavaScript 코드를 포함한 문자열 생성
+				String alertScript = "<script>alert('" + message + "');</script>";
+				return new ModelAndView("redirect:/info.do", "alertScript", alertScript);
+			} else {
+				memberDao.uplvl(userid);
+				infoDao.updatepoint(userid);
+				return new ModelAndView("redirect:/info.do");
+			}
 		}
 
 	}

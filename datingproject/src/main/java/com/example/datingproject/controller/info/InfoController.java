@@ -43,19 +43,19 @@ public class InfoController {
 	InfoDTO infoDto;
 	@Autowired
 	MemberDAO mDao;
-	
-	 @Autowired
-	    private HttpServletRequest request;
-	
-    private String redirectToPreviousPage() {
-        String referer = request.getHeader("Referer");
-        if (referer != null && !referer.isEmpty()) {
-            return "redirect:" + referer;
-        } else {
-            // 이전 페이지가 없으면 기본 페이지로 리디렉션
-            return "redirect:/";
-        }
-    }
+
+	@Autowired
+	private HttpServletRequest request;
+
+	private String redirectToPreviousPage() {
+		String referer = request.getHeader("Referer");
+		if (referer != null && !referer.isEmpty()) {
+			return "redirect:" + referer;
+		} else {
+			// 이전 페이지가 없으면 기본 페이지로 리디렉션
+			return "redirect:/";
+		}
+	}
 
 	@PostMapping("info/imageUpload.do")
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -209,10 +209,11 @@ public class InfoController {
 		String userid = (String) session.getAttribute("userid");
 		int lvl = mDao.getlvl(userid);
 		double Aiface = infoDao.getaiface(userid);
-		double a = lvl + Aiface;
-		
-		List<InfoDTO> list = infoDao.list(a);
+		double a = lvl * 0.1;
+		double b = Aiface + a;
+		List<InfoDTO> list = infoDao.list(b);
 		Map<String, Object> map = new HashMap<>();
+		map.put("b", b);
 		map.put("Aiface", Aiface);
 		map.put("lvl", lvl);
 		map.put("list", list);
@@ -237,8 +238,9 @@ public class InfoController {
 		String userid = (String) session.getAttribute("userid");
 		int lvl = mDao.getlvl(userid);
 		double Aiface = infoDao.getaiface(userid);
-		double a = lvl + Aiface;
-		List<InfoDTO> list = infoDao.list(a);
+		double a = lvl / 10;
+		double b = Aiface + a;
+		List<InfoDTO> list = infoDao.list(b);
 		Map<String, Object> map = new HashMap<>();
 		map.put("check", check);
 		map.put("list", list);
@@ -292,14 +294,13 @@ public class InfoController {
 	@GetMapping("/detail.do")
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
-		
-		
+
 		int follower = infoDao.followercount(otherid);
-		
-		session.setAttribute("follower",follower);
+
+		session.setAttribute("follower", follower);
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
-			
+
 			infoDao.insertlog(userid, otherid);
 			infoDao.updatepoint(userid);
 			InfoDTO dto = infoDao.detail(otherid);

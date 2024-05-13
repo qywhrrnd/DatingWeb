@@ -13,7 +13,7 @@
 
 	<select id="list"
 		resultType="com.example.datingproject.model.info.InfoDTO">
-		select * from info where aiface &lt; #{a}
+		select * from info where aiface &lt; #{b}
 		order by aiface
 		desc
 
