@@ -50,10 +50,16 @@
        }
    }
    function uplvl(){
-	   if(confirm("레벨을 올리시겠습니까?")){
-		   location.href = "/member/uplvl.do";
-	   }
-   }
+	   
+	   if (${map.lvl} == 5) {
+	        alert("더 이상 레벨을 올릴 수 없습니다.");
+	    } else {
+	        if (confirm("레벨을 올리시겠습니까?")) {
+	            // Redirect to the uplvl page
+	            window.location.href = "/member/uplvl.do";
+	        }
+	    }
+	}
 
 </script>
 </head>
