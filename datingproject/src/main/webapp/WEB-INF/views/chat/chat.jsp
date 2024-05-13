@@ -204,10 +204,10 @@
 
 		});
 
-		var ws;
+		let ws;
 
 		function wsOpen() {
-			var roomNumber = $("#roomnumber").val();
+			let roomNumber = $("#roomnumber").val();
 			ws = new WebSocket("ws://" + location.host + "/chating/"
 					+ roomNumber);
 			wsEvt();
@@ -220,16 +220,16 @@
 
 			ws.onmessage = function(event) {
 				console.log(event);
-				var msg = event.data;
+				let msg = event.data;
 				if (msg != null && msg.trim() != '') {
-					var d = JSON.parse(msg);
+					let d = JSON.parse(msg);
 
-					var sessionid = $("#userid").val();
+					let sessionid = $("#userid").val();
 					if (typeof d.userid === "undefined") {
 
 					} else {
 
-						if (d.userid == sessionid) {
+						if (d.userid === sessionid) {
 							$("#chating")
 									.append(
 											"<div class='chat ch2'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${medto.filename}'></i></div><div class='textbox'>"
@@ -247,14 +247,14 @@
 			}
 
 			document.addEventListener("keypress", function(e) {
-				if (e.keyCode == 13) { // Enter 키 눌렀을 때
+				if (e.keyCode === 13) { // Enter 키 눌렀을 때
 					send(); // send() 함수 호출
 				}
 			});
 		}
 
 		function send() {
-			var option = {
+			let option = {
 				type : "message",
 				roomNumber : $("#roomnumber").val(),
 				userid : $("#userid").val(),
@@ -262,7 +262,7 @@
 				msg : $("#message").val()
 			}
 
-			if ($("#message").val() == "") {
+			if (!$("#message").val()) {
 				alert("메세지를 입력하세요");
 			} else {
 				// WebSocket으로 메시지 전송
@@ -290,8 +290,8 @@
 		}
 
 		function loadchat() {
-			var roomNumber = $("#roomnumber").val();
-			var sessionId = $("#userid").val();
+			let roomNumber = $("#roomnumber").val();
+			let sessionId = $("#userid").val();
 
 			$.ajax({
 				url : "/chat/loadchat.do",
@@ -302,7 +302,7 @@
 				success : function(response) {
 					console.log(response);
 					$.each(response, function(index, row) {
-						if (sessionId == row.userid) {
+						if (sessionId === row.userid) {
 							$("#chating").append(
 									"<div class='chat ch2'><div class='icon'><img class='fa-solid fa-user' src='/resources/images/${medto.filename}'></i></div><div class='textbox'>"
 											+ row.message + "</div></div>");
