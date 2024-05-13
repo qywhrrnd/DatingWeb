@@ -67,8 +67,7 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	   ${alertScript}
+	<br> ${map.alertScript}
 	<input type="hidden" id="userid" value="${sessionScope.userid}">
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">

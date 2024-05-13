@@ -149,10 +149,17 @@ public class MemberController {
 			double Aiface = infoDao.getaiface(userid);
 			double b = Aiface + (lvl * 0.1);
 			if (b > 5.00) {
-				String message = "이미 참여한 이벤트 입니다";
-				// JavaScript 코드를 포함한 문자열 생성
+				String message = "더 이상 올릴수없습니다.";
 				String alertScript = "<script>alert('" + message + "');</script>";
-				return new ModelAndView("redirect:/info.do", "alertScript", alertScript);
+				List<InfoDTO> list = infoDao.list(b);
+				Map<String, Object> map = new HashMap<>();
+				map.put("b", b);
+				map.put("Aiface", Aiface);
+				map.put("lvl", lvl);
+				map.put("list", list);
+				map.put("idao", infoDao);
+				map.put("alertScript", alertScript);
+				return new ModelAndView("info/info", "map", map);
 			} else {
 				memberDao.uplvl(userid);
 				infoDao.updatepoint(userid);
