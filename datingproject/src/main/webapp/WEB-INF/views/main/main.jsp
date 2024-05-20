@@ -54,7 +54,7 @@
 						</h2>
 						<div class="main-button-gradient">
 							<div class="scroll-to-section">
-								<a href="#contact-section">문의하기</a>
+								<a href="#contact-section">리뷰하기</a>
 							</div>
 						</div>
 					</div>
@@ -78,6 +78,7 @@
 						<h4>
 							성공 <em>사례</em>
 						</h4>
+						<p>성공사례를 보내주시면 문화상품권 증정!</p>
 					</div>
 				</div>
 				<div class="col-lg-12">
@@ -217,8 +218,7 @@
 						<h4>
 							무엇을 할 수 있을까 <em>데이트?</em>
 						</h4>
-						<p>You just think about TemplateMo whenever you need free CSS
-							templates for your business website</p>
+
 					</div>
 				</div>
 				<div class="col-lg-12">
@@ -485,13 +485,14 @@
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<form id="contact" action="" method="post">
+					<form id="contact" action="/mainreview/writemainreview.do"
+						method="post">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="section-heading">
-									<h6>리뷰 / 문의하기</h6>
+									<h6>데마 리뷰</h6>
 									<h4>
-										리뷰 / 문의를 <em>보내주세요</em>
+										리뷰 <em>써주세요</em>
 									</h4>
 
 									<p>여러분의 리뷰가 데마에 큰 힘이 됩니다.</p>
@@ -499,26 +500,24 @@
 							</div>
 							<div class="col-lg-12">
 								<fieldset>
-									<input type="text" name="name" id="name" placeholder="이름"
-										autocomplete="on" required>
-								</fieldset>
-							</div>
-							<div class="col-lg-12">
-								<fieldset>
-									<input type="text" name="email" id="email"
-										pattern="[^ @]*@[^ @]*" placeholder="아이디" required="">
-								</fieldset>
-							</div>
-							<div class="col-lg-12">
-								<fieldset>
 									<textarea name="message" id="message" placeholder="리뷰 내용"></textarea>
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
-								<fieldset>
-									<button type="submit" id="form-submit"
-										class="main-gradient-button">전송하기</button>
-								</fieldset>
+								<c:choose>
+									<c:when test="${sessionScope.userid != null}">
+										<fieldset>
+											<button type="submit" id="form-submit"
+												class="main-gradient-button">전송하기</button>
+										</fieldset>
+									</c:when>
+									<c:otherwise>
+										<fieldset>
+											<button type="button" id="form-submit"
+												class="main-gradient-button" onclick="showAlert()">전송하기</button>
+										</fieldset>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</form>

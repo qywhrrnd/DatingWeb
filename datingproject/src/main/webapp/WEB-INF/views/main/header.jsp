@@ -37,7 +37,7 @@
 
 							<li class="scroll-to-section"><a href="/#simple-cta">이벤트</a></li>
 							<li class="scroll-to-section"><a href="/#testimonials">이용 리뷰</a></li>
-							<li class="scroll-to-section"><a href="/#contact-section">문의 하기</a></li>
+							<li class="scroll-to-section"><a href="/#contact-section">리뷰 하기</a></li>
 
 
 							<li class="has-sub"><a href="javascript:void(0)">데마 이용하기</a>
