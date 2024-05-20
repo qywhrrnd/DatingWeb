@@ -213,6 +213,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!------ Include the above in your HEAD tag ---------->
 
@@ -229,12 +230,6 @@
 	function followinglist() {
 		let following = document.getElementById('userid').value;
 		location.href = "/info/followinglist.do?following=" + following;
-	}
-	function nofollowerlist() {
-		alert("없어요");
-	}
-	function nofollowinglist() {
-		alert("없어요");
 	}
 </script>
 </head>
@@ -293,163 +288,164 @@
 								</div>
 							</div>
 						</div>
-						
-							<div class="tab-pane fade active show" id="pills-home"
-										role="tabpanel" aria-labelledby="pills-home-tab">
-										<div class="row">
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item" href="/chat/room.do">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-twitter text-center"
-																		title="1 new messages">
-																		<div class="notif">1</div>
-																		<i class="fas fa-envelope"></i>
-																	</div>
+
+						<div class="tab-pane fade active show" id="pills-home"
+							role="tabpanel" aria-labelledby="pills-home-tab">
+							<div class="row">
+								<div class="col-lg-4 col-sm-6">
+									<a class="member-item" href="/chat/room.do">
+										<div class="card mb-2 mb-md-5 py-3">
+											<div class="content">
+												<div class="row">
+													<div
+														class="col-6 d-flex justify-content-center align-items-center">
+														<div class="icon-big text-twitter text-center"
+															title="1 new messages">
+															<div class="notif">1</div>
+															<i class="fas fa-envelope"></i>
+														</div>
+													</div>
+													<div
+														class="col-6 d-flex justify-content-center align-items-center">
+														<div class="numbers">
+															<p>채팅</p>
+															<span>${map.mdto.countchat}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<c:choose>
+									<c:when test="${map.mdto.countfollowing >= 1}">
+										<div class="col-lg-4 col-sm-6">
+											<a class="member-item" onclick="followinglist()">
+												<div class="card mb-2 mb-md-5 py-3">
+													<div class="content">
+														<div class="row">
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="icon-big text-facebook text-center">
+																	<i class="fas fa-star"></i>
 																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																		<p>채팅</p>
-																		<span>${map.mdto.countchat}</span>
-																	</div>
+															</div>
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="numbers">
+																	<input type="hidden" name="userid"
+																		value="${sessionScope.userid}">
+																	<p>Following</p>
+																	<span>${map.mdto.countfollowing}</span>
 																</div>
 															</div>
 														</div>
 													</div>
-												</a>
-											</div>
-											<c:choose>
-												<c:when test="${map.mdto.countfollowing >= 1}">
-													<div class="col-lg-4 col-sm-6">
-														<a class="member-item" onclick="followinglist()">
-															<div class="card mb-2 mb-md-5 py-3">
-																<div class="content">
-																	<div class="row">
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="icon-big text-facebook text-center">
-																				<i class="fas fa-star"></i>
-																			</div>
-																		</div>
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="numbers">
-																				<input type="hidden" name="userid"
-																					value="${sessionScope.userid}">
-																				<p>Following</p>
-																				<span>${map.mdto.countfollowing}</span>
-																			</div>
-																		</div>
-																	</div>
+												</div>
+											</a>
+										</div>
+									</c:when>
+									<c:when test="${map.mdto.countfollowing < 1}">
+										<div class="col-lg-4 col-sm-6">
+											<a class="member-item" onclick="swal.fire('알림','팔로잉 한사람이 없어요!','error')">
+												<div class="card mb-2 mb-md-5 py-3">
+													<div class="content">
+														<div class="row">
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="icon-big text-facebook text-center">
+																	<i class="fas fa-star"></i>
 																</div>
 															</div>
-														</a>
-													</div>
-												</c:when>
-												<c:when test="${map.mdto.countfollowing < 1}">
-													<div class="col-lg-4 col-sm-6">
-														<a class="member-item" onclick="nofollowinglist()">
-															<div class="card mb-2 mb-md-5 py-3">
-																<div class="content">
-																	<div class="row">
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="icon-big text-facebook text-center">
-																				<i class="fas fa-star"></i>
-																			</div>
-																		</div>
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="numbers">
-																				<input type="hidden" name="userid"
-																					value="${sessionScope.userid}">
-																				<p>Following</p>
-																				<span>${map.mdto.countfollowing}</span>
-																			</div>
-																		</div>
-																	</div>
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="numbers">
+																	<input type="hidden" name="userid"
+																		value="${sessionScope.userid}">
+																	<p>Following</p>
+																	<span>${map.mdto.countfollowing}</span>
 																</div>
 															</div>
-														</a>
+														</div>
 													</div>
-												</c:when>
-											</c:choose>
-											<c:choose>
-												<c:when test="${map.mdto.countfollower > 0}">
-													<div class="col-lg-4 col-sm-6">
-														<a class="member-item" onclick="followerlist()">
-															<div class="card mb-2 mb-md-5 py-3">
-																<div class="content">
-																	<div class="row">
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="icon-big text-facebook text-center">
-																				<i class="fas fa-star"></i>
-																			</div>
-																		</div>
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="numbers">
-																				<input type="hidden" name="userid"
-																					value="${sessionScope.userid}">
-																				<p>Following</p>
-																				<span>${map.mdto.countfollower}</span>
-																			</div>
-																		</div>
-																	</div>
+												</div>
+											</a>
+										</div>
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${map.mdto.countfollower > 0}">
+										<div class="col-lg-4 col-sm-6">
+											<a class="member-item" onclick="followerlist()">
+												<div class="card mb-2 mb-md-5 py-3">
+													<div class="content">
+														<div class="row">
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="icon-big text-facebook text-center">
+																	<i class="fas fa-star"></i>
 																</div>
 															</div>
-														</a>
-													</div>
-												</c:when>
-												<c:when test="${map.mdto.countfollower < 1}">
-													<div class="col-lg-4 col-sm-6">
-														<a class="member-item" onclick="nofollowerlist()">
-															<div class="card mb-2 mb-md-5 py-3">
-																<div class="content">
-																	<div class="row">
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="icon-big text-facebook text-center">
-																				<i class="fas fa-star"></i>
-																			</div>
-																		</div>
-																		<div
-																			class="col-6 d-flex justify-content-center align-items-center">
-																			<div class="numbers">
-																				<input type="hidden" name="userid"
-																					value="${sessionScope.userid}">
-																				<p>Following</p>
-																				<span>${map.mdto.countfollower}</span>
-																			</div>
-																		</div>
-																	</div>
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="numbers">
+																	<input type="hidden" name="userid"
+																		value="${sessionScope.userid}">
+																	<p>Follower</p>
+																	<span>${map.mdto.countfollower}</span>
 																</div>
 															</div>
-														</a>
+														</div>
 													</div>
-												</c:when>
-											</c:choose>
-						<div class="row">
-							<div class="col-12">
-								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-																			
-									<li class="nav-item"><a class="nav-link"
-										id="pills-profile-tab" data-toggle="pill"
-										href="#pills-profile" role="tab" aria-controls="pills-profile"
-										aria-selected="false">내 정보</a></li>
-										
-									<li class="nav-item"><a class="nav-link"
-										id="pills-contact-tab" data-toggle="pill"
-										href="#pills-contact" role="tab" aria-controls="pills-contact"
-										aria-selected="false">내 리뷰 보기</a></li>
-								</ul>
-								<div class="tab-content" id="pills-tabContent">
-								
+												</div>
+											</a>
+										</div>
+									</c:when>
+									<c:when test="${map.mdto.countfollower < 1}">
+										<div class="col-lg-4 col-sm-6">
+											<a class="member-item" onclick="swal.fire('알림','팔로워가 없어요!','error')">
+												<div class="card mb-2 mb-md-5 py-3">
+													<div class="content">
+														<div class="row">
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="icon-big text-facebook text-center">
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div
+																class="col-6 d-flex justify-content-center align-items-center">
+																<div class="numbers">
+																	<input type="hidden" name="userid"
+																		value="${sessionScope.userid}">
+																	<p>Following</p>
+																	<span>${map.mdto.countfollower}</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</div>
+									</c:when>
+								</c:choose>
+								<div class="row">
+									<div class="col-12">
+										<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+											<li class="nav-item"><a class="nav-link"
+												id="pills-profile-tab" data-toggle="pill"
+												href="#pills-profile" role="tab"
+												aria-controls="pills-profile" aria-selected="false">내 정보</a></li>
+
+											<li class="nav-item"><a class="nav-link"
+												id="pills-contact-tab" data-toggle="pill"
+												href="#pills-contact" role="tab"
+												aria-controls="pills-contact" aria-selected="false">내 리뷰
+													보기</a></li>
+										</ul>
+										<div class="tab-content" id="pills-tabContent">
+
 											<div class="tab-pane fade" id="pills-profile" role="tabpanel"
 												aria-labelledby="pills-profile-tab">
 												<div class="p-3 border mb-3">
