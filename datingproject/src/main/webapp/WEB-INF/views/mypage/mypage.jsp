@@ -314,7 +314,7 @@
 																	class="col-6 d-flex justify-content-center align-items-center">
 																	<div class="numbers">
 																		<p>채팅</p>
-																		23
+																		<span>${map.mdto.countchat}</span>
 																	</div>
 																</div>
 															</div>

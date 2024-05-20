@@ -19,4 +19,6 @@ public interface MypageDAO {
 	int countfollowing(String userid);
 	
 	int countfollower(String userid);
+	
+	int countchat(String userid);
 }

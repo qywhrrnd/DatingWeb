@@ -38,11 +38,18 @@
 	</update>
 
 	<select id="countfollowing" resultType="int">
-		select count(*) from follow where following = #{userid}
+		select count(*) from
+		follow where following = #{userid}
 	</select>
 
 	<select id="countfollower" resultType="int">
-		select count(*) from follow where follower = #{userid}
+		select count(*) from
+		follow where follower = #{userid}
+	</select>
+
+	<select id="countchat" resultType="int">
+		select count(*) from chatbox where user1=#{userid} or
+		user2=#{userid}
 	</select>
 
 

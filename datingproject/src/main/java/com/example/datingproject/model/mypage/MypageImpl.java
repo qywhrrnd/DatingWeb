@@ -68,4 +68,9 @@ public class MypageImpl implements MypageDAO {
 		return session.selectOne("mypage.countfollower", userid);
 	}
 
+	@Override
+	public int countchat(String userid) {
+		return session.selectOne("mypage.countchat", userid);
+	}
+
 }

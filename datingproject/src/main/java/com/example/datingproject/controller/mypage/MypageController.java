@@ -36,10 +36,10 @@ public class MypageController {
 		InfoDTO ilist = mypageDao.mypageinfo(userid);
 		int countfollower = mypageDao.countfollower(userid);
 		int countfollowing = mypageDao.countfollowing(userid);
-		System.out.println(countfollower);
-		System.out.println(countfollowing);
+		int countchat = mypageDao.countchat(userid);
 		mypageDto.setCountfollower(countfollower);
 		mypageDto.setCountfollowing(countfollowing);
+		mypageDto.setCountchat(countchat);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("mlist", mlist);

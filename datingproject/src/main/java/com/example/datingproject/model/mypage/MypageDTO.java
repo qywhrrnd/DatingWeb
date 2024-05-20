@@ -14,5 +14,5 @@ import lombok.ToString;
 public class MypageDTO {
 	private int countfollowing;
 	private int countfollower;
-
+	private int countchat;
 }
