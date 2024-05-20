@@ -16,14 +16,17 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ReivewController {
-@Autowired
-ReviewDTO reviewDto;
-@Autowired
-ReviewDAO reviewDao;
+	@Autowired
+	ReviewDTO reviewDto;
+	@Autowired
+	ReviewDAO reviewDao;
 
-@PostMapping("/reviewwrite.do")
-public ModelAndView reviewwrite(@RequestParam(name="userid")String userid, @RequestParam(name="otherid")String otherid, @RequestParam(name="name")String name,@RequestParam(name="reviewContent")String reviewContent, )
+	@PostMapping("/reviewwrite.do")
+	public ModelAndView reviewwrite(@RequestParam(name = "userid") String userid,
+			@RequestParam(name = "otherid") String otherid, @RequestParam(name = "name") String name,
+			@RequestParam(name = "reviewContent") String reviewContent) {
+				return null;
 
-
+	}
 
 }
