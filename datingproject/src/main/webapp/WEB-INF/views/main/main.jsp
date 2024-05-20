@@ -406,7 +406,6 @@
 						<c:forEach var="row" items="${list}">
 							<div class="item">
 								<p>${row.content}</p>
-								<h4>${row.userid }</h4>
 								<span>${row.name }</span> <img src="/resources/images/quote.png"
 									alt="">
 							</div>
@@ -470,7 +469,8 @@
 								<c:choose>
 									<c:when test="${sessionScope.userid != null}">
 										<fieldset>
-											<button type="button" id="form-submit" class="main-gradient-button" onclick="showAlertIfEmpty()">전송하기</button>
+											<button type="button" id="form-submit"
+												class="main-gradient-button" onclick="showAlertIfEmpty()">전송하기</button>
 
 										</fieldset>
 									</c:when>
