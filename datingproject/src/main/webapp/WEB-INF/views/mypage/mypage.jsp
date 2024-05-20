@@ -301,7 +301,7 @@
 														class="col-6 d-flex justify-content-center align-items-center">
 														<div class="icon-big text-twitter text-center"
 															title="1 new messages">
-															<div class="notif">1</div>
+															<div class="notif"></div>
 															<i class="fas fa-envelope"></i>
 														</div>
 													</div>
