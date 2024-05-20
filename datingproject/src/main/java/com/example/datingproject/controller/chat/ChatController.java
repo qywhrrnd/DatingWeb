@@ -41,7 +41,7 @@ public class ChatController {
 
 	@Autowired
 	MemberDAO memberDao;
-	
+
 	@Autowired
 	InfoDAO infoDao;
 
@@ -70,7 +70,7 @@ public class ChatController {
 		String userid = (String) params.get("userid");
 		InfoDTO dto = infoDao.detail(otherid);
 		InfoDTO medto = infoDao.detail(userid);
-		
+
 		mv.addObject("dto", dto);
 		mv.addObject("otherid", otherid);
 		mv.addObject("medto", medto);
@@ -95,12 +95,10 @@ public class ChatController {
 				pointDao.chatpoint(userid);
 				chatboxDao.craetechatbox(userid, otherid);
 				chatboxDao.chatlog(userid, otherid);
-				List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
-				return new ModelAndView("chat/chatbox", "list", list);
+				return new ModelAndView("redirect:/chat/room.do");
 			}
 		} else {
-			List<ChatBoxDTO> list = chatboxDao.chatbox(userid);
-			return new ModelAndView("chat/chatbox", "list", list);
+			return new ModelAndView("redirect:/chat/room.do");
 
 		}
 
