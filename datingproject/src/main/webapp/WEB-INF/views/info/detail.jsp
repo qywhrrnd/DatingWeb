@@ -10,6 +10,7 @@
 	rel="stylesheet">
 <link href="resources/css/detail.css" rel="stylesheet">
 <link href="resources/css/star.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
 	function chat(userid, otherid) {
@@ -19,8 +20,8 @@
 		}
 	}
 
-	function review(userid, otherid) {
-		
+	function review() {
+		let form1 = $("#form1");
 		
 		
 		var reviewContent = document.getElementById("reviewContent").value;
@@ -47,18 +48,20 @@
 				alert("별점을 등록해주세요.")
 				return;
 				
-			}else if(reviewContent.trim()==""){
+			}
+			if(reviewContent.trim()==""){
 				alert("후기 내용을 입력해주세요")
 				return;
 				
-			}else{
+			}
 				
-				location.href = "/review/reviewwrite.do?userid=" + userid
-				+ "&otherid=" + otherid;
+				form1.attr("action", "/review/reviewwrite.do");
+		    	alert("작성 완료");
+				form1.submit();
 			}
 		}  
 
-	}
+	
 	
 </script>
 </head>
@@ -337,8 +340,8 @@ tr:hover {
 							
 							
 
-                     
-					<input type="button" class="btn btn-sm btn-info mr-4" value="후기작성하기" onclick="review('${sessionScope.userid}', '${dto.userid}')"><br>
+                     <form id="form1" method="post">
+					<input type="button" class="btn btn-sm btn-info mr-4" value="후기작성하기" onclick="review()"><br>
 					<fieldset class="rate">
                                 <input type="radio" id="star10" name="star" value="5.0"><label for="star10" title="5점"></label>
                                 <input type="radio" id="star9" name="star" value="4.5"><label class="half" for="star9" title="4.5점"></label>
@@ -353,9 +356,13 @@ tr:hover {
 
                             </fieldset>
 							<div>
-								<textarea class="col-auto form-control" type="text"
+								<textarea class="col-auto form-control" name="reviewContent"
 									id="reviewContent" placeholder="자기 얼굴에 침뱉기 금지"></textarea>
 							</div>
+							<input type="hidden" name ="userid" value="${sessionScope.userid }">
+							<input type="hidden" name ="otherid" value="${dto.userid}">
+							
+							</form>
 
 						</div>
 					</div>
