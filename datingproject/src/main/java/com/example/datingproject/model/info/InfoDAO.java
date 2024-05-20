@@ -34,4 +34,6 @@ public interface InfoDAO {
 	int followercount(String userid);
 	
 	double getaiface(String userid);
+	
+	String getname(String userid);
 }

@@ -95,4 +95,10 @@
 		userid = #{userid}
 	</select>
 
+	<select id="getname" resultType="String">
+		select name from info where
+		userid = #{userid}
+	</select>
+
+
 </mapper>

@@ -1,22 +1,25 @@
 package com.example.datingproject.controller.mainreview;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.mainreview.MainreviewDAO;
 import com.example.datingproject.model.mainreview.MainreviewDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainreviewController {
 
 	@Autowired
 	MainreviewDAO dao;
+	
+	@Autowired
+	InfoDAO idao;
 
 	@Autowired
 	private HttpServletRequest request;
@@ -32,10 +35,9 @@ public class MainreviewController {
 	}
 
 	@RequestMapping("mainreview/writemainreview.do")
-	public String writemainreview(@RequestParam HashMap<Object, Object> params) {
-		String userid = (String) params.get("userid");
-		String name = (String) params.get("name");
-		String content = (String) params.get("content");
+	public String writemainreview(@RequestParam(name = "message") String content, HttpSession session) {
+		String userid = (String) session.getAttribute("userid");
+		String name = idao.getname(userid);
 		MainreviewDTO dto = new MainreviewDTO();
 		dto.setContent(content);
 		dto.setName(name);

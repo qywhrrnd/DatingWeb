@@ -116,4 +116,9 @@ public class InfoDAOImpl implements InfoDAO {
 		return session.selectOne("info.getaiface", userid);
 	}
 
+	@Override
+	public String getname(String userid) {
+		return session.selectOne("info.getname", userid);
+	}
+
 }

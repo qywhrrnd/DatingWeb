@@ -9,4 +9,9 @@
 	</insert>
 
 
+	<select id="mainreviewlist"
+		resultType="com.example.datingproject.model.mainreview.MainreviewDTO">
+		select * from mainreview
+	</select>
+
 </mapper>
