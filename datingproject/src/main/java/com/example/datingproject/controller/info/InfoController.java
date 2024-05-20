@@ -318,9 +318,6 @@ public class InfoController {
 	         mav.setViewName("info/detail");
 	         mav.addObject("list",list);
 	         mav.addObject("dto", dto);
-	         
-	         
-	         
 	         return mav;
 
 	      } else {

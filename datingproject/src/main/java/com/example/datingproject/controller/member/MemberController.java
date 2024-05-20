@@ -154,7 +154,6 @@ public class MemberController {
 				return new ModelAndView("redirect:/info.do");
 			}
 		}
-
 	}
 
 }

@@ -52,12 +52,24 @@
    
    
    function uplvl(){
+	   
+	   if(${sessionScope.point > 1000}){
+		   alert("포인트가 부족합니다!")
+		   if (confirm("포인트 충전하시겠습니까?")) {
+	            // Redirect to the uplvl page
+	            location.href = "/member/uplvl.do";
+	        	    }
+	   }else
+	   
+	   if(${map.b > 5.0}){
+		   alert("더이상 올릴 수 없습니다");
+	   }else{
 	   	        if (confirm("레벨을 올리시겠습니까?")) {
 	            // Redirect to the uplvl page
 	            location.href = "/member/uplvl.do";
 	        	    }
-	}
-
+   }
+   }
 </script>
 
 <style>
@@ -72,6 +84,7 @@
 </style>
 </head>
 <body>
+
 	<br>
 	<br>
 	<br>
