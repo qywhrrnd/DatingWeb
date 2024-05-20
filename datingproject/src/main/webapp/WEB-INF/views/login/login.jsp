@@ -367,7 +367,13 @@ input[type=checkbox] {
 		});
 	});
 </script>
-
+<style>
+/* 하이퍼링크 스타일링 */
+a {
+	text-decoration: none; /* 밑줄 제거 */
+	color: inherit; /* 링크의 색상을 상위 요소로부터 상속 */
+}
+</style>
 
 </head>
 <body>
@@ -391,7 +397,8 @@ input[type=checkbox] {
 				<div class="signin">
 
 					<h1>로그인</h1>
-					<form name="form1" id="form1" class="more-padding" autocomplete="off">
+					<form name="form1" id="form1" class="more-padding"
+						autocomplete="off">
 						<input type="text" id="userid" name="userid" placeholder="아이디">
 						<input type="password" id="password" name="password"
 							placeholder="password">
@@ -404,29 +411,33 @@ input[type=checkbox] {
 				</div>
 			</div>
 			<div class="leftbox">
-				<h2 class="title">
-					<span>BLOOM</span>&<br>BOUQUET
-				</h2>
+				<a href="/">
+					<h2 class="title">
+						<span>데이트</span><br>마스터
+					</h2>
+				</a>
 				<p class="desc">
-					pick your perfect <span>bouquet</span>
+					데이트 상대를 골라보세요 <span>데마</span>
 				</p>
 				<img class="flower smaller"
 					src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg"
 					alt="1357d638624297b" border="0">
 				<p class="account">have an account?</p>
-				<button class="button" id="signin">login</button>
+				<button class="button" id="signin">로그인</button>
 			</div>
 			<div class="rightbox">
-				<h2 class="title">
-					<span>BLOOM</span>&<br>BOUQUET
-				</h2>
+				<a href="/">
+					<h2 class="title">
+						<span>데이트</span><br>마스터
+					</h2>
+				</a>
 				<p class="desc">
-					pick your perfect <span>bouquet</span>
+					데이트 상대를 골라보세요 <span>데마</span>
 				</p>
 				<img class="flower"
 					src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg" />
 				<p class="account">don't have an account?</p>
-				<button class="button" id="signup">sign up</button>
+				<button class="button" id="signup">회원가입</button>
 			</div>
 		</div>
 	</div>
