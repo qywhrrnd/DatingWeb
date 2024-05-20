@@ -256,11 +256,7 @@
 									<div class="row">
 										<div class="col-12">
 
-											<a class="position-absolute ml-3 mt-3 text-white"
-												onclick="showPasswordModal()" data-toggle="tooltip"
-												data-placement="bottom" title=""
-												data-original-title="Edit cover images"><i
-												class="fas fa-cog">개인정보수정</i></a>
+
 											<div class="row">
 												<div class="col-md-6 ml-auto mr-auto">
 													<div
@@ -273,11 +269,13 @@
 																class="avatar-lg rounded-circle img-fluid"
 																data-toggle="tooltip" data-placement="bottom" title=""
 																data-original-title="Edit avatar images">
-															</a>
+
+															</a> <a style="color: white;">얼굴 평점 : ${map.ilist.AIface}점</a>
 														</div>
+														<br>
 														<div class="names">
-															<h3 class="title text-light">${map.ilist.userid}</h3>
-															<h3 class="title text-light">${map.ilist.name}</h3>
+															<h3 class="title text-light">아이디 : ${map.ilist.userid}</h3>
+															<h3 class="title text-light">이름 : ${map.ilist.name}</h3>
 
 															<h3 class="title text-light">보유 포인트 :
 																${map.mlist.point}P</h3>
@@ -298,95 +296,21 @@
 								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 									<li class="nav-item"><a class="nav-link active show"
 										id="pills-home-tab" data-toggle="pill" href="#pills-home"
-										role="tab" aria-controls="pills-home" aria-selected="true">Statistic</a>
-									</li>
+										role="tab" aria-controls="pills-home" aria-selected="true">기본
+											메뉴</a></li>
 									<li class="nav-item"><a class="nav-link"
 										id="pills-profile-tab" data-toggle="pill"
 										href="#pills-profile" role="tab" aria-controls="pills-profile"
-										aria-selected="false">Profile</a></li>
+										aria-selected="false">내 정보</a></li>
 									<li class="nav-item"><a class="nav-link"
 										id="pills-contact-tab" data-toggle="pill"
 										href="#pills-contact" role="tab" aria-controls="pills-contact"
-										aria-selected="false">Latest post</a></li>
+										aria-selected="false">내 리뷰 보기</a></li>
 								</ul>
 								<div class="tab-content" id="pills-tabContent">
 									<div class="tab-pane fade active show" id="pills-home"
 										role="tabpanel" aria-labelledby="pills-home-tab">
 										<div class="row">
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-warning text-center">
-																		<i class="fas fa-copy"></i>
-																	</div>
-																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																		<p>Article</p>
-																		112
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-info text-center"
-																		title="1 new comment">
-																		<div class="notif">1</div>
-																		<i class="fas fa-comment"></i>
-																	</div>
-																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																		<p>Comments</p>
-																		454
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="col-lg-4 col-sm-6">
-												<a class="member-item"
-													href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-													<div class="card mb-2 mb-md-5 py-3">
-														<div class="content">
-															<div class="row">
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="icon-big text-danger text-center">
-																		<i class="fas fa-heart"></i>
-																	</div>
-																</div>
-																<div
-																	class="col-6 d-flex justify-content-center align-items-center">
-																	<div class="numbers">
-																		<p>Favorite</p>
-																		56
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</a>
-											</div>
 											<div class="col-lg-4 col-sm-6">
 												<a class="member-item" href="/chat/room.do">
 													<div class="card mb-2 mb-md-5 py-3">
@@ -528,23 +452,25 @@
 												aria-labelledby="pills-profile-tab">
 												<div class="p-3 border mb-3">
 													<a class="position-absolute" style="right: 25px"
-														href="setting.html" data-toggle="tooltip"
+														onclick="showPasswordModal()" data-toggle="tooltip"
 														data-placement="bottom" title=""
 														data-original-title="Edit profile"><i
 														class="fas fa-cog"></i></a>
-													<h3>Jenifer Tan</h3>
+													<h3>${map.ilist.name}</h3>
 													<p>
-														<b>Jobs:</b> Writter
+														<b>직업:</b> ${map.ilist.job}
 													</p>
 													<p>
-														<b>About:</b> Hello my name is Jenifer, My passion is
-														writting. I hope you enjoy with my article.
+														<b>키:</b> ${map.ilist.height}
 													</p>
 													<p>
-														<b>Address:</b> Street 12 vo 05, California, United States
+														<b>몸무게:</b> ${map.ilist.weight}
 													</p>
 													<p>
-														<b>Phone:</b> +1 987654321
+														<b>주소:</b> ${map.ilist.address}
+													</p>
+													<p>
+														<b>핸드폰번호:</b> ${map.ilist.cellphone}
 													</p>
 
 												</div>

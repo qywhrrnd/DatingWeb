@@ -248,22 +248,38 @@
 												<div class="left-image" style="width: 350px; height: 365;">
 													<img src="/resources/images/llll.png" alt="">
 													<div class="price">
-														<h6>₩500</h6>
+														<h6>
+															<small><small>₩1000</small></small>
+														</h6>
 													</div>
 												</div>
 												<div class="right-content">
 													<h4>데이트 상대를 찾아보세요</h4>
 													<p>
-														상대방의 상세 정보를 확인해보세요 <br> 단돈 500원에 상대방에 대해 알 수 있습니다. <br>
+														상대방의 상세 정보를 확인해보세요 <br> 단돈 1000원에 상대방에 대해 알 수 있습니다. <br>
 														<br>우리는 연애의 시작을 쉽고 흥미롭게 만들어 드립니다. 당신의 이상형을 찾을 수 있는
 														최적의 플랫폼을 제공합니다. 저희와 함께하면 새로운 사람들을 만나고, 특별한 연인을 만들어보세요. 우리의
 														서비스는 진정한 사랑을 찾는 분들을 위해 디자인되었습니다. 지금 시작해보세요, 당신의 인생을 바꿀 수도
 														있는 특별한 만남이 기다리고 있습니다.
 													</p>
 
-													<div class="text-button">
-														<a href="/info.do">데이트 상대 찾으러 가기</a>
-													</div>
+
+
+													<c:choose>
+														<c:when test="${sessionScope.userid != null}">
+															<div class="text-button">
+																<a href="/info.do">데이트 상대 찾으러 가기</a>
+															</div>
+														</c:when>
+														<c:otherwise>
+															<div class="text-button">
+																<a href="#" onclick="showAlert()">데이트 상대 찾으러 가기</a>
+															</div>
+														</c:otherwise>
+													</c:choose>
+
+
+
 												</div>
 											</div>
 										</li>
@@ -290,23 +306,18 @@
 												<div class="left-image">
 													<img src="/resources/images/courses-03.jpg" alt="">
 													<div class="price">
-														<h6>$184</h6>
+														<h6>
+															<small><small>$1000</small></small>
+														</h6>
 													</div>
 												</div>
 												<div class="right-content">
-													<h4>Web Design</h4>
-													<p>
-														Quinoa roof party squid prism sustainable letterpress cray
-														hammock tumeric man bun mixtape tofu subway tile cronut.
-														Deep v ennui subway tile organic seitan.<br> <br>Kogi
-														VHS freegan bicycle rights try-hard green juice probably
-														haven't heard of them cliche la croix af chillwave.
-													</p>
-													<span>28 Hours</span> <span>4 Weeks</span> <span
-														class="last-span">1 Certificate</span>
-													<div class="text-button">
-														<a href="contact-us.html">Subscribe Course</a>
-													</div>
+													<h4>채팅하기</h4>
+													<p>새로운 사람들과의 만남을 시작해보세요! 저희 소개팅 플랫폼은 채팅을 통해 쉽게 연락할 수 있는
+														기능을 제공합니다. 당신이 특별한 사람과 대화를 나누고 취향을 공유할 수 있는 기회를 제공합니다. 지금
+														바로 시작하여 당신의 이상형과의 만남을 찾아보세요. 채팅을 통해 새로운 사람들과의 소중한 연결을
+														경험해보세요!</p>
+
 												</div>
 											</div>
 										</li>
@@ -464,8 +475,7 @@
 										<i class="fa fa-phone"></i>
 									</div>
 									<h4>Phone</h4>
-									<span>010-3379-4049</span><br>
-									<span>010-8561-9313</span><br>
+									<span>010-3379-4049</span><br> <span>010-8561-9313</span><br>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>010-4755-6762</span>
 								</div>
 							</div>
