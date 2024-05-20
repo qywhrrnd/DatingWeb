@@ -53,7 +53,7 @@
    
    function uplvl(){
 	   
-	   if(${sessionScope.point > 1000}){
+	   if(${sessionScope.point < 1000}){
 		   alert("포인트가 부족합니다!")
 		   if (confirm("포인트 충전하시겠습니까?")) {
 	            // Redirect to the uplvl page
