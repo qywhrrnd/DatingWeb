@@ -11,7 +11,7 @@
 
 	<select id="mainreviewlist"
 		resultType="com.example.datingproject.model.mainreview.MainreviewDTO">
-		select * from mainreview
+		select * from mainreview order by idx desc
 	</select>
 
 </mapper>
