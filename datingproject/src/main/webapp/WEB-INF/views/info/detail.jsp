@@ -312,23 +312,48 @@ tr:hover {
 }
 
 
+
+
+.stars1 {
+    font-size: 24px; /* 별표의 크기 조정 */
+}
+
+.stars1 > * {
+    display: inline-block;
+    margin-right: 3px; /* 각 별표 사이의 간격 조정 */
+    color: gold; /* 별표의 색상 설정 */
+}
+
+
 </style>
 
-
-								<table>
-									<tr >
-										<th>이름</th>
-										<th>별점</th>
-										<th>후기</th>
-									</tr>
-									<c:forEach var="row" items="${list}">
-										<tr>
-											<td>${row.name}</td>
-											<td>${row.start}</td>
-											<td>${row.reviewContent}</td>
-										</tr>
-									</c:forEach>
-								</table>
+<table>
+    <tr>
+        <th>이름</th>
+        <th>별점</th>
+        <th>후기</th>
+    </tr>
+    <c:forEach var="row" items="${list}">
+        <tr>
+            <td>${row.userid}</td>
+            <td>
+                <div class="stars1">
+                    <c:forEach begin="1" end="5" varStatus="loop">
+                        <c:choose>
+                            <c:when test="${row.star >= loop.index}">
+                                ★
+                            </c:when>
+                            <c:otherwise>
+                                ☆
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+            </td>
+            <td>${row.review}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 
 							</div>

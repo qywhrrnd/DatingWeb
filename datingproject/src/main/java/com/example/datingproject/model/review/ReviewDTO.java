@@ -15,11 +15,20 @@ import lombok.ToString;
 @Component
 public class ReviewDTO {
 	
+	private int idx;
 	private String userid;
-	private String name;
-	private String reviewContent;
+	private String reviewer;
+	private String review;
 	private Date regiDate;
-	private float star;
+	private double star;
+	
+	public ReviewDTO() {
+		this.regiDate = new Date(); // 생성자에서 현재 날짜와 시간을 설정
+	}
+	
+	public Date getRegiDate() {
+		return regiDate;
+	}
 	
 
 }

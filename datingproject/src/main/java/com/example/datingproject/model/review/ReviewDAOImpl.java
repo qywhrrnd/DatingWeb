@@ -15,14 +15,14 @@ public class ReviewDAOImpl implements ReviewDAO{
 
 	@Override
 	public void reviewWrite(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
+		session.insert("review.reviewInsert", reviewDto);
 		
 	}
 
 	@Override
 	public List<ReviewDTO> list(String userid) {
 		// TODO Auto-generated method stub
-		return session.selectList("review.list", userid);
+		return session.selectList("review.reviewList", userid);
 	}
 	
 
