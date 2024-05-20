@@ -270,11 +270,13 @@
 																data-toggle="tooltip" data-placement="bottom" title=""
 																data-original-title="Edit avatar images">
 
-															</a> <a style="color: white;">얼굴 평점 : ${map.ilist.AIface}점</a>
+															</a> <a style="color: white;">얼굴 평점 :
+																${map.ilist.AIface}점</a>
 														</div>
 														<br>
 														<div class="names">
-															<h3 class="title text-light">아이디 : ${map.ilist.userid}</h3>
+															<h3 class="title text-light">아이디 :
+																${map.ilist.userid}</h3>
 															<h3 class="title text-light">이름 : ${map.ilist.name}</h3>
 
 															<h3 class="title text-light">보유 포인트 :
@@ -291,24 +293,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
-								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-									<li class="nav-item"><a class="nav-link active show"
-										id="pills-home-tab" data-toggle="pill" href="#pills-home"
-										role="tab" aria-controls="pills-home" aria-selected="true">기본
-											메뉴</a></li>
-									<li class="nav-item"><a class="nav-link"
-										id="pills-profile-tab" data-toggle="pill"
-										href="#pills-profile" role="tab" aria-controls="pills-profile"
-										aria-selected="false">내 정보</a></li>
-									<li class="nav-item"><a class="nav-link"
-										id="pills-contact-tab" data-toggle="pill"
-										href="#pills-contact" role="tab" aria-controls="pills-contact"
-										aria-selected="false">내 리뷰 보기</a></li>
-								</ul>
-								<div class="tab-content" id="pills-tabContent">
-									<div class="tab-pane fade active show" id="pills-home"
+						
+							<div class="tab-pane fade active show" id="pills-home"
 										role="tabpanel" aria-labelledby="pills-home-tab">
 										<div class="row">
 											<div class="col-lg-4 col-sm-6">
@@ -448,6 +434,22 @@
 													</div>
 												</c:when>
 											</c:choose>
+						<div class="row">
+							<div class="col-12">
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+																			
+									<li class="nav-item"><a class="nav-link"
+										id="pills-profile-tab" data-toggle="pill"
+										href="#pills-profile" role="tab" aria-controls="pills-profile"
+										aria-selected="false">내 정보</a></li>
+										
+									<li class="nav-item"><a class="nav-link"
+										id="pills-contact-tab" data-toggle="pill"
+										href="#pills-contact" role="tab" aria-controls="pills-contact"
+										aria-selected="false">내 리뷰 보기</a></li>
+								</ul>
+								<div class="tab-content" id="pills-tabContent">
+								
 											<div class="tab-pane fade" id="pills-profile" role="tabpanel"
 												aria-labelledby="pills-profile-tab">
 												<div class="p-3 border mb-3">
