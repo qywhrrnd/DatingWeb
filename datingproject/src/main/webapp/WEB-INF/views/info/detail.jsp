@@ -9,6 +9,8 @@
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
 	rel="stylesheet">
 <link href="resources/css/detail.css" rel="stylesheet">
+<link href="resources/css/star.css" rel="stylesheet">
+
 <script>
 	function chat(userid, otherid) {
 		if (confirm("1000point를 이용해 채팅을 시작하시겠습니까?")) {
@@ -18,16 +20,47 @@
 	}
 
 	function review(userid, otherid) {
+		
+		
+		
+		var reviewContent = document.getElementById("reviewContent").value;
+		
+		var star = "";
+		
+		document.querySelectorAll('input[name="star"]').forEach(function(radioButton) {
+		    if (radioButton.checked) {
+		        // 선택된 라디오 버튼의 값을 변수에 할당합니다.
+		        star = radioButton.value;
+		        // 선택된 값이 확인되면 반복문을 종료합니다.
+		        return;
+		    }
+		});
+		
+		
+		console.log("선택된 값:", reviewContent);
+		
+		
 		if (confirm("리뷰를 작성하시겠습니까?")) {
-			location.href = "/review/reviewwrite.do?=userid=" + userid
-					+ "&otherid=" + otherid;
-
-		}
+			
+			
+			if(star == ""){
+				alert("별점을 등록해주세요.")
+				return;
+				
+			}else if(reviewContent.trim()==""){
+				alert("후기 내용을 입력해주세요")
+				return;
+				
+			}else{
+				
+				location.href = "/review/reviewwrite.do?userid=" + userid
+				+ "&otherid=" + otherid;
+			}
+		}  
 
 	}
+	
 </script>
-
-
 </head>
 <body>
 
@@ -223,8 +256,6 @@
 
 						<!-- 리뷰 평점 -->
 						<h6 class="heading-small text-muted mb-4">★★리뷰 ★</h6>
-						<input type="button" value="리뷰쓰기"
-							onclick="review('${sessionScope.userid}','${dto.userid}')">
 
 						<div class="pl-lg-4">
 
@@ -249,11 +280,40 @@ th {
 tr:hover {
 	background-color: #f5f5f5;
 }
+
+/* star */
+.star-star {
+	display: flex;
+	width : 100px;
+	height : 100px;
+}
+
+.star {
+	appearance: none;
+	padding: 1px;
+}
+
+.star::after {
+	content: '☆';
+	color: hsl(60, 80%, 45%);
+	font-size: 20px;
+}
+
+.star:hover::after, .star:has( ~ .star:hover)::after, .star:checked::after,
+	.star:has( ~ .star:checked)::after {
+	content: '★';
+}
+
+.star:hover ~ .star::after {
+	content: '☆';
+}
+
+
 </style>
 
 
 								<table>
-									<tr>
+									<tr >
 										<th>이름</th>
 										<th>별점</th>
 										<th>후기</th>
@@ -269,15 +329,40 @@ tr:hover {
 
 
 							</div>
+							
+							<br>
+							<hr class="my-4">
+							<br>
+							
+							
+							
 
+                     
+					<input type="button" class="btn btn-sm btn-info mr-4" value="후기작성하기" onclick="review('${sessionScope.userid}', '${dto.userid}')"><br>
+					<fieldset class="rate">
+                                <input type="radio" id="star10" name="star" value="5.0"><label for="star10" title="5점"></label>
+                                <input type="radio" id="star9" name="star" value="4.5"><label class="half" for="star9" title="4.5점"></label>
+                                <input type="radio" id="star8" name="star" value="4.0"><label for="star8" title="4점"></label>
+                                <input type="radio" id="star7" name="star" value="3.5"><label class="half" for="star7" title="3.5점"></label>
+                                <input type="radio" id="star6" name="star" value="3.0"><label for="star6" title="3점"></label>
+                                <input type="radio" id="star5" name="star" value="2.5"><label class="half" for="star5" title="2.5점"></label>
+                                <input type="radio" id="star4" name="star" value="2.0"><label for="star4" title="2점"></label>
+                                <input type="radio" id="star3" name="star" value="1.5"><label class="half" for="star3" title="1.5점"></label>
+                                <input type="radio" id="star2" name="star" value="1.0"><label for="star2" title="1점"></label>
+                                <input type="radio" id="star1" name="star" value="0.5"><label class="half" for="star1" title="0.5점"></label>
 
-
+                            </fieldset>
+							<div>
+								<textarea class="col-auto form-control" type="text"
+									id="reviewContent" placeholder="자기 얼굴에 침뱉기 금지"></textarea>
+							</div>
 
 						</div>
 					</div>
+					
 					<hr class="my-4">
 
-					<hr class="my-4">
+
 
 
 				</div>
