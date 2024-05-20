@@ -144,7 +144,8 @@
 										<div class="image">
 											<img
 												src="/resources/images/${row.filename}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-												class="rounded" width="155">
+												style="width: 200px; height: 200px;" class="rounded"
+												width="155">
 										</div>
 										<div class="ml-3 w-100">
 											<h4 class="mb-0 mt-0">${row.name}</h4>
