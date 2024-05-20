@@ -59,11 +59,19 @@
 	}
 
 </script>
+
+<style>
+#trigger {
+	font-size: 13px;
+	line-height: 17px;
+	letter-spacing: -.3px;
+	white-space: nowrap;
+	word-break: keep-all;
+	text-align: right;
+}
+</style>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
 	<br>
 	<br>
 	<br>
@@ -71,12 +79,35 @@
 	<input type="hidden" id="userid" value="${sessionScope.userid}">
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
+		<a id="trigger">더 많은 회원을 보고 싶으싶니까?</a>
+		<div id="content" class="row justify-content-center"
+			style="display: none;">
+			<div class="col-md-8 text-center">
+				<h2 class="mb-4">나의 얼굴 점수: ${map.Aiface}</h2>
+				<h3 class="mb-4">나의 레벨: ${map.lvl}</h3>
+				<h3 class="mb-4">볼 수 있는 점수: ${map.b}</h3>
+				<p class="mb-4">레벨을 올리면 더 높은 점수의 회원들을 확인할 수 있습니다.</p>
+				<button type="button" class="btn btn-primary" onclick="uplvl()">레벨
+					올리기</button>
+			</div>
+		</div>
+		<script>
+    const trigger = document.getElementById('trigger');
+    const content = document.getElementById('content');
+
+    trigger.addEventListener('mouseover', function() {
+        content.style.display = 'block';
+    });
+
+    content.addEventListener('mouseleave', function() {
+        content.style.display = 'none';
+    });
+</script>
+
+
+		<br> <br> <br>
 		<div class="row justify-content-center">
-			<h2>나의 얼굴 점수 : ${map.Aiface}</h2>
-			<h3>나의 레벨 : ${map.lvl}</h3>
-			<h3>볼수 있는 점수 : ${map.b}</h3>
-			<h6>레벨을 올리면 더 높은 점수의 회원들을 확인할 수 있습니다.</h6>
-			<input type="button" value="레벨 올리기" onclick="uplvl()">
+
 			<c:choose>
 				<c:when test="${sessionScope.gender == 1}">
 					<!-- 성별이 여성일 때만 실행될 부분 -->
@@ -188,6 +219,5 @@
 			</c:choose>
 		</div>
 	</div>
-
 </body>
 </html>
