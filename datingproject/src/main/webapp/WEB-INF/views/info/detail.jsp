@@ -61,6 +61,23 @@
 
 <style>
 
+table {
+    width: 100%; /* 테이블의 전체 너비를 사용하도록 설정 */
+}
+
+td:first-child, td:nth-child(2) {
+    width: 50px; /* 원하는 길이로 조정 */
+    white-space: nowrap; /* 긴 텍스트가 잘리지 않도록 설정 */
+    overflow: hidden; /* 넘치는 텍스트는 숨김 처리 */
+    text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
+}
+
+/* 후기의 길이 늘리기 */
+td:nth-child(3) {
+    width: 300px; /* 원하는 길이로 조정 */
+    white-space: normal; /* 텍스트가 줄 바꿈 될 수 있도록 설정 */
+}
+
 /*리뷰 테이블 리스트 style*/
 th, td {
 	padding: 8px;
@@ -104,7 +121,7 @@ tr:hover {
 }
 
 .stars1 {
-	font-size: 24px; /* 별표의 크기 조정 */
+	font-size: 15px; /* 별표의 크기 조정 */
 }
 
 .stars1>* {
@@ -138,7 +155,8 @@ tr:hover {
 			</div>
 		</div>
 		<!-- Page content -->
-		<div class="container-fluid mt--7" style="position:absolute;left:1250px; top:850px;">
+		<div class="container-fluid mt--7"
+			style="position: absolute; left: 1250px; top: 850px;">
 			<div class="row">
 
 				<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -172,7 +190,7 @@ tr:hover {
 											<span class="heading">10</span> <span class="description">Photos</span>
 										</div>
 										<div>
-											<span class="heading">89</span> <span class="description">Comments</span>
+											<span class="heading"></span> <span class="description">Comments</span>
 										</div>
 									</div>
 								</div>
@@ -193,35 +211,37 @@ tr:hover {
 
 
 								<!--  리뷰 위치   -->
-
-								<table>
-									<tr>
-										<th>이름</th>
-										<th>별점</th>
-										<th>후기</th>
-									</tr>
-									<c:forEach var="row" items="${list}">
+								<table class="table table-bordered table-striped">
+									<thead>
 										<tr>
-											<td>${row.userid}</td>
-											<td>
-												<div class="stars1">
-													<c:forEach begin="1" end="5" varStatus="loop">
-														<c:choose>
-															<c:when test="${row.star >= loop.index}">
-                                ★
-                            </c:when>
-															<c:otherwise>
-                                ☆
-                            </c:otherwise>
-														</c:choose>
-													</c:forEach>
-												</div>
-											</td>
-											<td>${row.review}</td>
+											<th>이름</th>
+											<th>별점</th>
+											<th>후기</th>
 										</tr>
-									</c:forEach>
+									</thead>
+									<tbody>
+										<c:forEach var="row" items="${list}">
+											<tr>
+												<td>${row.userid}</td>
+												<td>
+													<div class="stars1">
+														<c:forEach begin="1" end="5" varStatus="loop">
+															<c:choose>
+																<c:when test="${row.star >= loop.index}">
+                                    ★
+                                </c:when>
+																<c:otherwise>
+                                    ☆
+                                </c:otherwise>
+															</c:choose>
+														</c:forEach>
+													</div>
+												</td>
+												<td>${row.review}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
 								</table>
-
 
 							</div>
 
@@ -269,15 +289,6 @@ tr:hover {
 
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
 				</div>
 			</div>
 		</div>
@@ -369,31 +380,32 @@ tr:hover {
 						</div>
 					</div>
 				</div>
-
-				<hr class="my-4">
-
-
-
-
-
-				<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
-
-				<div class="pl-lg-4">
-
-					<div class="form-group focused">
-						<a>${dto.description}</a>
-					</div>
-
-
-
-
-				</div>
 			</div>
-			<hr class="my-4">
-			<!-- Address -->
 
-			<!-- 리뷰 평점 -->
-			
+			<hr class="my-4">
+
+
+
+
+
+			<h6 class="heading-small text-muted mb-4">나의 사진 및 한마디</h6>
+
+			<div class="pl-lg-4">
+
+				<div class="form-group focused">
+					<a>${dto.description}</a>
+				</div>
+
+
+
+
+			</div>
+		</div>
+		<hr class="my-4">
+		<!-- Address -->
+
+		<!-- 리뷰 평점 -->
+
 
 
 
