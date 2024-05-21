@@ -1,6 +1,7 @@
 package com.example.datingproject.controller.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.example.datingproject.model.member.MemberDTO;
 import com.example.datingproject.model.mypage.MypageDAO;
 import com.example.datingproject.model.mypage.MypageDTO;
 import com.example.datingproject.model.review.ReviewDAO;
+import com.example.datingproject.model.review.ReviewDTO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,12 +39,13 @@ public class MypageController {
 		String userid = (String) session.getAttribute("userid");
 		MypageDTO mypageDto = new MypageDTO();
 		MemberDTO mlist = mypageDao.mypagemember(userid);
+		List<ReviewDTO> rlist = reviewDao.list(userid);
 		InfoDTO ilist = mypageDao.mypageinfo(userid);
 		int countfollower = mypageDao.countfollower(userid);
 		int countfollowing = mypageDao.countfollowing(userid);
 		int countchat = mypageDao.countchat(userid);
 		double avgstar = reviewDao.avgstar(userid);
-		System.out.println(avgstar);
+		avgstar = Math.floor(avgstar * 10) / 10.0;
 		mypageDto.setCountfollower(countfollower);
 		mypageDto.setCountfollowing(countfollowing);
 		mypageDto.setCountchat(countchat);
@@ -52,6 +55,7 @@ public class MypageController {
 		map.put("ilist", ilist);
 		map.put("mdto", mypageDto);
 		map.put("avgstar", avgstar);
+		map.put("rlist", rlist);
 
 		return new ModelAndView("mypage/mypage", "map", map);
 

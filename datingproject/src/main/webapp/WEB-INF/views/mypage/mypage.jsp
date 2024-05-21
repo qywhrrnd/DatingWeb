@@ -227,11 +227,44 @@
 	-webkit-text-fill-color: gold;
 }
 
+
+
 .star-ratings-base {
 	z-index: 0;
 	padding: 0;
 }
 
+table {
+	width: 100%; /* 테이블의 전체 너비를 사용하도록 설정 */
+}
+
+td:first-child, td:nth-child(2) {
+	width: 50px; /* 원하는 길이로 조정 */
+	white-space: nowrap; /* 긴 텍스트가 잘리지 않도록 설정 */
+	overflow: hidden; /* 넘치는 텍스트는 숨김 처리 */
+	text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
+}
+
+/* 후기의 길이 늘리기 */
+td:nth-child(3) {
+	width: 300px; /* 원하는 길이로 조정 */
+	white-space: normal; /* 텍스트가 줄 바꿈 될 수 있도록 설정 */
+}
+
+/*리뷰 테이블 리스트 style*/
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
 </style>
 
 <link
@@ -256,12 +289,14 @@
 	}
 
 	$(document).ready(function() {
-		var score = ${map.avgstar}; // 서버에서 평균 점수를 가져온다고 가정합니다.
-		var percent = ratingToPercent(score);
+		let score = ${map.avgstar}; // 서버에서 평균 점수를 가져온다고 가정합니다.
+		let percent = ratingToPercent(score);
 
 		$('.star-ratings-fill').css('width', percent + '%');
 	});
 	
+	
+
 	function followerlist() {
 		let follower = document.getElementById('userid').value;
 		location.href = "/info/followerlist.do?follower=" + follower;
@@ -525,29 +560,63 @@
 														<div class="star-ratings-base space-x-2 text-lg">
 															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 														</div>
-														<a style="font-size:small;">${map.avgstar} / 5점</a>
+														<a style="font-size: small;">${map.avgstar} / 5점</a>
 													</div>
 													<div class="row">
 														<div class="col-12">
-															<ul class="list-unstyled statistics">
-																<li><span class="text-primary">Oct 20</span> <a
-																	class="h6"
-																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Toyota
-																		Sienna rates marginal in passenger-side overlap crash
-																		test</a></li>
-																<li><span class="text-primary">Oct 12</span> <a
-																	class="h6"
-																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Ford
-																		reveals autonomous vehicle philosophies, priorities</a></li>
-																<li><span class="text-primary">Oct 7</span> <a
-																	class="h6"
-																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Offer
-																		Hints to How Dogs Became Domesticated</a></li>
-																<li><span class="text-primary">Oct 6</span> <a
-																	class="h6"
-																	href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Consumer
-																		apprehension grows over autonomous tech, study says</a></li>
-															</ul>
+															<table>
+																<tr>
+																	<th>이름</th>
+																	<th>별점</th>
+																	<th>후기</th>
+																</tr>
+																<c:forEach var="row" items="${map.rlist}" varStatus="loop">
+																	<input type="hidden" value="${row.star}"
+																		id="star-${loop.index}">
+																	<script>
+        function ratingToPercent${loop.index}(score) {
+            return (score / 5) * 100;
+        }
+
+        $(document).ready(function() {
+            let score = document.getElementById('star-${loop.index}').value;
+            let percent = ratingToPercent${loop.index}(score);
+
+            $('.star-ratings-fill${loop.index}').css('width', percent + '%');
+        });
+    </script>
+    <style>
+    .star-ratings-fill${loop.index} {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
+    </style>
+																	<tr>
+																		<td>${row.userid}</td>
+																		<td>
+																			<div class="star-ratings">
+																				<div
+																					class="star-ratings-fill${loop.index} space-x-2 text-lg">
+																					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+																				</div>
+																				<a style="font-size: small;">${row.star} / 5점</a>
+																			</div>
+																		</td>
+																		<td>${row.review}</td>
+																	</tr>
+																</c:forEach>
+
+															</table>
 														</div>
 													</div>
 												</div>
