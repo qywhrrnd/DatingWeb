@@ -16,6 +16,7 @@ import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDTO;
 import com.example.datingproject.model.mypage.MypageDAO;
 import com.example.datingproject.model.mypage.MypageDTO;
+import com.example.datingproject.model.review.ReviewDAO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +28,9 @@ public class MypageController {
 
 	@Autowired
 	MypageDAO mypageDao;
+	
+	@Autowired
+	ReviewDAO reviewDao;
 
 	@RequestMapping("mypage/mypage.do")
 	public ModelAndView mypage(HttpSession session) {
@@ -37,6 +41,8 @@ public class MypageController {
 		int countfollower = mypageDao.countfollower(userid);
 		int countfollowing = mypageDao.countfollowing(userid);
 		int countchat = mypageDao.countchat(userid);
+		double avgstar = reviewDao.avgstar(userid);
+		System.out.println(avgstar);
 		mypageDto.setCountfollower(countfollower);
 		mypageDto.setCountfollowing(countfollowing);
 		mypageDto.setCountchat(countchat);
@@ -45,6 +51,7 @@ public class MypageController {
 		map.put("mlist", mlist);
 		map.put("ilist", ilist);
 		map.put("mdto", mypageDto);
+		map.put("avgstar", avgstar);
 
 		return new ModelAndView("mypage/mypage", "map", map);
 

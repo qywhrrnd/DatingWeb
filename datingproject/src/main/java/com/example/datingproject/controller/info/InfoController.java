@@ -304,7 +304,7 @@ public class InfoController {
 	         @RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
 
 	      int follower = infoDao.followercount(otherid);
-	      String name = infoDao.getname(otherid);
+	     
 	      session.setAttribute("follower", follower);
 	      int count = infoDao.viewlog(userid, otherid);
 	      if (count == 0) {
@@ -313,7 +313,7 @@ public class InfoController {
 	         infoDao.updatepoint(userid);
 	         
 	         
-	         List<ReviewDTO> list = reviewDao.list(name);
+	         List<ReviewDTO> list = reviewDao.list(otherid);
 	         InfoDTO dto = infoDao.detail(otherid);
 	         mav.setViewName("info/detail");
 	         mav.addObject("list",list);
@@ -321,7 +321,7 @@ public class InfoController {
 	         return mav;
 
 	      } else {
-	         List<ReviewDTO> list = reviewDao.list(name);
+	         List<ReviewDTO> list = reviewDao.list(otherid);
 	         InfoDTO dto = infoDao.detail(otherid);
 	         mav.setViewName("info/detail");
 	         mav.addObject("list",list);

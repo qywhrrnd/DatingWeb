@@ -8,4 +8,5 @@ public interface ReviewDAO {
 	
 	List<ReviewDTO> list(String userid);
 	
+	double avgstar(String userid);
 }

@@ -9,9 +9,14 @@
 	</select>
 
 	<insert id="reviewInsert">
-		insert into review 
-		values ((select nvl(max(idx)+1,1) from review), #{userid}, #{reviewer}, #{star}, #{review}, #{regiDate})
+		insert into review
+		values ((select nvl(max(idx)+1,1) from review), #{userid}, #{reviewer},
+		#{star}, #{review}, #{regiDate})
 	</insert>
+
+	<select id="avgstar" resultType="double">
+		SELECT COALESCE(AVG(star), 0) avg FROM review WHERE reviewer = #{userid}
+	</select>
 
 
 

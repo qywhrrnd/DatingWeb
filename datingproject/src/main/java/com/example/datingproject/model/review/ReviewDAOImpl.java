@@ -24,6 +24,11 @@ public class ReviewDAOImpl implements ReviewDAO{
 		// TODO Auto-generated method stub
 		return session.selectList("review.reviewList", userid);
 	}
+
+	@Override
+	public double avgstar(String userid) {
+		return session.selectOne("review.avgstar", userid);
+	}
 	
 
 }

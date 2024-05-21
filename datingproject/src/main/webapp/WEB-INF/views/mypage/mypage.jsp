@@ -204,6 +204,34 @@
 		margin-right: 0.25rem;
 	}
 }
+
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+
 </style>
 
 <link
@@ -223,6 +251,17 @@
 	crossorigin="anonymous">
 
 <script>
+	function ratingToPercent(score) {
+		return (score / 5) * 100;
+	}
+
+	$(document).ready(function() {
+		var score = ${map.avgstar}; // 서버에서 평균 점수를 가져온다고 가정합니다.
+		var percent = ratingToPercent(score);
+
+		$('.star-ratings-fill').css('width', percent + '%');
+	});
+	
 	function followerlist() {
 		let follower = document.getElementById('userid').value;
 		location.href = "/info/followerlist.do?follower=" + follower;
@@ -347,7 +386,8 @@
 									</c:when>
 									<c:when test="${map.mdto.countfollowing < 1}">
 										<div class="col-lg-4 col-sm-6">
-											<a class="member-item" onclick="swal.fire('알림','팔로잉 한사람이 없어요!','error')">
+											<a class="member-item"
+												onclick="swal.fire('알림','팔로잉 한사람이 없어요!','error')">
 												<div class="card mb-2 mb-md-5 py-3">
 													<div class="content">
 														<div class="row">
@@ -403,7 +443,8 @@
 									</c:when>
 									<c:when test="${map.mdto.countfollower < 1}">
 										<div class="col-lg-4 col-sm-6">
-											<a class="member-item" onclick="swal.fire('알림','팔로워가 없어요!','error')">
+											<a class="member-item"
+												onclick="swal.fire('알림','팔로워가 없어요!','error')">
 												<div class="card mb-2 mb-md-5 py-3">
 													<div class="content">
 														<div class="row">
@@ -476,7 +517,16 @@
 											<div class="tab-pane fade" id="pills-contact" role="tabpanel"
 												aria-labelledby="pills-contact-tab">
 												<div class="p-3 border mb-3">
-													<h5>Recently Published</h5>
+													<h5>나의별점</h5>
+													<div class="star-ratings">
+														<div class="star-ratings-fill space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<div class="star-ratings-base space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<a style="font-size:small;">${map.avgstar} / 5점</a>
+													</div>
 													<div class="row">
 														<div class="col-12">
 															<ul class="list-unstyled statistics">
