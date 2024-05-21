@@ -29,4 +29,10 @@ public class PointDAOImpl implements PointDAO {
 
 	}
 
+	@Override
+	public void pointlog(PointlogDTO dto) {
+		session.insert("pointlog.pointlog", dto);
+		
+	}
+
 }

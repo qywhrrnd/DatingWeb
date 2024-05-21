@@ -5,5 +5,7 @@ public interface PointDAO {
 	
 	void chatpoint(String userid);
 	
+	void pointlog(PointlogDTO dto);
+	
 	
 }

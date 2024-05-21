@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.datingproject.model.member.MemberDAO;
 import com.example.datingproject.model.point.PointDAO;
+import com.example.datingproject.model.point.PointlogDTO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -29,7 +30,10 @@ public class PointController {
 		pdaoDao.point(userid, point);
 		int point2 = memberDao.getpoint(userid);
 		session.setAttribute("point", point2);
-
+		PointlogDTO dto = new PointlogDTO();
+		dto.setUserid(userid);
+		dto.setPoint(point);
+		pdaoDao.pointlog(dto);
 		return "redirect:/mypage/mypage.do";
 
 	}
