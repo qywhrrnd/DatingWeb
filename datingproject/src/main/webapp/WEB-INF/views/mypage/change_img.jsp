@@ -59,6 +59,28 @@ body {
 	}
 
 	function score() {
+		let timerInterval;
+		Swal.fire({
+		  title: "사진분석중",
+		  html: "남은시간 <b></b> 초",
+		  timer: 2000,
+		  timerProgressBar: true,
+		  didOpen: () => {
+		    Swal.showLoading();
+		    const timer = Swal.getPopup().querySelector("b");
+		    timerInterval = setInterval(() => {
+		      timer.textContent = `${Swal.getTimerLeft()}`;
+		    }, 100);
+		  },
+		  willClose: () => {
+		    clearInterval(timerInterval);
+		  }
+		}).then((result) => {
+		  /* Read more about handling dismissals below */
+		  if (result.dismiss === Swal.DismissReason.timer) {
+		    console.log("I was closed by the timer");
+		  }
+		});
 		$("#AIface").val("");
 		let fileInput = document.getElementById("file");
 		var selectedFile = fileInput.files[0];
@@ -128,6 +150,7 @@ body {
 </script>
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<%@ include file="../main/header.jsp"%>
 	<br>
 	<br>

@@ -92,7 +92,9 @@
 	<input type="hidden" id="userid" value="${sessionScope.userid}">
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
-		<a id="trigger">더 많은 회원을 보고 싶으싶니까?</a>
+		<a id="trigger">더 많은 회원을 보고 싶으싶니까?</a> 
+		<br>
+		<a style="font-style: italic; font-size: x-small;">마우스를 올려보세요!</a>
 		<div id="content" class="row justify-content-center"
 			style="display: none;">
 			<div class="col-md-8 text-center">
