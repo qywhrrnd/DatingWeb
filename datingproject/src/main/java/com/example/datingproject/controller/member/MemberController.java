@@ -91,6 +91,8 @@ public class MemberController {
 		if (userid2 == null) {
 			message = "error";
 			url = "login/login";
+			return new ModelAndView(url, "message", message);
+
 		} else {
 			int info = memberDao.login(userid, passwd);
 			int point = memberDao.getpoint(userid);
@@ -115,9 +117,11 @@ public class MemberController {
 				Map<String, Object> map = new HashMap<>();
 				map.put("totalmember", totalmember);
 				url = "admin/main";
-				return new ModelAndView(url, "map", map);
+				return new ModelAndView(url, "map", totalmember);
 			}
+			
 		}
+		return null;
 
 	}
 
