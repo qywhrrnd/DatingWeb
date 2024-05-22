@@ -91,128 +91,26 @@
 						<p>성공사례를 보내주시면 문화상품권 증정!</p>
 					</div>
 				</div>
+
+
+
+
+
+
 				<div class="col-lg-12">
 					<div class="owl-service-item owl-carousel">
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/카리나1.jpg" alt="">
+						<c:forEach var="row" items="${map.slist}">
+							<div class="item">
+								<div class="service-item">
+									<div class="icon">
+										<img src="/resources/images/${row.filename}" alt="">
+									</div>
+									<h4>${row.name1}♥♡${row.name2 }</h4>
+									<p>${row.content}</p>
 								</div>
-								<h4>Useful Tricks</h4>
-								<p>EduWell is the professional HTML5 template for your
-									school or university websites.</p>
 							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/chulsoon2.png" alt="">
-								</div>
-								<h4>Creative Ideas</h4>
-								<p>You can download and use this EduWell Template for your
-									teaching and learning stuffs.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-03.png" alt="">
-								</div>
-								<h4>Ready Target</h4>
-								<p>Please tell your friends about the best CSS template
-									website that is TemplateMo.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-04.png" alt="">
-								</div>
-								<h4>Technology</h4>
-								<p>Aenean bibendum consectetur ex eu porttitor. Pellentesque
-									id ultrices metus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-01.png" alt="">
-								</div>
-								<h4>Useful Tricks</h4>
-								<p>In non nisi eget magna efficitur ultricies non quis
-									sapien. Pellentesque tellus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-02.png" alt="">
-								</div>
-								<h4>Creative Ideas</h4>
-								<p>Aenean bibendum consectetur ex eu porttitor. Pellentesque
-									id ultrices metus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-03.png" alt="">
-								</div>
-								<h4>Ready Target</h4>
-								<p>In non nisi eget magna efficitur ultricies non quis
-									sapien. Pellentesque tellus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-04.png" alt="">
-								</div>
-								<h4>Technology</h4>
-								<p>Aenean bibendum consectetur ex eu porttitor. Pellentesque
-									id ultrices metus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-01.png" alt="">
-								</div>
-								<h4>Useful Tricks</h4>
-								<p>In non nisi eget magna efficitur ultricies non quis
-									sapien. Pellentesque tellus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-02.png" alt="">
-								</div>
-								<h4>Creative Ideas</h4>
-								<p>Aenean bibendum consectetur ex eu porttitor. Pellentesque
-									id ultrices metus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-03.png" alt="">
-								</div>
-								<h4>Ready Target</h4>
-								<p>In non nisi eget magna efficitur ultricies non quis
-									sapien. Pellentesque tellus.</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="service-item">
-								<div class="icon">
-									<img src="/resources/images/service-icon-04.png" alt="">
-								</div>
-								<h4>Technology</h4>
-								<p>Praesent accumsan condimentum arcu, id porttitor est
-									semper nec. Nunc diam lorem.</p>
-							</div>
-						</div>
+						</c:forEach>
+
 					</div>
 				</div>
 			</div>
@@ -403,7 +301,7 @@
 				<div class="col-lg-12">
 					<div class="owl-testimonials owl-carousel"
 						style="position: relative; z-index: 5;">
-						<c:forEach var="row" items="${list}">
+						<c:forEach var="row" items="${map.list}">
 							<div class="item">
 								<p>${row.content}</p>
 								<span>${row.name }</span> <img src="/resources/images/quote.png"
