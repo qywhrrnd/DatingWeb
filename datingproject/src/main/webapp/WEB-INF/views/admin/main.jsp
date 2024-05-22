@@ -249,13 +249,73 @@
 	}
 
 	function managereview() {
-		$.ajax({
-			url : "/admin/managereview.do",
-			type : "POST",
-			success : function(response) {
-				displayTable(response);
-			}
-		});
+		$
+				.ajax({
+					url : "/admin/mainreview.do",
+					type : "POST",
+					success : function(response) {
+						$('#sex').empty();
+						let list = response.list;
+						let tableHTML = '<table border="1"><tr><th>idx</th><th>userid</th><th>이름</th><th>리뷰</th><th>삭제</th></tr>';
+						for (let i = 0; i < list.length; i++) {
+							let row = '<tr><td>'
+									+ list[i].idx
+									+ '</td><td>'
+									+ list[i].userid
+									+ '</td><td>'
+									+ list[i].name
+									+ '</td><td>'
+									+ list[i].content
+									+ '</td><td><input type="button" value = "삭제" onclick="deletemainreview('
+									+ list[i].idx + ')"></td></tr>';
+
+							tableHTML += row;
+						}
+						// 테이블을 닫음
+						tableHTML += '</table>';
+
+						// 테이블을 출력할 HTML 요소에 추가
+						$('#result').html(tableHTML);
+					}
+				});
+	}
+	function deletemainreview(idx) {
+		$
+				.ajax({
+					url : "/admin/deletemainreview.do",
+					type : "POST",
+					data : {
+						idx : idx
+					},
+					success : function(response) {
+						$('#sex').empty();
+						let list = response.list;
+						let tableHTML = '<table border="1"><tr><th>idx</th><th>userid</th><th>이름</th><th>리뷰</th><th>삭제</th></tr>';
+						for (let i = 0; i < list.length; i++) {
+							let row = '<tr><td>'
+									+ list[i].idx
+									+ '</td><td>'
+									+ list[i].userid
+									+ '</td><td>'
+									+ list[i].name
+									+ '</td><td>'
+									+ list[i].content
+									+ '</td><td><input type="button" value = "삭제" onclick="deletemainreview('
+									+ list[i].idx + ')"></td></tr>';
+
+							tableHTML += row;
+						}
+						// 테이블을 닫음
+						tableHTML += '</table>';
+
+						// 테이블을 출력할 HTML 요소에 추가
+						$('#result').html(tableHTML);
+					}
+				});
+	}
+
+	function logout() {
+		location.href = "/member/logout.do";
 	}
 </script>
 
@@ -267,6 +327,7 @@
 	<input type="button" value="회원관리" onclick="memberinfo()">
 	<input type="button" value="매출관리" onclick="sales()">
 	<input type="button" value="리뷰관리" onclick="managereview()">
+	<input type="button" value="로그아웃" onclick="logout()">
 	<div id="sex"></div>
 	<div id="result"></div>
 
