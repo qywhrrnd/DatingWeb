@@ -20,6 +20,11 @@
 		select * from pointlog order by day desc
 	</select>
 
+	<select id="totalpoint" resultType="int">
+		select sum(point) from pointlog
+	</select>
+
+
 	<delete id="deletemainreview">
 		delete from mainreview where idx = #{idx}
 	</delete>

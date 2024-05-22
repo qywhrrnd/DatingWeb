@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.datingproject.model.admin.AdminDAO;
 import com.example.datingproject.model.admin.AdminDTO;
 import com.example.datingproject.model.admin.PointDTO;
+import com.example.datingproject.model.chat.ChatBoxDAO;
 import com.example.datingproject.model.mainreview.MainreviewDAO;
 import com.example.datingproject.model.mainreview.MainreviewDTO;
 import com.example.datingproject.model.member.MemberDAO;
@@ -35,6 +37,12 @@ public class AdminController {
 
 	@Autowired
 	MainreviewDAO rdao;
+
+	@Autowired
+	MemberDAO memberDao;
+
+	@Autowired
+	ChatBoxDAO cdao;
 
 	@PostMapping("admin/successreview.do")
 	public ResponseEntity<Map<String, Object>> successreview() {
@@ -113,6 +121,20 @@ public class AdminController {
 		Map<String, Object> response = new HashMap<>();
 		response.put("list", list);
 		return ResponseEntity.ok(response);
+	}
+
+	@RequestMapping("adminpage.do")
+	public ModelAndView adminpage() {
+		String url = "";
+		int totalmember = memberDao.totalmember();
+		int totalmatching = cdao.totalmatching();
+		List<PointDTO> list = adao.plist();
+		Map<String, Object> map = new HashMap<>();
+		map.put("totalmember", totalmember);
+		map.put("totalmatching", totalmatching);
+		map.put("list", list);
+		url = "redirect:/adminpage.do";
+		return new ModelAndView(url, "map", map);
 	}
 
 }

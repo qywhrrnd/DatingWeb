@@ -9,4 +9,5 @@ public interface AdminDAO {
 	
 	void deletemainreview(int idx);
 	
+	int totalpoint();
 }

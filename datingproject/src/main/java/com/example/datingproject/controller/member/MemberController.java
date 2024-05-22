@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.datingproject.model.admin.AdminDAO;
-import com.example.datingproject.model.chat.ChatBoxDAO;
 import com.example.datingproject.model.email.MailSendService;
 import com.example.datingproject.model.email.RedisUtil;
 import com.example.datingproject.model.info.InfoDAO;
@@ -38,12 +36,6 @@ public class MemberController {
 
 	@Autowired
 	RedisUtil util;
-	
-	@Autowired
-	AdminDAO adao;
-	
-	@Autowired
-	ChatBoxDAO cdao;
 
 	@RequestMapping("member/pagelogin.do")
 	public String pagelogin() {
@@ -99,8 +91,6 @@ public class MemberController {
 		if (userid2 == null) {
 			message = "error";
 			url = "login/login";
-			return new ModelAndView(url, "message", message);
-
 		} else {
 			int info = memberDao.login(userid, passwd);
 			int point = memberDao.getpoint(userid);
@@ -110,7 +100,7 @@ public class MemberController {
 				session.setAttribute("userid", userid);
 				message = "개인정보를 입력해주세요";
 				url = "login/information";
-				return new ModelAndView(url, "message", message);
+
 			} else if (info == 2) {
 				int gender = infoDao.gender(userid);
 				session.setAttribute("userid", userid);
@@ -118,20 +108,13 @@ public class MemberController {
 				session.setAttribute("gender", gender);
 				message = "환영합니다.";
 				url = "redirect:/";
-				return new ModelAndView(url, "message", message);
 			} else if (info == 3) {
-				int totalmember = memberDao.totalmember();
-				int totalmatching = cdao.totalmatching();
 				session.setAttribute("userid", userid);
-				Map<String, Object> map = new HashMap<>();
-				map.put("totalmember", totalmember);
-				map.put("totalmatching", totalmatching);
-				url = "admin/main";
-				return new ModelAndView(url, "map", map);
+				message = "환영합니다.";
+				url = "redirect:/adminpage.do";
 			}
-			
 		}
-		return null;
+		return new ModelAndView(url, "message", message);
 
 	}
 

@@ -28,4 +28,9 @@ public class AdminDAOImpl implements AdminDAO {
 		
 	}
 
+	@Override
+	public int totalpoint() {
+		return session.selectOne("admin.totalpoint");
+	}
+
 }
