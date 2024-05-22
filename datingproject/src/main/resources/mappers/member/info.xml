@@ -86,7 +86,7 @@
 
 	<select id="followercount" resultType="int">
 		select count(*) from
-		follow where following=#{following}
+		follow where follower=#{follower}
 	</select>
 
 	<select id="getaiface" resultType="double">
