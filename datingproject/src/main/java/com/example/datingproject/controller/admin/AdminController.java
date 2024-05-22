@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.datingproject.model.admin.AdminDAO;
 import com.example.datingproject.model.admin.AdminDTO;
+import com.example.datingproject.model.mainreview.MainreviewDAO;
+import com.example.datingproject.model.mainreview.MainreviewDTO;
 import com.example.datingproject.model.successreview.SuccessreviewDAO;
 import com.example.datingproject.model.successreview.SuccessreviewDTO;
 
@@ -22,6 +24,9 @@ public class AdminController {
 	
 	@Autowired
 	AdminDAO adao;
+	
+	@Autowired
+	MainreviewDAO rdao;
 	
 
 	@PostMapping("admin/successreview.do")
@@ -39,6 +44,14 @@ public class AdminController {
 		Map<String, Object> response = new HashMap<>();
 		response.put("list", list);
 		return ResponseEntity.ok(response);
+	}
+	
+	@PostMapping("admin/mainreview.do")
+	public ResponseEntity<Map<String, Object>> mainreview(){
+		List<MainreviewDTO> list = rdao.list();
+		Map<String, Object> response = new HashMap<>();
+		response.put("list", list);
+		return ResponseEntity.ok(response);		
 	}
 	
 }

@@ -44,6 +44,6 @@ public class MainreviewController {
 		dto.setUserid(userid);
 		dao.writemainreview(dto);
 		return redirectToPreviousPage();
-
 	}
+	
 }
