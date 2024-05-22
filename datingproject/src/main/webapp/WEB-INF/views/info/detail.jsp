@@ -218,7 +218,7 @@ tr:hover {
 											<span class="heading">10</span> <span class="description">Photos</span>
 										</div>
 										<div>
-											<span class="heading"></span> <span class="description">Comments</span>
+											<span class="heading">${sessionScope.reviewcount}</span> <span class="description">Comments</span>
 										</div>
 									</div>
 								</div>
