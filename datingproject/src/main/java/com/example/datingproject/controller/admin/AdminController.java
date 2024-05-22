@@ -90,14 +90,6 @@ public class AdminController {
 
 	}
 
-	@PostMapping("admin/memberinfo.do")
-	public ResponseEntity<Map<String, Object>> memberinfo() {
-		List<AdminDTO> list = adao.list();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
-	}
-
 	@PostMapping("admin/mainreview.do")
 	public ResponseEntity<Map<String, Object>> mainreview() {
 		List<MainreviewDTO> list = rdao.list();
@@ -136,6 +128,16 @@ public class AdminController {
 		map.put("list", list);
 		map.put("totalpoint", totalpoint);
 		url = "admin/main";
+		return new ModelAndView(url, "map", map);
+	}
+
+	@RequestMapping("admin/memberinfo.do")
+	public ModelAndView memberinfo() {
+		String url = "";
+		List<AdminDTO> list = adao.list();
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		url = "admin/user";
 		return new ModelAndView(url, "map", map);
 	}
 
