@@ -117,7 +117,7 @@ public class MemberController {
 				Map<String, Object> map = new HashMap<>();
 				map.put("totalmember", totalmember);
 				url = "admin/main";
-				return new ModelAndView(url, "map", totalmember);
+				return new ModelAndView(url, "map", map);
 			}
 			
 		}
