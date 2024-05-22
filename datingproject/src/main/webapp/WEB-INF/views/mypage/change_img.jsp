@@ -62,7 +62,7 @@ body {
 		let timerInterval;
 		Swal.fire({
 		  title: "사진분석중",
-		  html: "남은시간 <b></b> 초",
+		  html: "잠시만기다려주세요!",
 		  timer: 2000,
 		  timerProgressBar: true,
 		  didOpen: () => {

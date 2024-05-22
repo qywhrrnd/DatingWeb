@@ -1,322 +1,194 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
-	function successreview() {
-		$
-				.ajax({
-					url : "/admin/successreview.do",
-					type : "POST",
-					success : function(response) {
-						$('#sex').empty();
-						var list = response.list;
-						var tableHTML = '<form id="form1" method="post" action="/admin/writereview.do" enctype="multipart/form-data"><br><input type="file" name="file" id="file" accept="image/jpg" multiple="multiple"><br><input type="text" name="name1" placeholder="이름1"><br><input type="text" name="name2" placeholder="이름2"><br><input type="text" name="content" placeholder="내용"><br><input type="button" onclick="writereview()" value="등록"></form><br><table border="1"><tr><th>idx</th><th>사진</th><th>이름1</th><th>이름2</th><th>내용</th></tr>';
-						for (var i = 0; i < list.length; i++) {
-							var row = '<tr><td>'
-									+ list[i].idx
-									+ '</td><td><img src="/resources/images/' + list[i].filename + '" width="100" height="100"></td><td>'
-									+ list[i].name1 + '</td><td>'
-									+ list[i].name2 + '</td><td>'
-									+ list[i].content + '</td></tr>';
-							tableHTML += row;
-						}
-						tableHTML += '</table>';
-
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function writereview() {
-	    var formData = new FormData($("#form1")[0]); 
-	    $.ajax({
-	        url: "/admin/writereview.do",
-	        type: "POST",
-	        data: formData,
-	        contentType: false,
-	        processData: false,
-	        success: function(response) {
-	        	$('#sex').empty();
-				var list = response.list;
-				var tableHTML = '<form id="form1" method="post" action="/admin/writereview.do" enctype="multipart/form-data"><input type="file" name="file" id="file" accept="image/jpg" multiple="multiple"><br><input type="text" name="name1" placeholder="이름1"><br><input type="text" name="name2" placeholder="이름2"><br><input type="text" name="content" placeholder="내용"><br><input type="submit" value="등록"></form><br><table border="1"><tr><th>idx</th><th>사진</th><th>이름1</th><th>이름2</th><th>내용</th></tr>';
-				for (var i = 0; i < list.length; i++) {
-					var row = '<tr><td>'
-							+ list[i].idx
-							+ '</td><td><img src="/resources/images/' + list[i].filename + '" width="100" height="100"></td><td>'
-							+ list[i].name1 + '</td><td>'
-							+ list[i].name2 + '</td><td>'
-							+ list[i].content + '</td></tr>';
-					tableHTML += row;
-				}
-				tableHTML += '</table>';
-
-				$('#result').html(tableHTML);
-	        }
-	    });
-	}
-	
-
-	function memberinfo() {
-		$
-				.ajax({
-					url : "/admin/memberinfo.do",
-					type : "POST",
-					success : function(response) {
-						var sex = '<br><input type="button" value="남자" onclick="man()"><input type="button" value="여자" onclick="woman()">';
-						$('#sex').html(sex);
-						var list = response.list;
-						var tableHTML = '<table border="1"><tr><th>name</th><th>age</th><th>userid</th><th>cellphone</th><th>address</th><th>height</th><th>weight</th><th>MBTI</th><th>smoking</th><th>hobby</th><th>style</th><th>education</th><th>religion</th><th>job</th><th>filename</th><th>AIface</th><th>point</th><th>lvl</th></tr>';
-						for (var i = 0; i < list.length; i++) {
-							var row = '<tr><td>'
-									+ list[i].name
-									+ '</td><td>'
-									+ list[i].age
-									+ '</td><td>'
-									+ list[i].userid
-									+ '</td><td>'
-									+ list[i].cellphone
-									+ '</td><td>'
-									+ list[i].address
-									+ '</td><td>'
-									+ list[i].height
-									+ '</td><td>'
-									+ list[i].weight
-									+ '</td><td>'
-									+ list[i].mbti
-									+ '</td><td>'
-									+ list[i].smoking
-									+ '</td><td>'
-									+ list[i].hobby
-									+ '</td><td>'
-									+ list[i].style
-									+ '</td><td>'
-									+ list[i].education
-									+ '</td><td>'
-									+ list[i].religion
-									+ '</td><td>'
-									+ list[i].job
-									+ '</td><td><img src="/resources/images/' + list[i].filename + '" width="100" height="100"></td><td>'
-									+ list[i].aiface + '</td><td>'
-									+ list[i].point + '</td><td>' + list[i].lvl
-									+ '</td></tr>';
-							tableHTML += row;
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function man() {
-		$
-				.ajax({
-					url : "/admin/memberinfo.do",
-					type : "POST",
-					success : function(response) {
-						var sex = '<br><input type="button" value="전체" onclick="memberinfo()"><input type="button" value="여자" onclick="woman()">';
-						$('#sex').html(sex);
-						var list = response.list;
-						var tableHTML = '<table border="1"><tr><th>name</th><th>age</th><th>userid</th><th>cellphone</th><th>address</th><th>height</th><th>weight</th><th>MBTI</th><th>smoking</th><th>hobby</th><th>style</th><th>education</th><th>religion</th><th>job</th><th>filename</th><th>AIface</th><th>point</th><th>lvl</th></tr>';
-						for (var i = 0; i < list.length; i++) {
-							if (list[i].gender === 1) {
-								var row = '<tr><td>'
-										+ list[i].name
-										+ '</td><td>'
-										+ list[i].age
-										+ '</td><td>'
-										+ list[i].userid
-										+ '</td><td>'
-										+ list[i].cellphone
-										+ '</td><td>'
-										+ list[i].address
-										+ '</td><td>'
-										+ list[i].height
-										+ '</td><td>'
-										+ list[i].weight
-										+ '</td><td>'
-										+ list[i].mbti
-										+ '</td><td>'
-										+ list[i].smoking
-										+ '</td><td>'
-										+ list[i].hobby
-										+ '</td><td>'
-										+ list[i].style
-										+ '</td><td>'
-										+ list[i].education
-										+ '</td><td>'
-										+ list[i].religion
-										+ '</td><td>'
-										+ list[i].job
-										+ '</td><td><img src="/resources/images/' + list[i].filename + '" width="100" height="100"></td><td>'
-										+ list[i].aiface + '</td><td>'
-										+ list[i].point + '</td><td>'
-										+ list[i].lvl + '</td></tr>';
-								tableHTML += row;
-							}
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function woman() {
-		$
-				.ajax({
-					url : "/admin/memberinfo.do",
-					type : "POST",
-					success : function(response) {
-						var sex = '<br><input type="button" value="전체" onclick="memberinfo()"><input type="button" value="남자" onclick="man()">';
-						$('#sex').html(sex);
-						var list = response.list;
-						var tableHTML = '<table border="1"><tr><th>name</th><th>age</th><th>userid</th><th>cellphone</th><th>address</th><th>height</th><th>weight</th><th>MBTI</th><th>smoking</th><th>hobby</th><th>style</th><th>education</th><th>religion</th><th>job</th><th>filename</th><th>AIface</th><th>point</th><th>lvl</th></tr>';
-						for (var i = 0; i < list.length; i++) {
-							if (list[i].gender === 2) {
-								var row = '<tr><td>'
-										+ list[i].name
-										+ '</td><td>'
-										+ list[i].age
-										+ '</td><td>'
-										+ list[i].userid
-										+ '</td><td>'
-										+ list[i].cellphone
-										+ '</td><td>'
-										+ list[i].address
-										+ '</td><td>'
-										+ list[i].height
-										+ '</td><td>'
-										+ list[i].weight
-										+ '</td><td>'
-										+ list[i].mbti
-										+ '</td><td>'
-										+ list[i].smoking
-										+ '</td><td>'
-										+ list[i].hobby
-										+ '</td><td>'
-										+ list[i].style
-										+ '</td><td>'
-										+ list[i].education
-										+ '</td><td>'
-										+ list[i].religion
-										+ '</td><td>'
-										+ list[i].job
-										+ '</td><td><img src="/resources/images/' + list[i].filename + '" width="100" height="100"></td><td>'
-										+ list[i].aiface + '</td><td>'
-										+ list[i].point + '</td><td>'
-										+ list[i].lvl + '</td></tr>';
-								tableHTML += row;
-							}
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function sales() {
-		$
-				.ajax({
-					url : "/admin/sales.do",
-					type : "POST",
-					success : function(response) {
-						$('#sex').empty();
-						var list = response.list;
-						var tableHTML = '<br><table border="1"><tr><th>userid</th><th>포인트 충전내역</th><th>날짜</th></tr>';
-						for (var i = 0; i < list.length; i++) {
-							var row = '<tr><td>' + list[i].userid + '</td><td>'
-									+ list[i].point + '</td><td>' + list[i].day
-									+ '</td></tr>';
-							tableHTML += row;
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function managereview() {
-		$
-				.ajax({
-					url : "/admin/mainreview.do",
-					type : "POST",
-					success : function(response) {
-						$('#sex').empty();
-						let list = response.list;
-						let tableHTML = '<br><table border="1"><tr><th>idx</th><th>userid</th><th>이름</th><th>리뷰</th><th>삭제</th></tr>';
-						for (let i = 0; i < list.length; i++) {
-							let row = '<tr><td>'
-									+ list[i].idx
-									+ '</td><td>'
-									+ list[i].userid
-									+ '</td><td>'
-									+ list[i].name
-									+ '</td><td>'
-									+ list[i].content
-									+ '</td><td><input type="button" value = "삭제" onclick="deletemainreview('
-									+ list[i].idx + ')"></td></tr>';
-							tableHTML += row;
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function deletemainreview(idx) {
-		$
-				.ajax({
-					url : "/admin/deletemainreview.do",
-					type : "POST",
-					data : {
-						idx : idx
-					},
-					success : function(response) {
-						$('#sex').empty();
-						let list = response.list;
-						let tableHTML = '<br><table border="1"><tr><th>idx</th><th>userid</th><th>이름</th><th>리뷰</th><th>삭제</th></tr>';
-						for (let i = 0; i < list.length; i++) {
-							let row = '<tr><td>'
-									+ list[i].idx
-									+ '</td><td>'
-									+ list[i].userid
-									+ '</td><td>'
-									+ list[i].name
-									+ '</td><td>'
-									+ list[i].content
-									+ '</td><td><input type="button" value = "삭제" onclick="deletemainreview('
-									+ list[i].idx + ')"></td></tr>';
-							tableHTML += row;
-						}
-						tableHTML += '</table>';
-						$('#result').html(tableHTML);
-					}
-				});
-	}
-
-	function logout() {
-		location.href = "/member/logout.do";
-	}
-</script>
-
+<title>Insert title here</title>
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    rel="stylesheet">
 </head>
 <body>
+    <!--
+    // v0 by Vercel.
+    // https://v0.dev/t/TViyL8h9lFH
+    -->
 
-	<h2>관리자 페이지</h2>
-	<input type="button" value="성공사례관리" onclick="successreview()">
-	<input type="button" value="회원관리" onclick="memberinfo()">
-	<input type="button" value="매출관리" onclick="sales()">
-	<input type="button" value="리뷰관리" onclick="managereview()">
-	<input type="button" value="로그아웃" onclick="logout()">
-	<div id="write"></div>
-	<div id="sex"></div>
-	<div id="result"></div>
-
+    <div class="grid min-h-screen w-full grid-cols-[280px_1fr]">
+        <div
+            class="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
+            <div class="flex h-full max-h-screen flex-col gap-2">
+                <div class="flex h-[60px] items-center border-b px-6">
+                    <a class="flex items-center gap-2 font-semibold" href="#" rel="ugc">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-6 w-6">
+                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
+                            <path
+                                d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
+                            <path d="M12 3v6"></path>
+                        </svg> <span class="sr-only">Acme Inc</span>
+                    </a>
+                </div>
+                <div class="flex-1 overflow-auto py-2">
+                    <nav class="grid items-start px-4 text-sm font-medium">
+                        <a
+                            class="flex items-center gap-3 rounded-lg bg-gray-100 px-3 py-2 text-gray-900 transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50"
+                            href="#" rel="ugc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="h-4 w-4">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg> Dashboard
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                            href="#" rel="ugc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="h-4 w-4">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg> Users
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                            href="#" rel="ugc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="h-4 w-4">
+                                <path d="m7.5 4.27 9 5.15"></path>
+                                <path
+                                    d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                                <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                <path d="M12 22V12"></path>
+                            </svg> Review
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                            href="/member/logout.do" rel="ugc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="h-4 w-4">
+                                <path
+                                    d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg> Logout
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <hr>
+            <main class="flex-1 p-4 md:p-6">
+                <div class="flex items-center">
+                    <h1 class="font-semibold text-lg md:text-2xl">Dashboard</h1>
+                </div>
+                <div class="grid gap-4 md:gap-6 mt-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div
+                            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+                            data-v0-t="card">
+                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                                <h3
+                                    class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Total
+                                    Users</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    <span class="text-4xl font-bold">${map.totalmember}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+                            data-v0-t="card">
+                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                                <h3
+                                    class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Visitor</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    <span class="text-4xl font-bold">234??</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+                            data-v0-t="card">
+                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                                <h3
+                                    class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Matching</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    <span class="text-4xl font-bold">${map.totalmatching}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+                            data-v0-t="card">
+                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                                <h3
+                                    class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Revenue</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    <span class="text-4xl font-bold">₩<fmt:formatNumber value="${map.totalpoint}" pattern="#,###" /></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-lg border bg-card text-card-foreground shadow-sm"
+                        data-v0-t="card">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <h3
+                                class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Recent
+                                Orders</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="relative w-full overflow-auto">
+                                <table class="w-full caption-bottom text-sm">
+                                    <thead class="[&amp;_tr]:border-b">
+                                        <tr
+                                            class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                            <th
+                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                                                Customer</th>
+                                            <th
+                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                                                Date</th>
+                                            <th
+                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                                                Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <c:forEach var="row" items="${map.list}">
+                                    <tbody class="[&amp;_tr:last-child]:border-0">
+                                        <tr
+                                            class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                            <td
+                                                class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.userid}</td>
+                                            <td
+                                                class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.day}</td>
+                                            <td
+                                                class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">₩<fmt:formatNumber value="${row.point}" pattern="#,###" /></td>
+                                        </tr>
+                                    </tbody>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 </body>
 </html>
