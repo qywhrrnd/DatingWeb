@@ -15,6 +15,7 @@
 					url : "/admin/successreview.do",
 					type : "POST",
 					success : function(response) {
+						$('#sex').empty();
 						var list = response.list;
 						// 테이블을 생성할 HTML 코드
 						var tableHTML = '<table border="1"><tr><th>idx</th><th>사진</th><th>이름1</th><th>이름2</th><th>내용</th></tr>';
@@ -219,16 +220,32 @@
 				});
 	}
 
-	
-	
 	function sales() {
-		$.ajax({
-			url : "/admin/sales.do",
-			type : "POST",
-			success : function(response) {
-				displayTable(response);
-			}
-		});
+		$
+				.ajax({
+					url : "/admin/sales.do",
+					type : "POST",
+					success : function(response) {
+						$('#sex').empty();
+						var list = response.list;
+						// 테이블을 생성할 HTML 코드
+						var tableHTML = '<table border="1"><tr><th>userid</th><th>포인트 충전내역</th><th>날짜</th></tr>';
+						// 리스트의 각 요소에 대해 테이블 행 추가
+						for (var i = 0; i < list.length; i++) {
+							var row = '<tr><td>' + list[i].userid + '</td><td>'
+									+ list[i].point + '</td><td>' + list[i].day
+									+ '</td></tr>';
+
+							tableHTML += row;
+						}
+
+						// 테이블을 닫음
+						tableHTML += '</table>';
+
+						// 테이블을 출력할 HTML 요소에 추가
+						$('#result').html(tableHTML);
+					}
+				});
 	}
 
 	function managereview() {
