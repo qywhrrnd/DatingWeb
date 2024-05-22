@@ -128,11 +128,13 @@ public class AdminController {
 		String url = "";
 		int totalmember = memberDao.totalmember();
 		int totalmatching = cdao.totalmatching();
+		int totalpoint = adao.totalpoint();
 		List<PointDTO> list = adao.plist();
 		Map<String, Object> map = new HashMap<>();
 		map.put("totalmember", totalmember);
 		map.put("totalmatching", totalmatching);
 		map.put("list", list);
+		map.put("totalpoint", totalpoint);
 		url = "redirect:/adminpage.do";
 		return new ModelAndView(url, "map", map);
 	}
