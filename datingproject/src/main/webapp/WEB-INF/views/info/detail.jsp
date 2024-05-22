@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,14 +212,15 @@ tr:hover {
 									<div
 										class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
-											<span class="heading">${sessionScope.follower}</span> <span
+											<span class="heading">${follower}</span> <span
 												class="description">followers</span>
+												
 										</div>
 										<div>
 											<span class="heading">10</span> <span class="description">Photos</span>
 										</div>
 										<div>
-											<span class="heading">${sessionScope.reviewcount}</span> <span class="description">Comments</span>
+											<span class="heading">${reviewcount}</span> <span class="description">Comments</span>
 										</div>
 									</div>
 								</div>
@@ -236,9 +238,13 @@ tr:hover {
 									<i class="ni business_briefcase-24 mr-2"></i>${dto.job}
 								</div>
 								<hr class="my-4">
+								
+								
 
 
 								<!--  리뷰 위치   -->
+								
+								
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
