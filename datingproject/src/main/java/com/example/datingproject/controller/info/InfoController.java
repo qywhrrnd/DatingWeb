@@ -317,13 +317,18 @@ public class InfoController {
 	@GetMapping("/detail.do")
 
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
-			@RequestParam(name = "otherid") String otherid, ModelAndView mav, HttpSession session) {
+			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
 
 		//Detail.jsp follower , 리뷰갯수 숫자
 		int follower = infoDao.followercount(otherid);
 		int reviewcount = reviewDao.reviewcount(otherid);
-		session.setAttribute("reviewcount", reviewcount);
-		session.setAttribute("follower", follower);
+		double avgstar = reviewDao.avgstar(otherid);
+		avgstar = Math.floor(avgstar * 10) / 10.0;
+		mav.addObject("follower",follower); 
+		mav.addObject("reviewcount", reviewcount);
+		mav.addObject("avgstar", avgstar);
+		
+		
 
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
@@ -344,7 +349,7 @@ public class InfoController {
 			mav.setViewName("info/detail");
 			mav.addObject("list", list);
 			mav.addObject("dto", dto);
-			System.out.println(list);
+			
 			return mav;
 
 		}
