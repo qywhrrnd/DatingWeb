@@ -29,7 +29,6 @@ public class AdminDTO {
 	private String filename;
 	private double AIface;
 	private int gender;
-	private String description;
 	private int point;
 	private int lvl;
 

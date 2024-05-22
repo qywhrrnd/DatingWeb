@@ -4,13 +4,13 @@
 
 	<select id="successreview"
 		resultType="com.example.datingproject.model.successreview.SuccessreviewDTO">
-		select * from successreview
+		select * from successreview order by idx
 	</select>
 
 	<select id="memberinfo"
 		resultType="com.example.datingproject.model.admin.AdminDTO">
 		select * from info i, member m where
-		m.userid=i.userid
+		m.userid=i.userid order by name
 	</select>
 
 
