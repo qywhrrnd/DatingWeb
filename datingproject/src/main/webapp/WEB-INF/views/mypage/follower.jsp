@@ -65,6 +65,15 @@
     <div class="container mt-5">
         <table class="table">
             <tbody>
+            <c:choose>
+                    <c:when test="${map.mdto.countfollower == 0}">
+                        <tr>
+                            <td>
+                                <h1>나를 팔로우한 사람이 없습니다!</h1>
+                            </td>
+                        </tr>
+                    </c:when>
+                    <c:when test="${map.mdto.countfollower >= 1}">
 					<c:forEach var="row" items="${map.list}">
 						<tr>
 							<td>
@@ -114,7 +123,9 @@
 								</div>
 							</td>
 						</tr>
-					</c:forEach>
+					  </c:forEach>
+                    </c:when>
+                </c:choose>
 			</tbody>
         </table>
     </div>
