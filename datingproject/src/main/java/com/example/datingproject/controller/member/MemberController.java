@@ -100,7 +100,7 @@ public class MemberController {
 				session.setAttribute("userid", userid);
 				message = "개인정보를 입력해주세요";
 				url = "login/information";
-
+				return new ModelAndView(url, "message", message);
 			} else if (info == 2) {
 				int gender = infoDao.gender(userid);
 				session.setAttribute("userid", userid);
@@ -108,13 +108,16 @@ public class MemberController {
 				session.setAttribute("gender", gender);
 				message = "환영합니다.";
 				url = "redirect:/";
+				return new ModelAndView(url, "message", message);
 			} else if (info == 3) {
+				int totalmember = memberDao.totalmember();
 				session.setAttribute("userid", userid);
-				message = "환영합니다.";
+				Map<String, Object> map = new HashMap<>();
+				map.put("totalmember", totalmember);
 				url = "admin/main";
+				return new ModelAndView(url, "map", map);
 			}
 		}
-		return new ModelAndView(url, "message", message);
 
 	}
 

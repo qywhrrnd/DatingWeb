@@ -61,4 +61,8 @@
 		userid=#{userid}
 	</select>
 
+	<select id="totalmember" resultType="int">
+		select count(*) from member
+	</select>
+
 </mapper>

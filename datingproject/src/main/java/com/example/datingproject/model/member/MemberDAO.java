@@ -16,4 +16,6 @@ public interface MemberDAO {
 	void uplvl(String userid);
 	
 	int getlvl(String userid);
+	
+	int totalmember();
 }

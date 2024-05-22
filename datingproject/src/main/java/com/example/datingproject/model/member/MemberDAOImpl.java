@@ -66,4 +66,9 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne("member.getlvl", userid);
 	}
 
+	@Override
+	public int totalmember() {
+		return session.selectOne("member.totalmember");
+	}
+
 }
