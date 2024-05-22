@@ -313,6 +313,7 @@
 					}
 				});
 	}
+	
 
 	function logout() {
 		location.href = "/member/logout.do";
