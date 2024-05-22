@@ -24,4 +24,11 @@
 		delete from mainreview where idx = #{idx}
 	</delete>
 
+	<insert id="writesuccessreview">
+		insert into successreview values ((select
+		nvl(max(idx) + 1, 1) from
+		successreview), #{filename}, #{name1},
+		#{name2}, #{content})
+	</insert>
+
 </mapper>
