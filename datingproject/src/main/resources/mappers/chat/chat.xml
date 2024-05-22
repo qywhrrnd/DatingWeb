@@ -58,13 +58,19 @@
 	</insert>
 
 	<select id="searchname" resultType="String">
-		select name from info where userid = (select user1 from chatbox where
+		select name from info where
+		userid = (select user1 from chatbox where
 		roomnumber=#{roomnumber})
 	</select>
 
 	<select id="searchname2" resultType="String">
-		select name from info where userid = (select user2 from chatbox where
+		select name from info where
+		userid = (select user2 from chatbox where
 		roomnumber=#{roomnumber})
 	</select>
 
+	<select id="totalmatching" resultType="int">
+		select count(*) from
+		chatbox
+	</select>
 </mapper>

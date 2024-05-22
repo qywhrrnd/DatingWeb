@@ -41,7 +41,7 @@ public class ChatBoxImpl implements ChatBoxDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("userid", userid);
 		map.put("otherid", otherid);
-		return session.selectOne("chat.checkchatlog",map);
+		return session.selectOne("chat.checkchatlog", map);
 	}
 
 	@Override
@@ -49,18 +49,23 @@ public class ChatBoxImpl implements ChatBoxDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("userid", userid);
 		map.put("otherid", otherid);
-		session.insert("chat.chatlog",map);
-		
+		session.insert("chat.chatlog", map);
+
 	}
 
 	@Override
 	public String searchname(int roomnumber) {
-		return session.selectOne("chat.searchname",roomnumber);
+		return session.selectOne("chat.searchname", roomnumber);
 	}
 
 	@Override
 	public String searchname2(int roomnumber) {
-		return session.selectOne("chat.searchname2",roomnumber);
+		return session.selectOne("chat.searchname2", roomnumber);
+	}
+
+	@Override
+	public int totalmatching() {
+		return session.selectOne("chat.totalmatching");
 	}
 
 }

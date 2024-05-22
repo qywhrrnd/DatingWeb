@@ -16,4 +16,6 @@ public interface ChatBoxDAO {
 	String searchname(int roomnumber);
 	
 	String searchname2(int roomnumber);
+	
+	int totalmatching();
 }
