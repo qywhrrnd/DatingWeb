@@ -78,7 +78,7 @@ function closeNav() {
 <body>
 <div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">Dashboard</a> <a href="#">Users</a> <a href="#">Review</a>
+		<a href="/adminpage.do">Dashboard</a> <a href="/admin/memberinfo.do">Users</a> <a href="#">Review</a>
 		<a href="/member/logout.do">Logout</a>
 	</div>
 
