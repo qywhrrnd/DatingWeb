@@ -17,4 +17,9 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectList("admin.memberinfo");
 	}
 
+	@Override
+	public List<PointDTO> plist() {
+		return session.selectList("admin.pointlog");
+	}
+
 }

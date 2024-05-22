@@ -10,7 +10,14 @@
 	<select id="memberinfo"
 		resultType="com.example.datingproject.model.admin.AdminDTO">
 		select * from info i, member m where
-		m.userid=i.userid order by name
+		m.userid=i.userid order
+		by name
+	</select>
+
+
+	<select id="pointlog"
+		resultType="com.example.datingproject.model.admin.PointDTO">
+		select * from pointlog order by day desc
 	</select>
 
 

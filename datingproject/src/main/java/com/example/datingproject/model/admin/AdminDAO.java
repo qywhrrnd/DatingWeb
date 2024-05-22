@@ -4,4 +4,7 @@ import java.util.List;
 
 public interface AdminDAO {
 	List<AdminDTO> list();
+	
+	List<PointDTO> plist();
+	
 }
