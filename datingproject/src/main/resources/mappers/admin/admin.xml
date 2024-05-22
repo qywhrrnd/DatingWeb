@@ -20,5 +20,8 @@
 		select * from pointlog order by day desc
 	</select>
 
+	<delete id="deletemainreview">
+		delete from mainreview where idx = #{idx}
+	</delete>
 
 </mapper>

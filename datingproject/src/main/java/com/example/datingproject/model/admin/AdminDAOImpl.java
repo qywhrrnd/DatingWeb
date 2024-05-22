@@ -22,4 +22,10 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectList("admin.pointlog");
 	}
 
+	@Override
+	public void deletemainreview(int idx) {
+		session.delete("admin.deletemainreview", idx);
+		
+	}
+
 }

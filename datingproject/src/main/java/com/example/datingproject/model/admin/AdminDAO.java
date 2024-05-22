@@ -7,4 +7,6 @@ public interface AdminDAO {
 	
 	List<PointDTO> plist();
 	
+	void deletemainreview(int idx);
+	
 }
