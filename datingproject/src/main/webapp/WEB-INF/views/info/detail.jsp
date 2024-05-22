@@ -372,7 +372,7 @@ tr:hover {
 				<h6 class="heading-small text-muted mb-4">나를 소개해요</h6>
 
 
-				<h6 class="heading-small text-muted mb-4">Contact information</h6>
+				
 
 				<div class="pl-lg-4">
 					<div class="row">

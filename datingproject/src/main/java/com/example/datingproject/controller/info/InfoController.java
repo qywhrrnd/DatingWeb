@@ -27,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.datingproject.model.info.InfoDAO;
 import com.example.datingproject.model.info.InfoDTO;
 import com.example.datingproject.model.member.MemberDAO;
+import com.example.datingproject.model.mypage.MypageDAO;
+import com.example.datingproject.model.mypage.MypageDTO;
 import com.example.datingproject.model.review.ReviewDAO;
 import com.example.datingproject.model.review.ReviewDTO;
 
@@ -42,12 +44,13 @@ public class InfoController {
 	@Autowired
 	InfoDAO infoDao;
 	@Autowired
-	InfoDTO infoDto;
-	@Autowired
 	MemberDAO mDao;
 
 	@Autowired
 	ReviewDAO reviewDao;
+	
+	@Autowired
+	MypageDAO mypageDao;
 
 	@Autowired
 	private HttpServletRequest request;
@@ -265,11 +268,17 @@ public class InfoController {
 	}
 
 	@RequestMapping("/info/followerlist.do")
-	public ModelAndView followerlist(@RequestParam(name = "follower") String follower) {
+	public ModelAndView followerlist(@RequestParam(name = "follower") String follower, HttpSession session) {
 		List<String> list2 = infoDao.followerlist(follower);
-
 		List<InfoDTO> list = new ArrayList<>();
 
+		String userid = (String) session.getAttribute("userid");
+		int countfollower = mypageDao.countfollower(userid);
+		int countfollowing = mypageDao.countfollowing(userid);
+		MypageDTO mypageDto = new MypageDTO();
+		mypageDto.setCountfollower(countfollower);
+		mypageDto.setCountfollowing(countfollowing);
+		
 		for (String a : list2) {
 			List<InfoDTO> sublist = infoDao.followlist(a);
 			list.addAll(sublist);
@@ -278,23 +287,31 @@ public class InfoController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("idao", infoDao);
+		map.put("mdto", mypageDto);
 		return new ModelAndView("mypage/follower", "map", map);
 	}
 
 	@RequestMapping("/info/followinglist.do")
-	public ModelAndView followinglist(@RequestParam(name = "following") String following) {
+	public ModelAndView followinglist(@RequestParam(name = "following") String following, HttpSession session) {
 		List<String> list2 = infoDao.followinglist(following);
 		List<InfoDTO> list = new ArrayList<>();
+		String userid = (String) session.getAttribute("userid");
+		int countfollower = mypageDao.countfollower(userid);
+		int countfollowing = mypageDao.countfollowing(userid);
+		MypageDTO mypageDto = new MypageDTO();
+		mypageDto.setCountfollower(countfollower);
+		mypageDto.setCountfollowing(countfollowing);
+		
 
 		for (String a : list2) {
 			List<InfoDTO> sublist = infoDao.followlist(a);
 			list.addAll(sublist);
-			System.out.println(list);
 		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("idao", infoDao);
-		return new ModelAndView("mypage/follower", "map", map);
+		map.put("mdto", mypageDto);
+		return new ModelAndView("mypage/following", "map", map);
 	}
 
 	@GetMapping("/detail.do")
