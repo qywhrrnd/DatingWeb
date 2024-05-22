@@ -135,7 +135,7 @@ public class AdminController {
 		map.put("totalmatching", totalmatching);
 		map.put("list", list);
 		map.put("totalpoint", totalpoint);
-		url = "redirect:/adminpage.do";
+		url = "admin/main";
 		return new ModelAndView(url, "map", map);
 	}
 
