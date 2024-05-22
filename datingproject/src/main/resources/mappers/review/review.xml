@@ -17,6 +17,10 @@
 	<select id="avgstar" resultType="double">
 		SELECT COALESCE(AVG(star), 0) avg FROM review WHERE reviewer = #{userid}
 	</select>
+	
+	<select id ="reviewcount" resultType="int">
+	select count(*) from review where reviewer=#{reviewer}
+	</select>
 
 
 

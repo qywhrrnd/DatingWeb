@@ -29,6 +29,12 @@ public class ReviewDAOImpl implements ReviewDAO{
 	public double avgstar(String userid) {
 		return session.selectOne("review.avgstar", userid);
 	}
+
+	@Override
+	public int reviewcount(String userid) {
+		
+		return session.selectOne("review.reviewcount", userid);
+	}
 	
 
 }
