@@ -60,22 +60,21 @@
 </script>
 
 <style>
-
 table {
-    width: 100%; /* 테이블의 전체 너비를 사용하도록 설정 */
+	width: 100%; /* 테이블의 전체 너비를 사용하도록 설정 */
 }
 
 td:first-child, td:nth-child(2) {
-    width: 50px; /* 원하는 길이로 조정 */
-    white-space: nowrap; /* 긴 텍스트가 잘리지 않도록 설정 */
-    overflow: hidden; /* 넘치는 텍스트는 숨김 처리 */
-    text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
+	width: 50px; /* 원하는 길이로 조정 */
+	white-space: nowrap; /* 긴 텍스트가 잘리지 않도록 설정 */
+	overflow: hidden; /* 넘치는 텍스트는 숨김 처리 */
+	text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
 }
 
 /* 후기의 길이 늘리기 */
 td:nth-child(3) {
-    width: 300px; /* 원하는 길이로 조정 */
-    white-space: normal; /* 텍스트가 줄 바꿈 될 수 있도록 설정 */
+	width: 300px; /* 원하는 길이로 조정 */
+	white-space: normal; /* 텍스트가 줄 바꿈 될 수 있도록 설정 */
 }
 
 /*리뷰 테이블 리스트 style*/
@@ -128,6 +127,35 @@ tr:hover {
 	display: inline-block;
 	margin-right: 3px; /* 각 별표 사이의 간격 조정 */
 	color: gold; /* 별표의 색상 설정 */
+}
+
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
+
+
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
 }
 </style>
 </head>
@@ -220,22 +248,47 @@ tr:hover {
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="row" items="${list}">
+										<c:forEach var="row" items="${list}" varStatus="loop">
+										<input type="hidden" value="${row.star}"
+																		id="star-${loop.index}">
+																		<script>
+        function ratingToPercent${loop.index}(score) {
+            return (score / 5) * 100;
+        }
+
+        $(document).ready(function() {
+            let score = document.getElementById('star-${loop.index}').value;
+            let percent = ratingToPercent${loop.index}(score);
+
+            $('.star-ratings-fill${loop.index}').css('width', percent + '%');
+        });
+    </script>
+    <style>
+    .star-ratings-fill${loop.index} {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
+    </style>
 											<tr>
 												<td>${row.userid}</td>
 												<td>
-													<div class="stars1">
-														<c:forEach begin="1" end="5" varStatus="loop">
-															<c:choose>
-																<c:when test="${row.star >= loop.index}">
-                                    ★
-                                </c:when>
-																<c:otherwise>
-                                    ☆
-                                </c:otherwise>
-															</c:choose>
-														</c:forEach>
+												<div class="star-ratings">
+													<div
+														class="star-ratings-fill${loop.index} space-x-2 text-lg">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 													</div>
+													<div class="star-ratings-base space-x-2 text-lg">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+													</div>
+													<a style="font-size: small;">${row.star} / 5점</a>
+												</div>
 												</td>
 												<td>${row.review}</td>
 											</tr>
