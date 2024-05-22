@@ -213,14 +213,28 @@ tr:hover {
 										class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
 											<span class="heading">${follower}</span> <span
-												class="description">followers</span>
+												class="description">팔로워</span>
 												
 										</div>
 										<div>
-											<span class="heading">10</span> <span class="description">Photos</span>
+											<span class="heading">
+											<!-- 평균 별점  -->
+											
+													<div class="star-ratings">
+														<div class="star-ratings-fill space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<div class="star-ratings-base space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<a style="font-size: small;">${avgstar}/ 5점</a>
+													</div>
+											
+											
+											</span> <span class="description">평균 별점</span>
 										</div>
 										<div>
-											<span class="heading">${reviewcount}</span> <span class="description">Comments</span>
+											<span class="heading">${reviewcount}</span> <span class="description">후기 수</span>
 										</div>
 									</div>
 								</div>
@@ -265,9 +279,23 @@ tr:hover {
         $(document).ready(function() {
             let score = document.getElementById('star-${loop.index}').value;
             let percent = ratingToPercent${loop.index}(score);
+            
+            
 
             $('.star-ratings-fill${loop.index}').css('width', percent + '%');
         });
+        
+    	function ratingToPercent(score) {
+    		return (score / 5) * 100;
+    	}
+
+    	$(document).ready(function() {
+    		let score = ${avgstar}; // 서버에서 평균 점수를 가져온다고 가정합니다.
+    		let percent = ratingToPercent(score);
+
+    		$('.star-ratings-fill').css('width', percent + '%');
+    	});
+    	
     </script>
     <style>
     .star-ratings-fill${loop.index} {
