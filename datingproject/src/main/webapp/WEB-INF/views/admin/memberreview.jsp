@@ -8,7 +8,23 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
 	rel="stylesheet">
+	
 <title>Member Review</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
 
 <style>
 .star-ratings {
@@ -103,8 +119,12 @@
 }
     </style>
 																	<tr>
-																		<td>${row.userid}</td>
-																		<td>
+																		<td style="font-size: small"
+											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.userid}</td>
+																		<td style="font-size: small"
+											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.reviewer}</td>
+																		<td style="font-size: small"
+											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
 																			<div class="star-ratings">
 																				<div
 																					class="star-ratings-fill${loop.index} space-x-2 text-lg">
@@ -116,7 +136,11 @@
 																				<a style="font-size: small;">${row.star} / 5점</a>
 																			</div>
 																		</td>
-																		<td>${row.review}</td>
+																		<td style="font-size: small"
+											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.review}</td>
+								
+																	<td style="font-size: small"
+											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.regiDate}</td>
 																	</tr>
 																</c:forEach>
 						</tbody>
