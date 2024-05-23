@@ -44,13 +44,7 @@ public class AdminController {
 	@Autowired
 	ChatBoxDAO cdao;
 
-	@PostMapping("admin/successreview.do")
-	public ResponseEntity<Map<String, Object>> successreview() {
-		List<SuccessreviewDTO> list = sdao.list();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
-	}
+	
 
 	@PostMapping("admin/writereview.do")
 	public ResponseEntity<Map<String, Object>> writereview(HttpServletRequest request,
@@ -90,14 +84,7 @@ public class AdminController {
 
 	}
 
-	@PostMapping("admin/mainreview.do")
-	public ResponseEntity<Map<String, Object>> mainreview() {
-		List<MainreviewDTO> list = rdao.list();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
-	}
-
+	
 	@PostMapping("admin/deletemainreview.do")
 	public ResponseEntity<Map<String, Object>> deletemainreview(@RequestParam(name = "idx") int idx) {
 		adao.deletemainreview(idx);
@@ -141,4 +128,15 @@ public class AdminController {
 		return new ModelAndView(url, "map", map);
 	}
 
+	@RequestMapping("admin/selectreview.do")
+	public ModelAndView selectreview() {
+		String url = "";
+		List<SuccessreviewDTO> list = sdao.list();
+		List<MainreviewDTO> list1 = rdao.list();
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("list1", list1);
+		url = "admin/review";
+		return new ModelAndView(url, "map", map);
+	}
 }
