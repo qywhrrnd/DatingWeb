@@ -7,203 +7,140 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
-	rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 
 <style>
-td:hover {
-	transform: scale(1.5);
-	transition-duration: 0.5s;
-}
-
-img:hover {
-	transform: scale(2.5);
-	transition-duration: 0.5s;
-}
-
 .faint-link {
     color: rgba(0, 0, 0, 0.5);
-    /* Set the text color to black with 50% opacity */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Change cursor to pointer */
+    text-decoration: none;
+    cursor: pointer;
     transition: color 0.3s, font-weight 0.3s;
-    /* Smooth color and font-weight transition */
-    font-size: small; /* Set font size to small */
+    font-size: small;
 }
 
 .faint-link:hover, .faint-link.active {
     color: rgba(0, 0, 0, 0.8);
-    /* Darken the color on hover and when active */
-    font-weight: bold; /* Make the text bold on hover and when active */
+    font-weight: bold;
 }
 </style>
 <script>
-	function filterGender(gender) {
-		var rows = document.querySelectorAll('tbody tr');
-		rows.forEach(function(row) {
-			if (row.getAttribute('data-gender') == gender || gender == 'all') {
-				row.style.display = '';
-			} else {
-				row.style.display = 'none';
-			}
-		});
-	}
+function filterReviews(filter) {
+    var successTable = document.getElementById('success-reviews');
+    var mainTable = document.getElementById('main-reviews');
 
-	function setActiveLink(activeLink) {
-		var links = document.querySelectorAll('.faint-link');
-		links.forEach(function(link) {
-			link.classList.remove('active');
-		});
-		activeLink.classList.add('active');
-	}
+    if (filter === 'all') {
+        successTable.style.display = '';
+        mainTable.style.display = '';
+    } else if (filter === 'success') {
+        successTable.style.display = '';
+        mainTable.style.display = 'none';
+    } else if (filter === 'main') {
+        successTable.style.display = 'none';
+        mainTable.style.display = '';
+    }
+}
 
-	window.onload = function() {
-		var allBtn = document.getElementById('all-btn');
-		var manBtn = document.getElementById('man-btn');
-		var womanBtn = document.getElementById('woman-btn');
+function setActiveLink(activeLink) {
+    var links = document.querySelectorAll('.faint-link');
+    links.forEach(function(link) {
+        link.classList.remove('active');
+    });
+    activeLink.classList.add('active');
+}
 
-		allBtn.onclick = function() {
-			filterGender('all');
-			setActiveLink(this);
-		};
-		manBtn.onclick = function() {
-			filterGender('1');
-			setActiveLink(this);
-		};
-		womanBtn.onclick = function() {
-			filterGender('2');
-			setActiveLink(this);
-		};
+window.onload = function() {
+    var allBtn = document.getElementById('all-btn');
+    var successBtn = document.getElementById('success-btn');
+    var mainBtn = document.getElementById('main-btn');
 
-		// Trigger click event on the "All" button by default
-		allBtn.click();
-	};
+    allBtn.onclick = function() {
+        filterReviews('all');
+        setActiveLink(this);
+    };
+    successBtn.onclick = function() {
+        filterReviews('success');
+        setActiveLink(this);
+    };
+    mainBtn.onclick = function() {
+        filterReviews('main');
+        setActiveLink(this);
+    };
+
+    // 기본적으로 "All" 버튼 클릭 이벤트 트리거
+    allBtn.click();
+};
 </script>
 
 </head>
 <body>
-	<%@ include file="../admin/header.jsp"%>
-	<main class="flex-1 p-4 md:p-6">
-		<div class="flex items-center">
-			<h1 class="font-semibold text-lg md:text-2xl">User List</h1>
-			&nbsp;&nbsp;&nbsp;
-			<a id="all-btn" class="faint-link">All</a> / <a id="man-btn"
-				class="faint-link">Man</a> / <a id="woman-btn" class="faint-link">Woman</a>
-
-		</div>
-		<div class="grid gap-4 md:gap-6 mt-4">
-			<div class="rounded-lg border bg-card text-card-foreground shadow-sm"
-				data-v0-t="card">
-				<div class="p-6">
-					<div class="relative w-full overflow-auto">
-						<table class="w-full caption-bottom text-sm">
-							<thead class="[&amp;_tr]:border-b">
-								<tr
-									class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										name</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										userid</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										age</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										cellphone</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										address</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										height</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										weight</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										MBTI</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										hobby</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										style</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										education</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										religion</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										job</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										filename</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										AIface</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										point</th>
-									<th
-										class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-										lvl</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="row" items="${map.list}">
-									<tr
-										class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
-										data-gender="">
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"><img
-											src="/resources/images/${row.filename}" width="100"
-											height="100"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-										<td style="font-size: x-small"
-											class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<hr>
+    <%@ include file="../admin/header.jsp"%>
+    <main class="flex-1 p-4 md:p-6">
+        <div class="flex items-center">
+            <h1 class="font-semibold text-lg md:text-2xl">리뷰 목록</h1>
+            &nbsp;&nbsp;&nbsp;
+            <a id="all-btn" class="faint-link">All</a> / <a id="success-btn" class="faint-link">성공사례 리뷰</a> / <a id="main-btn" class="faint-link">메인 리뷰</a>
+        </div>
+        <div class="grid gap-4 md:gap-6 mt-4">
+            <div id="success-reviews" class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+                <div class="p-6">
+                    <div class="relative w-full overflow-auto">
+                    <h2>성공사례 리뷰</h2>
+                        <table class="w-full caption-bottom text-sm">
+                            <thead class="[&amp;_tr]:border-b">
+                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">idx</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">filename</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">name1</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">name2</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">content</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="row" items="${map.list}">
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" data-gender="">
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.idx}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"><img src="/resources/images/${row.filename}" width="150" height="150"></td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.name1}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.name2}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.content}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid gap-4 md:gap-6 mt-4">
+            <div id="main-reviews" class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+                <div class="p-6">
+                    <div class="relative w-full overflow-auto">
+                    <h2>메인 리뷰</h2>
+                        <table class="w-full caption-bottom text-sm">
+                            <thead class="[&amp;_tr]:border-b">
+                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">idx</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">userid</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">name</th>
+                                    <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">content</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="row" items="${map.list1}">
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" data-gender="">
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.idx}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.userid}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.name}</td>
+                                        <td style="font-size: small" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">${row.content}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <hr>
 </body>
 </html>
