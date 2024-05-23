@@ -19,6 +19,8 @@ import com.example.datingproject.model.chat.ChatBoxDAO;
 import com.example.datingproject.model.mainreview.MainreviewDAO;
 import com.example.datingproject.model.mainreview.MainreviewDTO;
 import com.example.datingproject.model.member.MemberDAO;
+import com.example.datingproject.model.review.ReviewDAO;
+import com.example.datingproject.model.review.ReviewDTO;
 import com.example.datingproject.model.successreview.SuccessreviewDAO;
 import com.example.datingproject.model.successreview.SuccessreviewDTO;
 
@@ -44,7 +46,8 @@ public class AdminController {
 	@Autowired
 	ChatBoxDAO cdao;
 
-	
+	@Autowired
+	ReviewDAO reviewDao;
 
 	@PostMapping("admin/writereview.do")
 	public ResponseEntity<Map<String, Object>> writereview(HttpServletRequest request,
@@ -84,7 +87,6 @@ public class AdminController {
 
 	}
 
-	
 	@PostMapping("admin/deletemainreview.do")
 	public ResponseEntity<Map<String, Object>> deletemainreview(@RequestParam(name = "idx") int idx) {
 		adao.deletemainreview(idx);
@@ -139,4 +141,11 @@ public class AdminController {
 		url = "admin/review";
 		return new ModelAndView(url, "map", map);
 	}
+
+	@RequestMapping("admin/memberreview.do")
+	public ModelAndView memberreview(@RequestParam(name = "userid") String userid) {
+		List<ReviewDTO> list = reviewDao.list(userid);
+		return new ModelAndView("admin/memberreview", "list", list);
+	}
+
 }

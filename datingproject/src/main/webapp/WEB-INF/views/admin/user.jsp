@@ -23,22 +23,39 @@ img:hover {
 }
 
 .faint-link {
-    color: rgba(0, 0, 0, 0.5);
-    /* Set the text color to black with 50% opacity */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: color 0.3s, font-weight 0.3s;
-    /* Smooth color and font-weight transition */
-    font-size: small; /* Set font size to small */
+	color: rgba(0, 0, 0, 0.5);
+	/* Set the text color to black with 50% opacity */
+	text-decoration: none; /* Remove underline */
+	cursor: pointer; /* Change cursor to pointer */
+	transition: color 0.3s, font-weight 0.3s;
+	/* Smooth color and font-weight transition */
+	font-size: small; /* Set font size to small */
 }
 
 .faint-link:hover, .faint-link.active {
-    color: rgba(0, 0, 0, 0.8);
-    /* Darken the color on hover and when active */
-    font-weight: bold; /* Make the text bold on hover and when active */
+	color: rgba(0, 0, 0, 0.8);
+	/* Darken the color on hover and when active */
+	font-weight: bold; /* Make the text bold on hover and when active */
 }
 </style>
 <script>
+	function openReview(userid) {
+
+		var url = "/admin/memberreview.do?userid=" + userid;
+
+		// 팝업 창 크기 설정
+		var popupWidth = 1000;
+		var popupHeight = 700;
+
+		// 화면 가운데에 위치 계산
+		var left = (window.innerWidth - popupWidth) / 2;
+		var top = (window.innerHeight - popupHeight) / 2;
+
+		// 작은 팝업 창을 열기 위한 코드
+		window.open(url, '신고', 'width=' + popupWidth + ',height=' + popupHeight
+				+ ',left=' + left + ',top=' + top);
+	}
+
 	function filterGender(gender) {
 		var rows = document.querySelectorAll('tbody tr');
 		rows.forEach(function(row) {
@@ -87,9 +104,9 @@ img:hover {
 	<main class="flex-1 p-4 md:p-6">
 		<div class="flex items-center">
 			<h1 class="font-semibold text-lg md:text-2xl">User List</h1>
-			&nbsp;&nbsp;&nbsp;
-			<a id="all-btn" class="faint-link">All</a> / <a id="man-btn"
-				class="faint-link">Man</a> / <a id="woman-btn" class="faint-link">Woman</a>
+			&nbsp;&nbsp;&nbsp; <a id="all-btn" class="faint-link">All</a> / <a
+				id="man-btn" class="faint-link">Man</a> / <a id="woman-btn"
+				class="faint-link">Woman</a>
 
 		</div>
 		<div class="grid gap-4 md:gap-6 mt-4">
@@ -156,7 +173,7 @@ img:hover {
 							</thead>
 							<tbody>
 								<c:forEach var="row" items="${map.list}">
-									<tr
+									<tr onclick="openReview('${row.userid}')"
 										class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
 										data-gender="${row.gender}">
 										<td style="font-size: x-small"
