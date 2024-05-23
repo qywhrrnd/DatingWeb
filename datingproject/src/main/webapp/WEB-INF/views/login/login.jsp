@@ -250,6 +250,22 @@ input[type=checkbox] {
 			$('.signup').addClass('nodisplay');
 			$('.signin').removeClass('nodisplay');
 		});
+
+		// Enter key press event for login form
+		$("#form1 input").keydown(function(event) {
+			if (event.keyCode === 13) { // Enter key
+				event.preventDefault();
+				$("#btnLogin").click();
+			}
+		});
+
+		// Enter key press event for signup form
+		$(".signup input").keydown(function(event) {
+			if (event.keyCode === 13) { // Enter key
+				event.preventDefault();
+				$("#sendButton").click();
+			}
+		});
 	});
 </script>
 <script>
