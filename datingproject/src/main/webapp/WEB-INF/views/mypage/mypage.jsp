@@ -227,8 +227,6 @@
 	-webkit-text-fill-color: gold;
 }
 
-
-
 .star-ratings-base {
 	z-index: 0;
 	padding: 0;
@@ -305,6 +303,25 @@ tr:hover {
 		let following = document.getElementById('userid').value;
 		location.href = "/info/followinglist.do?following=" + following;
 	}
+	
+	
+	function chat() {
+		   
+		var url = "/chat/room.do";
+
+	   
+	    // 팝업 창 크기 설정
+	    var popupWidth = 600;
+	    var popupHeight = 700;
+
+	    // 화면 가운데에 위치 계산
+	    var left = (window.innerWidth - popupWidth) / 2;
+	    var top = (window.innerHeight - popupHeight) / 2;
+
+	    // 작은 팝업 창을 열기 위한 코드
+	    window.open(url, '채팅', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + left + ',top=' + top);
+	    }
+	
 </script>
 </head>
 <body>
@@ -367,7 +384,7 @@ tr:hover {
 							role="tabpanel" aria-labelledby="pills-home-tab">
 							<div class="row">
 								<div class="col-lg-4 col-sm-6">
-									<a class="member-item" href="/chat/room.do">
+									<a class="member-item" onclick="chat()">
 										<div class="card mb-2 mb-md-5 py-3">
 											<div class="content">
 												<div class="row">
@@ -570,7 +587,8 @@ tr:hover {
 																	<th>별점</th>
 																	<th>후기</th>
 																</tr>
-																<c:forEach var="row" items="${map.rlist}" varStatus="loop">
+																<c:forEach var="row" items="${map.rlist}"
+																	varStatus="loop">
 																	<input type="hidden" value="${row.star}"
 																		id="star-${loop.index}">
 																	<script>
@@ -585,19 +603,179 @@ tr:hover {
             $('.star-ratings-fill${loop.index}').css('width', percent + '%');
         });
     </script>
-    <style>
-    .star-ratings-fill${loop.index} {
-	color: #fff58c;
-	padding: 0;
-	position: absolute;
-	z-index: 1;
-	display: flex;
-	top: 0;
-	left: 0;
-	overflow: hidden;
-	-webkit-text-fill-color: gold;
+																	<style>
+.star-ratings-fill
+
+ 
+
+${
+loop
+
+ 
+
+.index
+
+
+	
+
+
 }
-    </style>
+{
+color
+
+
+
+
+:
+
+
+ 
+
+
+#fff58c
+
+
+
+
+;
+padding
+
+
+
+
+:
+
+
+ 
+
+
+0
+
+
+
+
+;
+position
+
+
+
+
+:
+
+
+ 
+
+
+absolute
+
+
+
+
+;
+z-index
+
+
+
+
+:
+
+
+ 
+
+
+1
+
+
+
+
+;
+display
+
+
+
+
+:
+
+
+ 
+
+
+flex
+
+
+
+
+;
+top
+
+
+
+
+:
+
+
+ 
+
+
+0
+
+
+
+
+;
+left
+
+
+
+
+:
+
+
+ 
+
+
+0
+
+
+
+
+;
+overflow
+
+
+
+
+:
+
+
+ 
+
+
+hidden
+
+
+
+
+;
+-webkit-text-fill-color
+
+
+
+
+:
+
+
+ 
+
+
+gold
+
+
+
+
+;
+}
+</style>
 																	<tr>
 																		<td>${row.userid}</td>
 																		<td>

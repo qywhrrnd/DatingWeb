@@ -14,12 +14,6 @@
 <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
-	function chat(userid, otherid) {
-		if (confirm("1000point를 이용해 채팅을 시작하시겠습니까?")) {
-			location.href = "/chat/createchatbox.do?userid=" + userid
-					+ "&otherid=" + otherid;
-		}
-	}
 
 	function review() {
 		let form1 = $("#form1");
@@ -57,6 +51,26 @@
 			alert("작성 완료");
 			form1.submit();
 		}
+	}
+	
+	function chat(userid, otherid) {
+		if (confirm("1000point를 이용해 채팅을 시작하시겠습니까?")) {
+		   
+		var url = "/chat/createchatbox.do?userid=" + userid
+				+ "&otherid=" + otherid;
+
+	   
+	    // 팝업 창 크기 설정
+	    var popupWidth = 600;
+	    var popupHeight = 700;
+
+	    // 화면 가운데에 위치 계산
+	    var left = (window.innerWidth - popupWidth) / 2;
+	    var top = (window.innerHeight - popupHeight) / 2;
+
+	    // 작은 팝업 창을 열기 위한 코드
+	    window.open(url, '채팅', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + left + ',top=' + top);
+	    }
 	}
 </script>
 
@@ -152,8 +166,6 @@ tr:hover {
 	-webkit-text-fill-color: gold;
 }
 
-
-
 .star-ratings-base {
 	z-index: 0;
 	padding: 0;
@@ -214,27 +226,27 @@ tr:hover {
 										<div>
 											<span class="heading">${follower}</span> <span
 												class="description">팔로워</span>
-												
+
 										</div>
 										<div>
-											<span class="heading">
-											<!-- 평균 별점  -->
-											
-													<div class="star-ratings">
-														<div class="star-ratings-fill space-x-2 text-lg">
-															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-														</div>
-														<div class="star-ratings-base space-x-2 text-lg">
-															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-														</div>
-														<a style="font-size: small;">${avgstar}/ 5점</a>
+											<span class="heading"> <!-- 평균 별점  -->
+
+												<div class="star-ratings">
+													<div class="star-ratings-fill space-x-2 text-lg">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 													</div>
-											
-											
+													<div class="star-ratings-base space-x-2 text-lg">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+													</div>
+													<a style="font-size: small;">${avgstar}/ 5점</a>
+												</div>
+
+
 											</span> <span class="description">평균 별점</span>
 										</div>
 										<div>
-											<span class="heading">${reviewcount}</span> <span class="description">후기 수</span>
+											<span class="heading">${reviewcount}</span> <span
+												class="description">후기 수</span>
 										</div>
 									</div>
 								</div>
@@ -252,13 +264,13 @@ tr:hover {
 									<i class="ni business_briefcase-24 mr-2"></i>${dto.job}
 								</div>
 								<hr class="my-4">
-								
-								
+
+
 
 
 								<!--  리뷰 위치   -->
-								
-								
+
+
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
@@ -269,9 +281,9 @@ tr:hover {
 									</thead>
 									<tbody>
 										<c:forEach var="row" items="${list}" varStatus="loop">
-										<input type="hidden" value="${row.star}"
-																		id="star-${loop.index}">
-																		<script>
+											<input type="hidden" value="${row.star}"
+												id="star-${loop.index}">
+											<script>
         function ratingToPercent${loop.index}(score) {
             return (score / 5) * 100;
         }
@@ -297,32 +309,312 @@ tr:hover {
     	});
     	
     </script>
-    <style>
-    .star-ratings-fill${loop.index} {
-	color: #fff58c;
-	padding: 0;
-	position: absolute;
-	z-index: 1;
-	display: flex;
-	top: 0;
-	left: 0;
-	overflow: hidden;
-	-webkit-text-fill-color: gold;
+											<style>
+.star-ratings-fill
+
+
+
+ 
+
+
+
+${
+loop
+
+
+
+ 
+
+
+
+.index
+
+
+
+
+	
+
+
+
+
 }
-    </style>
+{
+color
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+#fff58c
+
+
+
+
+
+
+
+
+;
+padding
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+0
+
+
+
+
+
+
+
+
+;
+position
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+absolute
+
+
+
+
+
+
+
+
+;
+z-index
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+1
+
+
+
+
+
+
+
+
+;
+display
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+flex
+
+
+
+
+
+
+
+
+;
+top
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+0
+
+
+
+
+
+
+
+
+;
+left
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+0
+
+
+
+
+
+
+
+
+;
+overflow
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+hidden
+
+
+
+
+
+
+
+
+;
+-webkit-text-fill-color
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+gold
+
+
+
+
+
+
+
+
+;
+}
+</style>
 											<tr>
 												<td>${row.userid}</td>
 												<td>
-												<div class="star-ratings">
-													<div
-														class="star-ratings-fill${loop.index} space-x-2 text-lg">
-														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+													<div class="star-ratings">
+														<div
+															class="star-ratings-fill${loop.index} space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<div class="star-ratings-base space-x-2 text-lg">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</div>
+														<a style="font-size: small;">${row.star} / 5점</a>
 													</div>
-													<div class="star-ratings-base space-x-2 text-lg">
-														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-													</div>
-													<a style="font-size: small;">${row.star} / 5점</a>
-												</div>
 												</td>
 												<td>${row.review}</td>
 											</tr>
@@ -406,7 +698,7 @@ tr:hover {
 				<h6 class="heading-small text-muted mb-4">나를 소개해요</h6>
 
 
-				
+
 
 				<div class="pl-lg-4">
 					<div class="row">
