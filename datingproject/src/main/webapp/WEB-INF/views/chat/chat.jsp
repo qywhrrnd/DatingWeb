@@ -173,7 +173,7 @@
 	<br>
 	<br>
 	<div class="container">
-		<h1>채팅방</h1>
+		<h1>채팅</h1>
 		<input type="hidden" id="userid" value="${sessionScope.userid}">
 		<input type="hidden" id="roomnumber" value="${roomNumber}"> <input
 			type="hidden" id="otherid" value="${otherid}">
