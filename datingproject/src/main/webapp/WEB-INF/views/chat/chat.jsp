@@ -168,11 +168,6 @@
 </style>
 </head>
 <body>
-
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="container">
 		<h1>채팅</h1>
 		<input type="hidden" id="userid" value="${sessionScope.userid}">
