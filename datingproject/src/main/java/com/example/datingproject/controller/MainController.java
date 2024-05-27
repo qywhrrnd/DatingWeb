@@ -13,6 +13,8 @@ import com.example.datingproject.model.mainreview.MainreviewDAO;
 import com.example.datingproject.model.mainreview.MainreviewDTO;
 import com.example.datingproject.model.successreview.SuccessreviewDAO;
 import com.example.datingproject.model.successreview.SuccessreviewDTO;
+import com.example.datingproject.model.visiter.VisiterDAO;
+import com.example.datingproject.model.visiter.VisiterDTO;
 
 @Controller
 public class MainController {
@@ -22,9 +24,14 @@ public class MainController {
 
 	@Autowired
 	SuccessreviewDAO sdao;
+	
+	@Autowired
+	VisiterDAO vdao;
 
 	@GetMapping("/")
 	public ModelAndView main() {
+		VisiterDTO dto = new VisiterDTO();
+		vdao.visit(dto);
 		List<MainreviewDTO> list = mrdao.list();
 		List<SuccessreviewDTO> slist = sdao.list();
 		Map<String, Object> map = new HashMap<>();

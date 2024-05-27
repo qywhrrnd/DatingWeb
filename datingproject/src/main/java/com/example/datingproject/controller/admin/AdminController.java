@@ -23,6 +23,7 @@ import com.example.datingproject.model.review.ReviewDAO;
 import com.example.datingproject.model.review.ReviewDTO;
 import com.example.datingproject.model.successreview.SuccessreviewDAO;
 import com.example.datingproject.model.successreview.SuccessreviewDTO;
+import com.example.datingproject.model.visiter.VisiterDAO;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,6 +50,10 @@ public class AdminController {
 	@Autowired
 	ReviewDAO reviewDao;
 
+	@Autowired
+	VisiterDAO vdao;
+	
+	
 	@PostMapping("admin/writereview.do")
 	public ResponseEntity<Map<String, Object>> writereview(HttpServletRequest request,
 			@RequestParam(name = "name1") String name1, @RequestParam(name = "name2") String name2,
@@ -110,12 +115,14 @@ public class AdminController {
 		int totalmember = memberDao.totalmember();
 		int totalmatching = cdao.totalmatching();
 		int totalpoint = adao.totalpoint();
+		int vcount = vdao.visitcount();
 		List<PointDTO> list = adao.plist();
 		Map<String, Object> map = new HashMap<>();
 		map.put("totalmember", totalmember);
 		map.put("totalmatching", totalmatching);
 		map.put("list", list);
 		map.put("totalpoint", totalpoint);
+		map.put("vcount", vcount);
 		url = "admin/main";
 		return new ModelAndView(url, "map", map);
 	}
