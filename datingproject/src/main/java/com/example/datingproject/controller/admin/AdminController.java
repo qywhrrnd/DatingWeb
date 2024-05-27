@@ -52,12 +52,10 @@ public class AdminController {
 
 	@Autowired
 	VisiterDAO vdao;
-	
-	
+
 	@PostMapping("admin/writereview.do")
-	public ResponseEntity<Map<String, Object>> writereview(HttpServletRequest request,
-			@RequestParam(name = "name1") String name1, @RequestParam(name = "name2") String name2,
-			@RequestParam(name = "content") String content) {
+	public String writereview(HttpServletRequest request, @RequestParam(name = "name1") String name1,
+			@RequestParam(name = "name2") String name2, @RequestParam(name = "content") String content) {
 
 		ServletContext application = request.getSession().getServletContext();
 		String imgPath = application.getRealPath("/resources/images/");
@@ -85,28 +83,9 @@ public class AdminController {
 		dto.setName1(name1);
 		dto.setName2(name2);
 		sdao.writereview(dto);
-		List<SuccessreviewDTO> list = sdao.list();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
 
-	}
+		return "redirect:/admin/selectreview.do";
 
-	@PostMapping("admin/deletemainreview.do")
-	public ResponseEntity<Map<String, Object>> deletemainreview(@RequestParam(name = "idx") int idx) {
-		adao.deletemainreview(idx);
-		List<MainreviewDTO> list = rdao.list();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
-	}
-
-	@PostMapping("admin/sales.do")
-	public ResponseEntity<Map<String, Object>> sales() {
-		List<PointDTO> list = adao.plist();
-		Map<String, Object> response = new HashMap<>();
-		response.put("list", list);
-		return ResponseEntity.ok(response);
 	}
 
 	@RequestMapping("adminpage.do")
