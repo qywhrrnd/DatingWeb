@@ -61,7 +61,7 @@
 
 	   
 	    // 팝업 창 크기 설정
-	    var popupWidth = 600;
+	    var popupWidth = 700;
 	    var popupHeight = 800;
 
 	    // 화면 가운데에 위치 계산
