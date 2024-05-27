@@ -167,7 +167,6 @@
 </head>
 <body>
 
-	<%@ include file="../main/header.jsp"%>
 	<br>
 	<br>
 	<br>
