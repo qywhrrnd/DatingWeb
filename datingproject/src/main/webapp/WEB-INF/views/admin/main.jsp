@@ -111,9 +111,6 @@
 				</div>
 			</div>
 		</main>
-	</div>
 	<hr>
-
-
 </body>
 </html>
