@@ -5,9 +5,6 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-
 <link rel="stylesheet"
 	href="/resources/css/templatemo-eduwell-style.css">
 <meta charset="UTF-8">
