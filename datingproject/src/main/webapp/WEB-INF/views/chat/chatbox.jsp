@@ -115,10 +115,6 @@ button {
 <body>
 
 
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="container">
 		<h1>채팅방</h1>
 		<div id="roomContainer" class="roomContainer">
