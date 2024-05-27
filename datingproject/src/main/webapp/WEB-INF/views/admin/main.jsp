@@ -67,6 +67,7 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class="rounded-lg border bg-card text-card-foreground shadow-sm"
 				data-v0-t="card">
 				<div class="flex flex-col space-y-1.5 p-6">
@@ -109,8 +110,9 @@
 		</div>
 	</main>
 	</div>
+=======
+		</main>
+>>>>>>> branch 'master' of https://github.com/JaeGyunP/DatingWeb.git
 	<hr>
-
-
 </body>
 </html>
