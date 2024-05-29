@@ -38,16 +38,12 @@
             + "&follower=" + follower;
    }
 
-   function point(pointValue, userId, otherId) {
+   function point(userId, otherId) {
        let otherid = otherId; // otherId를 직접 사용
        if (confirm("보고싶어?")) {
-           if (pointValue < 500) {
-               alert("포인트를 충전하세요");
-               location.href = "/point/buypoint.do";
-           } else {
-               location.href = "/detail.do?userid=" + userId + "&otherid=" + otherid;
+                       location.href = "/detail.do?userid=" + userId + "&otherid=" + otherid;
            }
-       }
+       
    }
    
    
@@ -92,9 +88,8 @@
 	<input type="hidden" id="userid" value="${sessionScope.userid}">
 	<input type="hidden" id="point" value="${sessionScope.point}">
 	<div class="container mt-5">
-		<a id="trigger">더 많은 회원을 보고 싶으싶니까?</a> 
-		<br>
-		<a style="font-style: italic; font-size: x-small;">마우스를 올려보세요!</a>
+		<a id="trigger">더 많은 회원을 보고 싶으싶니까?</a> <br> <a
+			style="font-style: italic; font-size: x-small;">마우스를 올려보세요!</a>
 		<div id="content" class="row justify-content-center"
 			style="display: none;">
 			<div class="col-md-8 text-center">
@@ -152,7 +147,7 @@
 											</div>
 											<div class="button mt-2 d-flex flex-row align-items-center">
 												<a class="btn btn-sm btn-outline-primary w-100"
-													onclick="point(${sessionScope.point}, '${sessionScope.userid}', '${row.userid}')">VIEW</a>
+													onclick="point('${sessionScope.userid}', '${row.userid}')">VIEW</a>
 
 
 												<c:choose>

@@ -318,7 +318,7 @@ public class InfoController {
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
 
-		// Detail.jsp follower , 리뷰갯수 숫자
+		int point = mDao.getpoint(userid);
 		int follower = infoDao.followercount(otherid);
 		int reviewcount = reviewDao.reviewcount(otherid);
 		double avgstar = reviewDao.avgstar(otherid);
@@ -328,18 +328,22 @@ public class InfoController {
 		mav.addObject("avgstar", avgstar);
 
 		int count = infoDao.viewlog(userid, otherid);
+
 		if (count == 0) {
+			if (point < 1000) {
+				mav.setViewName("point/buypoint");
+				return mav;
+			} else {
+				infoDao.insertlog(userid, otherid);
+				infoDao.updatepoint(userid);
 
-			infoDao.insertlog(userid, otherid);
-			infoDao.updatepoint(userid);
-
-			List<ReviewDTO> list = reviewDao.list(otherid);
-			InfoDTO dto = infoDao.detail(otherid);
-			mav.setViewName("info/detail");
-			mav.addObject("list", list);
-			mav.addObject("dto", dto);
-			return mav;
-
+				List<ReviewDTO> list = reviewDao.list(otherid);
+				InfoDTO dto = infoDao.detail(otherid);
+				mav.setViewName("info/detail");
+				mav.addObject("list", list);
+				mav.addObject("dto", dto);
+				return mav;
+			}
 		} else {
 			List<ReviewDTO> list = reviewDao.list(otherid);
 			InfoDTO dto = infoDao.detail(otherid);
@@ -350,7 +354,6 @@ public class InfoController {
 			return mav;
 
 		}
-
 	}
 
 }
