@@ -48,7 +48,7 @@ public class InfoController {
 
 	@Autowired
 	ReviewDAO reviewDao;
-	
+
 	@Autowired
 	MypageDAO mypageDao;
 
@@ -165,7 +165,7 @@ public class InfoController {
 			@RequestParam(name = "style") String style, @RequestParam(name = "education") String education,
 			@RequestParam(name = "religion") String religion, @RequestParam(name = "job") String job,
 			@RequestParam(name = "AIface") double AIface, @RequestParam(name = "description") String description,
-			@RequestParam(name = "userid") String userid) {
+			@RequestParam(name = "userid") String userid, HttpSession session) {
 
 		ServletContext application = request.getSession().getServletContext();
 		String imgPath = application.getRealPath("/resources/images/");
@@ -208,7 +208,7 @@ public class InfoController {
 		dto.setDescription(description);
 		infoDao.insertInfo(dto);
 		mDao.infoupdate(userid);
-
+		session.setAttribute("gender", gender);
 		return "main/main";
 	}
 
@@ -278,7 +278,7 @@ public class InfoController {
 		MypageDTO mypageDto = new MypageDTO();
 		mypageDto.setCountfollower(countfollower);
 		mypageDto.setCountfollowing(countfollowing);
-		
+
 		for (String a : list2) {
 			List<InfoDTO> sublist = infoDao.followlist(a);
 			list.addAll(sublist);
@@ -301,7 +301,6 @@ public class InfoController {
 		MypageDTO mypageDto = new MypageDTO();
 		mypageDto.setCountfollower(countfollower);
 		mypageDto.setCountfollowing(countfollowing);
-		
 
 		for (String a : list2) {
 			List<InfoDTO> sublist = infoDao.followlist(a);
@@ -319,16 +318,14 @@ public class InfoController {
 	public ModelAndView detail(@RequestParam(name = "userid") String userid,
 			@RequestParam(name = "otherid") String otherid, ModelAndView mav) {
 
-		//Detail.jsp follower , 리뷰갯수 숫자
+		// Detail.jsp follower , 리뷰갯수 숫자
 		int follower = infoDao.followercount(otherid);
 		int reviewcount = reviewDao.reviewcount(otherid);
 		double avgstar = reviewDao.avgstar(otherid);
 		avgstar = Math.floor(avgstar * 10) / 10.0;
-		mav.addObject("follower",follower); 
+		mav.addObject("follower", follower);
 		mav.addObject("reviewcount", reviewcount);
 		mav.addObject("avgstar", avgstar);
-		
-		
 
 		int count = infoDao.viewlog(userid, otherid);
 		if (count == 0) {
@@ -349,7 +346,7 @@ public class InfoController {
 			mav.setViewName("info/detail");
 			mav.addObject("list", list);
 			mav.addObject("dto", dto);
-			
+
 			return mav;
 
 		}
