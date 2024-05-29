@@ -211,8 +211,8 @@
 										</li>
 										<li>
 											<div>
-												<div class="left-image">
-													<img src="/resources/images/courses-03.jpg" alt="">
+												<div class="left-image" style="width: 350px; height: 365;">
+													<img src="/resources/images/ccc.png" alt="">
 													<div class="price">
 														<h6>
 															<small><small>$1000</small></small>
