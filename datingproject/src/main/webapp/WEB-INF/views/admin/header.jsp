@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ADMIN</title>
 <style>
 body {
 	font-family: "KimjungchulGothic-Bold";
@@ -73,18 +73,27 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
+
+function logout(){
+	if(confirm("로그아웃하시겠습니까?")){
+		location.href="/member/logout.do";		
+	}
+}
+
+
 </script>
 </head>
 <body>
-<div id="mySidenav" class="sidenav">
+	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="/adminpage.do">Dashboard</a> <a href="/admin/memberinfo.do">Users</a> <a href="/admin/selectreview.do">Review</a>
-		<a href="/member/logout.do">Logout</a>
+		<a href="/adminpage.do">Dashboard</a> <a href="/admin/memberinfo.do">Users</a>
+		<a href="/admin/selectreview.do">Review</a> <a onclick="logout()">Logout</a>
 	</div>
 
 	<div id="main">
 		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
 			Admin</span>
 		<hr>
+
 </body>
 </html>
