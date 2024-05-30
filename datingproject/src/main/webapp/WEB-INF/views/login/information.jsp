@@ -11,14 +11,96 @@
 
 body {
 	background: #CBC0D3;
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; /* Change height to min-height */
+	overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* div box styling */
+.container-wrapper {
+	height: 100%;
+	width: 100%;
+	overflow: auto; /* Enables scrolling within the container */
+}
+
 .container {
-	margin: auto;
-	width: 650px;
-	height: 550px;
-	position: relative;
+	background: #f6f6f6;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	max-width: 700px;
+	width: 100%;
+	padding: 20px;
+	margin: 20px;
+	/* Adds some margin for better spacing on small screens */
+}
+
+h2 {
+	text-align: center;
+	color: #8E9AAF;
+	font-family: "Lora", serif;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	text-align: left;
+	padding: 10px;
+}
+
+th {
+	background: #EAC7CC;
+	color: #fff;
+	border-radius: 5px 5px 0 0;
+}
+
+td input[type="text"], td input[type="number"], td input[type="button"],
+	td textarea {
+	width: calc(100% - 22px);
+	padding: 10px;
+	border: 1px solid #EAC7CC;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	font-size: 1em;
+}
+
+td input[type="button"] {
+	background: #EAC7CC;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+td input[type="button"]:hover {
+	background: #ce7d88;
+}
+
+textarea {
+	resize: none;
+}
+
+input[type="button"].submit {
+	background: #8E9AAF;
+	color: #fff;
+}
+
+input[type="button"].submit:hover {
+	background: #5f6770;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	background: #EAC7CC;
+	margin: 20px 0;
 }
 
 .welcome {
@@ -123,6 +205,18 @@ span {
 	opacity: 0.9;
 }
 
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.button-group input[type="button"] {
+	flex: 1;
+	max-width: 150px; /* Adjust the maximum width as needed */
+	padding: 10px;
+}
+
 button {
 	padding: 12px;
 	font-family: "Open Sans", sans-serif;
@@ -177,31 +271,6 @@ form {
 .submit:hover {
 	background: #CBC0D3;
 	border-color: #bfb1c9;
-}
-
-input {
-	background: #EAC7CC;
-	width: 65%;
-	color: #ce7d88;
-	border: none;
-	border-bottom: 1px solid rgba(246, 246, 246, 0.5);
-	padding: 9px;
-	margin: 7px;
-}
-
-input::placeholder {
-	color: #f6f6f6;
-	letter-spacing: 2px;
-	font-size: 1.3em;
-	font-weight: 100;
-}
-
-input:focus {
-	color: #ce7d88;
-	outline: none;
-	border-bottom: 1.2px solid rgba(206, 125, 136, 0.7);
-	font-size: 1em;
-	transition: 0.8s all ease;
 }
 
 input:focus::placeholder {
@@ -584,16 +653,17 @@ function score() {
 			</tr>
 			<tr>
 				<td>
-					<!-- <input type="file" name="file"> --> <input type="file"
-					name="file" id="file" accept="image/jpg" multiple="multiple"
-					onchange="upload()"> &nbsp; <img src="/resources/images"
+					<!-- 이미지 업로드 --> <input type="file" name="file" id="file"
+					accept="image/jpg" multiple="multiple" onchange="upload()"
+					style="float: left;"> <img src="/resources/images"
 					class="profile-photo" width="150" height="150"
-					style="visibility: hidden;">
-				</td>
-				<td>
-					<button type="button" onclick="movefile()">사진확정</button>
-					<button type="button" id="scorebt" onclick="score()">점수확인</button>
-					<input type="text" id="AIface" name="AIface" readonly>
+					style="visibility: hidden; float: left;"> <!-- 버튼들 -->
+					<div style="display: inline-block;">
+						<button type="button" onclick="movefile()">사진확정</button>
+						<button type="button" id="scorebt" onclick="score()">점수확인</button>
+					</div> 
+					 <input type="text" id="AIface" name="AIface"
+					readonly style="float: left;">
 				</td>
 
 			</tr>
