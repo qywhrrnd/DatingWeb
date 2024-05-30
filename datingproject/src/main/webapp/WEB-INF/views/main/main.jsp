@@ -45,6 +45,7 @@
             document.getElementById('contact').submit();
         }
     }
+    
 </script>
 
 </head>
