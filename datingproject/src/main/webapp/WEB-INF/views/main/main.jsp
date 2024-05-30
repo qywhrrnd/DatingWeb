@@ -386,11 +386,9 @@
 				</div>
 				<div class="col-lg-12">
 					<ul class="social-icons">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#"><i class="fa fa-rss"></i></a></li>
-						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						<li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://x.com/"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://www.instagram.com/"><i class="fa fa-linkedin"></i></a></li>
 					</ul>
 				</div>
 				<div class="col-lg-12">
