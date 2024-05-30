@@ -202,7 +202,7 @@
 											</div>
 											<div class="button mt-2 d-flex flex-row align-items-center">
 												<a class="btn btn-sm btn-outline-primary w-100"
-													onclick="point(${sessionScope.point}, '${sessionScope.userid}', '${row.userid}')">VIEW</a>
+													onclick="point('${sessionScope.userid}', '${row.userid}')">VIEW</a>
 												<c:choose>
 													<c:when
 														test="${map.idao.checkfollow(sessionScope.userid, row.userid) == 1}">
