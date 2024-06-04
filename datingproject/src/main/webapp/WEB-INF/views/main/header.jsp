@@ -8,6 +8,13 @@
 
 <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!--데마 -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu&display=swap');
+</style>
+
+<!--데마  -->
+
 
 
 <link rel="stylesheet" href="/resources/css/fontawesome.css">
@@ -15,6 +22,27 @@
 	href="/resources/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="/resources/css/owl.css">
 <link rel="stylesheet" href="/resources/css/lightbox.css">
+
+<style>
+.black-han-sans-regular {
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.gaegu-regular2 {
+  font-family: "Gaegu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  
+  
+  
+}
+
+
+</style>
 
 
 </head>
@@ -26,21 +54,21 @@
 				<div class="col-12">
 					<nav class="main-nav">
 						<!-- ***** Logo Start ***** -->
-						<a href="/" class="logo"> <label style="color: black; font-weight: bold;">데마</label>
+						<a href="/" class="logo" style="width:20%"><img src="/resources/images/dema.png" style="width:40%; height:40%;"><label class="black-han-sans-regular">데마</label>
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 				
-							<li class="scroll-to-section"><a href="/#services" style="color: black; font-weight: bold;">성공사례</a></li>
-							<li class="scroll-to-section"><a href="/#courses" style="color: black; font-weight: bold;">데마 기능 소개</a></li>
+							<li class="scroll-to-section"><a href="/#services"><label class="gaegu-regular2">성공사례</label></a></li>
+							<li class="scroll-to-section"><a href="/#courses"><label class="gaegu-regular2">데마란?</label></a></li>
 
-							<li class="scroll-to-section"><a href="/#simple-cta" style="color: black; font-weight: bold;">이벤트</a></li>
-							<li class="scroll-to-section"><a href="/#testimonials" style="color: black; font-weight: bold;">이용 리뷰</a></li>
-							<li class="scroll-to-section"><a href="/#contact-section" style="color: black; font-weight: bold;">리뷰 하기</a></li>
+							<li class="scroll-to-section"><a href="/#simple-cta"><label class="gaegu-regular2">이벤트</label></a></li>
+							<li class="scroll-to-section"><a href="/#testimonials"><label class="gaegu-regular2">이용 리뷰</label></a></li>
+							<li class="scroll-to-section"><a href="/#contact-section"><label class="gaegu-regular2">리뷰 하기</label></a></li>
 
 
-							<li class="has-sub"><a href="javascript:void(0)" style="color: black; font-weight: bold;">데마 이용하기</a>
+							<li class="has-sub"><a href="javascript:void(0)"><label class="gaegu-regular2">이용하기</label></a>
 								<ul class="sub-menu">
 									<c:choose>
 										<c:when test="${sessionScope.userid != null}">
@@ -66,10 +94,10 @@
 							<c:choose>
 								<c:when test="${sessionScope.userid == null }">
 
-									<li><a href="/member/pagelogin.do" style="color: black; font-weight: bold;">로그인</a></li>
+									<li><a href="/member/pagelogin.do"><label class="gaegu-regular2">로그인</label></a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="/member/logout.do" style="color: black; font-weight: bold;">로그아웃</a></li>
+									<li><a href="/member/logout.do"><label class="gaegu-regular2">로그아웃</label></a></li>
 
 
 								</c:otherwise>
