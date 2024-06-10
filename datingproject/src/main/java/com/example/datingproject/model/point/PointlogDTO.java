@@ -14,7 +14,8 @@ public class PointlogDTO {
 	private String userid;
 	private int point;
 	private Date day;
-
+	private int idx;
+	
 	public PointlogDTO() {
 		this.day = new Date(); // 생성자에서 현재 날짜와 시간을 설정
 	}

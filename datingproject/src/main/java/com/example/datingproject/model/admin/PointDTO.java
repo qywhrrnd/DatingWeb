@@ -17,4 +17,5 @@ public class PointDTO {
 	private String userid;
 	private int point;
 	private Date day;
+	private int idx;
 }

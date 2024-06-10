@@ -15,5 +15,6 @@ public class FollowDTO {
 	
 	private String following;
 	private String follower;
+	private int idx;
 
 }
