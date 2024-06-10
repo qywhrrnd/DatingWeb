@@ -124,7 +124,6 @@ input {
 
 </head>
 <body>
-	<%@ include file="../main/header.jsp"%>
 	${alertScript}
 	<form name="form1" method="post">
 		<h2 align="center">비밀번호 변경</h2>

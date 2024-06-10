@@ -323,7 +323,7 @@ overflow:hidden;
 }
 </style>
 											<tr>
-												<td>${row.userid}</td>
+												<td>***</td>
 												<td>
 													<div class="star-ratings">
 														<div

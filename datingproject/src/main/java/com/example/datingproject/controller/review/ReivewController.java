@@ -39,13 +39,13 @@ public class ReivewController {
 	@PostMapping("review/reviewwrite.do")
 	public String reviewwrite(@RequestParam HashMap<Object, Object> params) {
 		String otherid = (String) params.get("otherid");
-		String userida = (String) params.get("userid");
+		String userid = (String) params.get("userid");
 		String review = (String) params.get("reviewContent");
 		String starStr = (String) params.get("star");
 		double star = Double.parseDouble(starStr); // String을 double로 변환
 		
 
-		String userid = infoDao.getname(userida);
+	
 
 		reviewDto.setUserid(userid);
 		reviewDto.setReviewer(otherid);

@@ -583,7 +583,7 @@ tr:hover {
 														<div class="col-12">
 															<table>
 																<tr>
-																	<th>이름</th>
+																	<th>아이디</th>
 																	<th>별점</th>
 																	<th>후기</th>
 																</tr>
