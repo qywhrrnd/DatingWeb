@@ -3,7 +3,7 @@
 <mapper namespace="pointlog">
 
 	<insert id="pointlog">
-		insert into pointlog values (#{userid}, #{point}, #{day})
+		insert into pointlog values (#{userid}, #{point}, #{day}, (select nvl(max(idx)+1,1) from pointlog))
 	</insert>
 
 

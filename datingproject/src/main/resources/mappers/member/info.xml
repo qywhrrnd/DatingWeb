@@ -26,7 +26,7 @@
 
 
 	<insert id="follow">
-		insert into follow values(#{following},#{follower})
+		insert into follow values(#{following},#{follower},(select nvl(max(idx)+1,1) from follow))
 	</insert>
 
 	<select id="countfollow" resultType="int">
@@ -80,8 +80,8 @@
 	</select>
 
 	<insert id="viewinsert">
-		insert into viewlog (userid1,userid2) values
-		(#{userid1},#{userid2})
+		insert into viewlog (userid1,userid2,idx) values
+		(#{userid1},#{userid2},(select nvl(max(idx)+1,1) from viewlog))
 	</insert>
 
 	<select id="followercount" resultType="int">

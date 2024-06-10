@@ -53,8 +53,8 @@
 	</select>
 
 	<insert id="chatlog">
-		insert into chatlog (userid1, userid2) values
-		(#{userid}, #{otherid})
+		insert into chatlog (userid1, userid2, idx) values
+		(#{userid}, #{otherid},(select nvl(max(idx)+1,1) from chatlog))
 	</insert>
 
 	<select id="searchname" resultType="String">
