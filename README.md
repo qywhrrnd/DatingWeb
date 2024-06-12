@@ -16,6 +16,8 @@
  후기
 - **CNN 합성곱신경망**라는 것을 이용하여 파이썬과 자바를 접목시켜 개발한다는 것이 신기하면서도 흥미로웠습니다.
 
+ERD
+![스크린샷 2024-06-12 220134](https://github.com/qywhrrnd/DatingWeb/assets/66350742/dba4094a-a578-4afe-8bd9-37693ff1dcb7)
   
 메인화면
 ![메인](https://github.com/qywhrrnd/DatingWeb/assets/66350742/c36f5ba0-346d-4876-a8a3-094622e6c7e2)
